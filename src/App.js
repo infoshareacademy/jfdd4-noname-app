@@ -8,6 +8,7 @@ class App extends Component {
       <div className="App">
 
         <div className="App-intro">
+
          <Link to={`/bus-stops`}>Lista przystanków</Link> {''}
          <Link to={`/bus-lines`}>Lista autobusów</Link>
         </div>

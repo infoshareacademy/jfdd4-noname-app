@@ -20,3 +20,5 @@ var data = {
         {id: 200, stops: [4, 5, 6, 7, 8]}
     ]
 };
+
+export default data

@@ -1,4 +1,13 @@
+var data = [
+        {
+                id: 1,
+                name: 'foo'
+        },
+        {
+                id: 2,
+                name: 'bar'
+        }
+];
 
-var data = {
-    stops: [{id: 1, name: Przeróbka}]
-}
+export default data;
+

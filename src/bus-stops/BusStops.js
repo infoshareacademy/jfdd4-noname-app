@@ -1,4 +1,11 @@
 import React from 'react'
+import data from '../data/data.js';
 
+class BusStops extends  React.Component {
+    render() {
+        return (
+            console.log(data)
+        );
+    }
+}
 
-export default (props) => <h1>Lista przystanków</h1>

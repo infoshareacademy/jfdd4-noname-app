@@ -4,6 +4,7 @@ import App from './app/App';
 import './index.css';
 import BusStops from './bus-stops/BusStops'
 import BusLines from './bus-lines/BusLines'
+import Map from './map/Map'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 
@@ -16,6 +17,7 @@ ReactDOM.render(
         <Route path="/" component={App}>
             <Route path="/bus-stops" component={BusStops}/>
             <Route path="/bus-lines" component={BusLines}/>
+            <Route path="/map" component={Map}/>
 
 
         </Route>

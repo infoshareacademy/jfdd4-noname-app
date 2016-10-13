@@ -10,13 +10,14 @@ class Menu extends Component {
         return (
             <ul>
                 <Navbar.Brand>
-                    <img src={logo} className="Menu-logo" alt="logo" />
+                    <img src={logo} className="Menu-logo" alt="logo"/>
                 </Navbar.Brand>
-                <Nav bsStyle="pills" className="Menu">
-                <Item path={`/`}>Strona główna</Item>
-                <Item path={`/bus-stops`}>Lista przystanków</Item>
-                <Item path={`/bus-lines`}>Lista autobusów</Item>
-                    </Nav>
+                <Nav bsStyle="pills large" className="Menu">
+                    <Item path={`/`}>Strona główna</Item>
+                    <Item path={`/bus-stops`}>Lista przystanków</Item>
+                    <Item path={`/bus-lines`}>Lista autobusów</Item>
+                    <Item path={`/map`}>Mapa</Item>
+                </Nav>
             </ul>
         )
     }

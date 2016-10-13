@@ -5,17 +5,20 @@
 .App-intro {
   font-size: large;
   border: solid 2px;
-  width: 700px;
   margin: 0 auto;
+  list-style: none outside none;
+}
+
+.App-intro li {
+  display: inline-block;
 }
 
 .App-change {
   font-size: large;
-  border: solid 2px;
-  width: 700px;
+  border: solid dimgrey 1px;
   height: 500px;
   margin: 0 auto;
-  background-color: azure;
+  background-color: linen;
 }
 
 

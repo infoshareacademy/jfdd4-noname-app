@@ -1,0 +1,16 @@
+.Menu-logo {
+    left: 20px;
+    max-width: 150px;
+
+}
+
+.Menu {
+    min-height: 70px;
+    border-bottom: solid brown 1px;
+
+
+}
+
+Nav a {
+    color: brown;
+}

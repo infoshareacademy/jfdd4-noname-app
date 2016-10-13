@@ -1,6 +1,7 @@
 import React from 'react'
 import data from '../data/data.js';
 import Search from '../search/Search'
+import {Link} from 'react-router'
 
 export default class BusStops extends React.Component {
 
@@ -44,9 +45,15 @@ export default class BusStops extends React.Component {
                 <ul>
 
                     {filteredBusStops.map(function (stop) {
-                        return <li key={stop.id}>{stop.name}</li>
+                        return <li key={stop.id}>{stop.name}
+                            <Link to={`/bus-stops/${stop.name}`}>Show</Link>
+
+                        </li>
                     })}
                     {this.state.filterText}
+
+
+
                 </ul>
 
             </div>

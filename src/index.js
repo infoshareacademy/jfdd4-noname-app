@@ -4,6 +4,8 @@ import App from './app/App';
 import './index.css';
 import BusStops from './bus-stops/BusStops'
 import BusLines from './bus-lines/BusLines'
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
 
 import { Router, Route, browserHistory } from 'react-router'
 

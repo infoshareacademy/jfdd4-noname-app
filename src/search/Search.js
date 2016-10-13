@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {FormGroup} from 'react-bootstrap'
 
 class Search extends Component {
     filterUpdate() {
@@ -9,14 +10,14 @@ class Search extends Component {
 
     render() {
         return (
-            <form>
+            <FormGroup>
                 <input
                     type="text"
                     ref={ (value) => {this.myValue = value} }
                     placeholder="Wpisz szukany przystanek ..."
                     onChange={this.filterUpdate.bind(this)}
                 />
-            </form>
+            </FormGroup>
         )
     }
 }

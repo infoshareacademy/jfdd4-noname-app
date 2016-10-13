@@ -1,20 +1,24 @@
-import React, { Component } from 'react';
-import {Nav, NavItem} from 'react-bootstrap'
-import { Link } from 'react-router'
+import React, {Component} from 'react';
+import Item from './item/Item'
+import logo from './logo.png';
+import './Menu.css';
+import {Navbar, Nav} from 'react-bootstrap'
 
 
 class Menu extends Component {
     render() {
         return (
-            <div className="App">
-
-                <Nav bsStyle="pills" className="App-intro">
-                    <NavItem><Link to={`/bus-stops`}>Lista przystanków</Link></NavItem> {''}
-                    <NavItem><Link to={`/bus-lines`}>Lista autobusów</Link></NavItem>
-                </Nav>
-
-            </div>
-        );
+            <ul>
+                <Navbar.Brand>
+                    <img src={logo} className="Menu-logo" alt="logo" />
+                </Navbar.Brand>
+                <Nav bsStyle="pills" className="Menu">
+                <Item path={`/`}>Strona główna</Item>
+                <Item path={`/bus-stops`}>Lista przystanków</Item>
+                <Item path={`/bus-lines`}>Lista autobusów</Item>
+                    </Nav>
+            </ul>
+        )
     }
 }
 

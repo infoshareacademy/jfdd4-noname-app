@@ -1,6 +1,8 @@
 import React from 'react';
 import data from '../data/data.js';
 
+
+
 export default class BusDetails extends React.Component {
 
     constructor () {
@@ -20,35 +22,29 @@ export default class BusDetails extends React.Component {
     }
 
     render () {
-        /*console.log(this.state.stopArray);
-        console.log(this.state.busArray);
-        console.log(this.state.data);*/
+        console.log(this.props);
+        var obecnyAutobus = data.buses.find(function(b) {
+            return b.id == parseInt(this.props.params.busId);
+        }.bind(this));
 
-        var obecnyAutobus = parseInt(this.props.params.busId);
-
-        console.log(obecnyAutobus + " obecny autobus");
 
         return(
 
             <div>
                 <h2>{this.props.params.busId}</h2>
 
-                <ul>
-                    {data.buses.filter(function (selectBusLine) {
-                        var selectedBusLine = selectBusLine.id === obecnyAutobus;
-                        console.log(selectedBusLine);
-                        return selectedBusLine;
-                    }).map(function (item) {
-                        console.log(item);
-                        return item;
-                    }).map(function (clickedBus) {
-                        return <li key={clickedBus.id}>{clickedBus.stops}</li>
-                    })}
+                {data.stops.filter(function(s) {
+                    return obecnyAutobus.stops.indexOf(s.id) != -1
+                }).map(function(s) {
+                    return (<li key={s.id}>{s.name}</li>)
+                })}
 
-                </ul>
             </div>
         )
 
     }
 }
 
+                    {/*.map(function (clickedBus) {*/}
+                    {/*return <li key={clickedBus.id}>{clickedBus.stops}</li>*/}
+                {/*})}*/}

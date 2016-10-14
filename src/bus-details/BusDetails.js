@@ -5,42 +5,47 @@ export default class BusDetails extends React.Component {
 
     constructor () {
     super ();
-
         this.state = {
-            stopZ: [],
-            buseZ: []
+            stopArray: [],
+            busArray: []
         }
     }
 
     componentWillMount () {
         this.setState ({
-            stopZ: data.stops,
-            buseZ: data.buses
+            stopArray: data.stops,
+            busArray: data.buses,
+            busData: data
         })
     }
 
     render () {
-        console.log(this.state.stopZ);
-        console.log(this.state.buseZ);
-        console.log(this.state.data);
+        /*console.log(this.state.stopArray);
+        console.log(this.state.busArray);
+        console.log(this.state.data);*/
 
-        var listaPrzystankow = [];
+        var obecnyAutobus = parseInt(this.props.params.busId);
+
+        console.log(obecnyAutobus + " obecny autobus");
 
         return(
 
             <div>
+                <h2>{this.props.params.busId}</h2>
 
-                {this.state.stopZ.map(function (stopsList) {
-                    console.log(stopsList);
-                })}
+                <ul>
+                    {data.buses.filter(function (selectBusLine) {
+                        var selectedBusLine = selectBusLine.id === obecnyAutobus;
+                        console.log(selectedBusLine);
+                        return selectedBusLine;
+                    }).map(function (item) {
+                        console.log(item);
+                        return item;
+                    }).map(function (clickedBus) {
+                        return <li key={clickedBus.id}>{clickedBus.stops}</li>
+                    })}
 
-                {this.state.buseZ.map(function (busList) {
-                    console.log(busList.stops);
-                    busList.stops.forEach(function(busNumber) {
-                        console.log(busNumber);
-                        }
-                    )
-                })}
+                </ul>
             </div>
         )
 

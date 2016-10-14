@@ -7,37 +7,42 @@ export default class BusDetails extends React.Component {
     super ();
 
         this.state = {
-            stops: []
+            stopZ: [],
+            buseZ: []
         }
     }
 
     componentWillMount () {
         this.setState ({
-            stops: data.stops
+            stopZ: data.stops,
+            buseZ: data.buses
         })
     }
 
     render () {
+        console.log(this.state.stopZ);
+        console.log(this.state.buseZ);
+        console.log(this.state.data);
 
-        return (
+        var listaPrzystankow = [];
+
+        return(
+
             <div>
-                 <p>Szczegóły linia - 139</p>
-                 <p>Kier.: Oliwa | PKP Przymorze SKM - Kołobrzeska - <strong>Dąbrowszczaków</strong> - Jagiellońska
-                     - Chłopska - Bora-Komorowskiego - Droszyńskiego - Oliwa PKP </p>
-                <p>Kier.: Przymorze SKM | Oliwa PKP - Bora-Komorowskiego - Chłopska - Jagiellońska
-                    - Dąbrowszczaków - Obrońców Wybrzeża - Chłopska - Kołobrzeska - Przymorze SKM</p>
 
-                <p>Kierunek: <strong>Oliwa</strong></p>
-                <p>Przystanki</p>
-                <ul>
-                    <li>Przystanek1</li>
-                    <li>Przystanek2</li>
-                    <li><strong>Dąbrowszczaków - click for details</strong></li>
-                    <li>Przystanek...</li>
-                </ul>
+                {this.state.stopZ.map(function (stopsList) {
+                    console.log(stopsList);
+                })}
 
+                {this.state.buseZ.map(function (busList) {
+                    console.log(busList.stops);
+                    busList.stops.forEach(function(busNumber) {
+                        console.log(busNumber);
+                        }
+                    )
+                })}
             </div>
-        );
+        )
 
     }
 }

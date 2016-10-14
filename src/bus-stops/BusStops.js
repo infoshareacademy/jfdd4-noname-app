@@ -34,8 +34,6 @@ export default class BusStops extends React.Component {
         }
 
     );
-
-
         return (
             <div>
                 <Search
@@ -43,21 +41,15 @@ export default class BusStops extends React.Component {
                     filterUpdate={this.filterUpdate.bind(this)}
                 />
                 <ul>
-
                     {filteredBusStops.map(function (stop) {
-                        return <li key={stop.id}>{stop.name}
-                            <Link to={`/bus-stops/${stop.name}`}>Show</Link>
+                        return <li key={stop.id}>
+                            <Link to={`/bus-stops/${stop.id}`}>{stop.name}</Link>
 
                         </li>
                     })}
                     {this.state.filterText}
-
-
-
                 </ul>
-
             </div>
-
         );
     }
 }

@@ -2,40 +2,35 @@ import React from 'react'
 import data from '../data/data.js';
 
 export default class BusStop extends React.Component {
-
     constructor() {
         super();
 
         this.state = {
             stops: [],
+            buses: []
         }
     }
 
-
     componentWillMount() {
         this.setState({
-            stops: data.stops
+            stops: data.stops,
+            buses: data.buses
         })
     }
 
     render() {
+        var busId = parseInt(this.props.params.busStopId);
+
         return (
             <div>
+                {busId}
 
-                <ul>
-
-                    {this.state.stops.find(function (stop) {
-                        return <li key={stop.id}>{stop.name}
-
-
-                        </li>
-                    })}
-
-
-                </ul>
-
+                {this.state.buses.filter(function (bus) {
+                    return bus.stops.indexOf(busId) !== -1
+                }).map(function(bus) {
+                    return <p>{bus.lineNumber}</p>
+                })}
             </div>
-
         );
     }
 }

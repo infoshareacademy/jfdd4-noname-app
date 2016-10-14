@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './app/App';
 import './index.css';
 import BusStops from './bus-stops/BusStops'
-import BusStop from './bus-stops/BusStops'
+import BusStop from './bus-stop/BusStop'
 import BusLines from './bus-lines/BusLines'
 import Map from './map/Map'
 import 'bootstrap/dist/css/bootstrap.css';

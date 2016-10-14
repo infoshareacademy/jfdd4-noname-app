@@ -24,7 +24,7 @@ export default class BusStop extends React.Component {
         return (
             <div>
                 {busId}
-
+                Linie autobusowe przejeżdające przez dany przystanek:
                 {this.state.buses.filter(function (bus) {
                     return bus.stops.indexOf(busId) !== -1
                 }).map(function(bus) {

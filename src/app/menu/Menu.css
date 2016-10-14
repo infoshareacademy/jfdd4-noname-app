@@ -5,12 +5,10 @@
 }
 
 .Menu {
-    min-height: 70px;
-    border-bottom: solid brown 1px;
+    min-height: 50px;
+    border: solid brown 1px;
+    background-color: papayawhip;
+    margin: 0!important;
 
 
-}
-
-Nav a {
-    color: brown;
 }

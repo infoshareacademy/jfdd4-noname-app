@@ -9,9 +9,7 @@
   list-style: none outside none;
 }
 
-.App-intro li {
-  display: inline-block;
-}
+
 
 .App-change {
   font-size: large;
@@ -19,6 +17,7 @@
   height: 500px;
   margin: 0 auto;
   background-color: linen;
+
 }
 
 

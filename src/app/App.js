@@ -6,15 +6,17 @@ import {Grid, Row, Col} from 'react-bootstrap'
 class App extends Component {
     render() {
         return (
-            <div>
-                <Menu />
+
                 <Grid>
-                    <Row className="show-grid App-change">
-                        <Col xs={12} md={8}>{this.props.children}
-                        </Col>
+                    <Row className="show-grid">
+                        <Menu />
                     </Row>
+                    <Row className="show-grid App-change">
+                        <Col xs={12} md={8}>{this.props.children}</Col>
+                    </Row>
+
                 </Grid>
-            </div>
+
         );
     }
 }

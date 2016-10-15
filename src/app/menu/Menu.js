@@ -8,17 +8,17 @@ import {Navbar, Nav} from 'react-bootstrap'
 class Menu extends Component {
     render() {
         return (
-            <ul>
+
+                <Nav bsStyle="pills large" className="Menu">
                 <Navbar.Brand>
                     <img src={logo} className="Menu-logo" alt="logo"/>
                 </Navbar.Brand>
-                <Nav bsStyle="pills large" className="Menu">
                     <Item path={`/`}>Strona główna</Item>
                     <Item path={`/bus-stops`}>Lista przystanków</Item>
                     <Item path={`/bus-lines`}>Lista autobusów</Item>
                     <Item path={`/map`}>Mapa</Item>
                 </Nav>
-            </ul>
+
         )
     }
 }

@@ -2,7 +2,6 @@ import React from 'react';
 import data from '../data/data.js';
 
 
-
 export default class BusDetails extends React.Component {
 
     constructor () {
@@ -24,7 +23,7 @@ export default class BusDetails extends React.Component {
     render () {
         console.log(this.props);
         var obecnyAutobus = data.buses.find(function(b) {
-            return b.id == parseInt(this.props.params.busId);
+            return b.lineNumber == parseInt(this.props.params.busId);
         }.bind(this));
 
 
@@ -44,7 +43,3 @@ export default class BusDetails extends React.Component {
 
     }
 }
-
-                    {/*.map(function (clickedBus) {*/}
-                    {/*return <li key={clickedBus.id}>{clickedBus.stops}</li>*/}
-                {/*})}*/}

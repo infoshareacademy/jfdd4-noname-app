@@ -5,7 +5,9 @@ import './index.css';
 import BusStops from './bus-stops/BusStops'
 import BusStop from './bus-stop/BusStop'
 import BusLines from './bus-lines/BusLines'
+import BusDetails from './bus-details/BusDetails'
 import Map from './map/Map'
+import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 
@@ -18,6 +20,7 @@ ReactDOM.render(
         <Route path="/" component={App}>
             <Route path="/bus-stops" component={BusStops}/>
             <Route path="/bus-stops/:busStopId" component={BusStop}/>
+            <Route path="/bus-details/:busId" component={BusDetails}/>
             <Route path="/bus-lines" component={BusLines}/>
             <Route path="/map" component={Map}/>
 

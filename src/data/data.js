@@ -1,16 +1,16 @@
 
 var data = {
     stops: [
-        {id: 1, name: "Przeróbka"},
-        {id: 2, name: "Głęboka"},
-        {id: 3, name: "Brama Żuławska"},
-        {id: 4, name: "Akademia Muzyczna"},
-        {id: 5, name: "Szafarnia"},
-        {id: 6, name: "Dolne Miasto"},
-        {id: 7, name: "Śluza"},
-        {id: 8, name: "Kamienna Grobla"},
-        {id: 9, name: "Muzeum Narodowe"},
-        {id: 10, name: "Brama Wyżynna"}
+        {id: 1, name: "Przeróbka", cox: "54.357267", coy: "18.682472"},
+        {id: 2, name: "Głęboka", cox: "54.352325", coy: "18.671786"},
+        {id: 3, name: "Brama Żuławska", cox: "54.34782", coy: "18.6694"},
+        {id: 4, name: "Akademia Muzyczna", cox: "54.3446", coy: "18.6643"},
+        {id: 5, name: "Szafarnia", cox: "54.3475", coy: "18.6612"},
+        {id: 6, name: "Dolne Miasto", cox: "54.357267", coy: "18.682472"},
+        {id: 7, name: "Śluza", cox: "54.357267", coy: "18.682472"},
+        {id: 8, name: "Kamienna Grobla", cox: "54.357267", coy: "18.682472"},
+        {id: 9, name: "Muzeum Narodowe", cox: "54.357267", coy: "18.682472"},
+        {id: 10, name: "Brama Wyżynna", cox: "54.357267", coy: "18.682472"}
     ],
     buses: [
         {lineNumber: 111, stops: [1, 3, 4, 7]},

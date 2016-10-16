@@ -4,10 +4,14 @@ import GoogleMap from 'google-map-react'
 import Place from './place/Place'
 
 export default (props) =>
-    <div style={{width: '1100px', height: '450px'}}>
+    <div style={{width: '300px', height: '300px'}}>
+        {props.x} {props.y}
         <GoogleMap
-            center={[54.3610873, 18.6900271]}
-            zoom={10}>
-            <Place lat={54.3610873} lng={18.6900271} text={'A'} />
+            bootstrapURLKeys={{
+                key: 'AIzaSyCkDbleAYeCPGyTEDJ8Jk94gwXDxombvRE'
+            }}
+            center={[54.357267, 18.682472]}
+            zoom={15}>
+            <Place lat={props.x} lng={props.y} text={'A'} />
         </GoogleMap>
     </div>

@@ -11,7 +11,7 @@ export default  class Map extends React.Component {
                 bootstrapURLKeys={{
                     key: 'AIzaSyCkDbleAYeCPGyTEDJ8Jk94gwXDxombvRE'
                 }}
-                center={[54.357267, 18.682472]}
+                center={[this.props.x, this.props.y]}
                 zoom={15}>
                 <Place lat={this.props.x} lng={this.props.y} text={'A'}/>
             </GoogleMap>

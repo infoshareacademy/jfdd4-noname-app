@@ -22,8 +22,8 @@ export default class BusDetails extends React.Component {
 
     render () {
         console.log(this.props);
-        var obecnyAutobus = data.buses.find(function(b) {
-            return b.lineNumber == parseInt(this.props.params.busId);
+        var currentBus = data.buses.find(function(bus) {
+            return bus.lineNumber == parseInt(this.props.params.busId);
         }.bind(this));
 
 
@@ -32,10 +32,10 @@ export default class BusDetails extends React.Component {
             <div>
                 <h2>{this.props.params.busId}</h2>
 
-                {data.stops.filter(function(s) {
-                    return obecnyAutobus.stops.indexOf(s.id) != -1
-                }).map(function(s) {
-                    return (<li key={s.id}>{s.name}</li>)
+                {data.stops.filter(function(stop) {
+                    return currentBus.stops.indexOf(stop.id) != -1
+                }).map(function(stop) {
+                    return (<li key={stop.id}>{stop.name}</li>)
                 })}
 
             </div>

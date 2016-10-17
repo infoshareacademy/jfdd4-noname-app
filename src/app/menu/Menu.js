@@ -20,11 +20,10 @@ class Menu extends Component {
                     <Item path={`/`}>Strona główna</Item>
                     <Item path={`/bus-stops`}>Lista przystanków</Item>
                      <Item path={`/bus-lines`}>Lista autobusów</Item>
-                     <Item path={`/map`}>Mapa</Item>
+                     <Item path={`/stops-map`}>Mapa przystanków</Item>
                 </Nav>
                 <Nav pullRight>
-                    <NavItem eventKey={1} href="#">Link Right</NavItem>
-                    <NavItem eventKey={2} href="#">Link Right</NavItem>
+                    <NavItem eventKey={1} href="#">Zaloguj się</NavItem>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

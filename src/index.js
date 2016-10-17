@@ -7,6 +7,7 @@ import BusStop from './bus-stop/BusStop'
 import BusLines from './bus-lines/BusLines'
 import BusDetails from './bus-details/BusDetails'
 import Map from './map/Map'
+import StopsMap from './stops-map/StopsMap'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
@@ -23,6 +24,7 @@ ReactDOM.render(
             <Route path="/bus-details/:busId" component={BusDetails}/>
             <Route path="/bus-lines" component={BusLines}/>
             <Route path="/map" component={Map}/>
+            <Route path="/stops-map" component={StopsMap}/>
         </Route>
     </Router>,
   document.getElementById('root')

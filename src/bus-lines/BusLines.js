@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import data from '../data/data.js';
 
 
@@ -19,12 +20,9 @@ export default class BusLines extends React.Component{
         })
     }
 
-
-
     render () {
 
         var mapBusArray = this.state.busesArray;
-        console.log(mapBusArray);
 
         return (
             <div>
@@ -32,7 +30,9 @@ export default class BusLines extends React.Component{
                 <ul>
                     {mapBusArray.map(function (busListItem, index) {
                         return <li key={index}>
-                            {busListItem.lineNumber}
+                            <Link to={`/bus-details/${busListItem.lineNumber}`}>
+                                {busListItem.lineNumber}
+                            </Link>
                         </li>
                     })}
                 </ul>

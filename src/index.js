@@ -20,8 +20,6 @@ ReactDOM.render(
             <Route path="/bus-stops/:busStopId" component={BusStop}/>
             <Route path="/bus-lines" component={BusLines}/>
             <Route path="/map" component={Map}/>
-
-
         </Route>
     </Router>,
   document.getElementById('root')

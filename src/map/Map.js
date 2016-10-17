@@ -3,11 +3,18 @@ import React from 'react'
 import GoogleMap from 'google-map-react'
 import Place from './place/Place'
 
-export default (props) =>
-    <div style={{width: '1100px', height: '450px'}}>
-        <GoogleMap
-            center={[54.3610873, 18.6900271]}
-            zoom={10}>
-            <Place lat={54.3610873} lng={18.6900271} text={'A'} />
-        </GoogleMap>
-    </div>
+export default  class Map extends React.Component {
+    render() {
+        return <div style={{width: '300px', height: '300px'}}>
+            {this.props.x} {this.props.y}
+            <GoogleMap
+                bootstrapURLKeys={{
+                    key: 'AIzaSyCkDbleAYeCPGyTEDJ8Jk94gwXDxombvRE'
+                }}
+                center={[this.props.x, this.props.y]}
+                zoom={15}>
+                <Place lat={this.props.x} lng={this.props.y} text={'A'}/>
+            </GoogleMap>
+        </div>
+    }
+}

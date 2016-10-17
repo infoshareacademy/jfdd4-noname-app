@@ -1,14 +1,16 @@
 .Menu-logo {
     left: 20px;
-    max-width: 150px;
+    max-width: 100px;
 
 }
 
 .Menu {
     min-height: 50px;
-    border: solid brown 1px;
-    background-color: papayawhip;
-    margin: 0!important;
+}
 
-
+.navbar-inverse {
+    background-image: -webkit-linear-gradient(top, whitesmoke 30%, #ffebee 100%) !important;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(whitesmoke), to(#ffebee)) !important;
+    background-image: linear-gradient(to bottom, whitesmoke 30%, #ffebee 100%) !important;
+    /*background-color: grey !important;*/
 }

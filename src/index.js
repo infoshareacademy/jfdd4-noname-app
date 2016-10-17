@@ -23,8 +23,6 @@ ReactDOM.render(
             <Route path="/bus-details/:busId" component={BusDetails}/>
             <Route path="/bus-lines" component={BusLines}/>
             <Route path="/map" component={Map}/>
-
-
         </Route>
     </Router>,
   document.getElementById('root')

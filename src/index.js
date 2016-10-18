@@ -31,7 +31,7 @@ ReactDOM.render(
             <Route path="/map" component={Map}/>
             <Route path="/" component={StopsMap}/>
         </Route>
-    </Router>,
+    </Router>
     </Provider>,
   document.getElementById('root')
 );

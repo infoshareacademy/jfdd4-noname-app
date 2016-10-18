@@ -12,19 +12,20 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 
-import { Router, Route, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
 
 
 ReactDOM.render(
     <Router history={browserHistory}>
         <Route path="/" component={App}>
+            <IndexRoute component={StopsMap}/>
             <Route path="/bus-stops" component={BusStops}/>
             <Route path="/bus-stops/:busStopId" component={BusStop}/>
             <Route path="/bus-details/:busId" component={BusDetails}/>
             <Route path="/bus-lines" component={BusLines}/>
             <Route path="/map" component={Map}/>
-            <Route path="/stops-map" component={StopsMap}/>
+            <Route path="/" component={StopsMap}/>
         </Route>
     </Router>,
   document.getElementById('root')

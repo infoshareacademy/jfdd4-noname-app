@@ -12,7 +12,7 @@ class App extends Component {
                         <Menu />
                     </Row>
                     <Row className="show-grid App-change">
-                        <Col xs={12} md={8}>{this.props.children}</Col>
+                        <Col xs={12}>{this.props.children}</Col>
                     </Row>
 
                 </Grid>

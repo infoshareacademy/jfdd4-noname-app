@@ -1,8 +1,9 @@
 import React from 'react'
-import data from '../data/data.js';
-import Search from '../search/Search'
-import { Link } from 'react-router'
-import { connect } from 'react-redux'
+//import data from '../data/data.js';
+//import Search from '../search/Search'
+import {Link} from 'react-router'
+import {connect} from 'react-redux'
+import {markStopAsFavorite} from './actionCreators'
 
 const mapStateToProps = (state) => ({
     stops: state.stopsData.stops,
@@ -10,30 +11,28 @@ const mapStateToProps = (state) => ({
 
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+    favouriteStop: (stopId) => dispatch(markStopAsFavorite(stopId))
+});
 
 
 const BusStops = ({
     stops,
-    fetchingCourses
+    fetchingCourses,
+    favouriteStop
 
 }) => (
-
     <div>
-
-    <div>   {stops.map(function (stop) {
-                    return <li key={stop.id}>
-                            <Link to={`/bus-stops/${stop.id}`}>{stop.name}</Link>
-
-                        </li>
-                    })}</div>
-
+        <div>   {stops.map(function (stop) {
+            return <li key={stop.id}>
+                <Link to={`/bus-stops/${stop.id}`}>{stop.name}</Link>
+                <button onClick={() => favouriteStop(stop.id)}>
+                    (+)
+                </button>
+            </li>
+        })}</div>
     </div>
-
-)
-
-
-
+);
 
 
 // export default class BusStops extends React.Component {

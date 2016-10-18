@@ -23,6 +23,8 @@ let store = createStore(
     )
 );
 
-
+store.subscribe(() => {
+    localStorage.setItem('favoriteStopsIds', JSON.stringify(store.getState().stopsData.favoriteStopsIds || []))
+})
 
 export default store

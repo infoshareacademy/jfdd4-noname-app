@@ -1,4 +1,5 @@
 .bus-icon {
     border: solid 2px red;
     display: inline-block;
+    margin: 0 2px;
 }

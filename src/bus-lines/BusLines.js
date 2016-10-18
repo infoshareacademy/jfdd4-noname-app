@@ -1,26 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router';
+import {Link} from 'react-router';
 import data from '../data/data.js';
 
 
-export default class BusLines extends React.Component{
+export default class BusLines extends React.Component {
 
-    constructor () {
+    constructor() {
         super();
 
         this.state = {
             busesArray: []
         }
-
     }
 
-    componentWillMount () {
-        this.setState ({
+    componentWillMount() {
+        this.setState({
             busesArray: data.buses
         })
     }
 
-    render () {
+    render() {
 
         var mapBusArray = this.state.busesArray;
 

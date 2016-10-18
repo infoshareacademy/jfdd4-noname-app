@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import data from '../data/data.js';
+import {Grid, Row, Col} from 'react-bootstrap'
 
 
 export default class BusDetails extends React.Component {
@@ -30,9 +31,15 @@ export default class BusDetails extends React.Component {
 
         return(
 
-            <div>
-                <h2>{this.props.params.busId}</h2>
+            <Row>
+                <Row>
+                    <Col md={6}>
+                            <h1>Linia {this.props.params.busId}</h1>
+                    </Col>
+                </Row>
+                <Col md={6}>
 
+                <h2>Kierunek: Śluza</h2>
                 <ul>
                 {data.stops.filter(function(stop) {
                     return currentBus.stops.indexOf(stop.id) != -1
@@ -46,8 +53,28 @@ export default class BusDetails extends React.Component {
                     )
                 })}
                 </ul>
+                    </Col>
 
-            </div>
+
+                <Col md={6}>
+                <h2>Kierunek: Przeróbka</h2>
+                <ul>
+                    {data.stops.filter(function(stop) {
+                        return currentBus.stops.indexOf(stop.id) != -1
+                    }).reverse().map(function (stop) {
+                        return (
+                            <li key={stop.id}>
+                                <Link to={`/bus-stops/${stop.id}`}>
+                                    {stop.name}
+                                </Link>
+                            </li>
+                        )
+                    })
+                    }
+                </ul>
+                    </Col>
+
+            </Row>
         )
 
     }

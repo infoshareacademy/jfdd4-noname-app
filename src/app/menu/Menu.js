@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router'
 import Item from './item/Item'
 import logo from './logo.png';
 import './Menu.css';
@@ -11,16 +12,15 @@ class Menu extends Component {
         <Navbar default>
             <Navbar.Header>
                 <Navbar.Brand>
-                    <a href="#"><img src={logo} className="Menu-logo" alt="logo"/></a>
+                    <Link to={`/`}><img src={logo} className="Menu-logo" alt="logo"/></Link>
                 </Navbar.Brand>
                 <Navbar.Toggle />
             </Navbar.Header>
             <Navbar.Collapse>
                 <Nav>
-                    <Item path={`/`}>Strona główna</Item>
+                    <Item path={`/`}>Mapa przystanków</Item>
                     <Item path={`/bus-stops`}>Lista przystanków</Item>
                      <Item path={`/bus-lines`}>Lista autobusów</Item>
-                     <Item path={`/stops-map`}>Mapa przystanków</Item>
                 </Nav>
                 <Nav pullRight>
                     <NavItem eventKey={1} href="#">Zaloguj się</NavItem>

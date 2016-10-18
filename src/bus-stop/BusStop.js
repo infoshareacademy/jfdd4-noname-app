@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import data from '../data/data.js';
-import Bus from './Bus'
+import Bus from './Bus';
 import Map from '../map/Map'
 
 export default class BusStop extends React.Component {

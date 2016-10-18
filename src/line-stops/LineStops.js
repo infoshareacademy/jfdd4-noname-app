@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import data from '../data/data.js';
+import {Row, Col, ListGroup, ListGroupItem} from 'react-bootstrap'
 
 export default class LineStops extends React.Component {
 
@@ -14,19 +15,19 @@ export default class LineStops extends React.Component {
         return (
 
 
-            <ul>
+            <ListGroup>
                 {data.stops.filter(function (stop) {
                     return currentBus.stops.indexOf(stop.id) != -1
                 }).map(function (stop) {
                     return (
-                        <li key={stop.id}>
+                        <ListGroupItem key={stop.id}>
                             <Link to={`/bus-stops/${stop.id}`}>
                                 {stop.name}
                             </Link>
-                        </li>
+                        </ListGroupItem>
                     )
                 })}
-            </ul>
+            </ListGroup>
         )
 
     }

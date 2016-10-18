@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import data from '../data/data.js';
+import { Row, Label, ListGroup, ListGroupItem } from 'react-bootstrap'
 
 
 export default class BusLines extends React.Component{
@@ -21,21 +22,21 @@ export default class BusLines extends React.Component{
     }
 
     render () {
-
         var mapBusArray = this.state.busesArray;
 
         return (
             <div>
                 <h1>Lista linii autobusowych:</h1>
-                <ul>
+
+                <ListGroup>
                     {mapBusArray.map(function (busListItem, index) {
-                        return <li key={index}>
+                        return <ListGroupItem key={index}>
                             <Link to={`/bus-details/${busListItem.lineNumber}`}>
                                 {busListItem.lineNumber}
                             </Link>
-                        </li>
+                        </ListGroupItem>
                     })}
-                </ul>
+                </ListGroup>
             </div>
         )
     }

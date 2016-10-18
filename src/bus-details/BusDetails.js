@@ -1,6 +1,6 @@
 import React from 'react';
 import LineStops from '../line-stops/LineStops';
-import {Row, Col} from 'react-bootstrap'
+import {Button, PageHeader, Row, Col} from 'react-bootstrap'
 
 
 export default class BusDetails extends React.Component {
@@ -9,10 +9,10 @@ export default class BusDetails extends React.Component {
 
         return(
 
-            <Row>
+            <div>
                 <Row>
                     <Col md={6}>
-                            <h1>Linia {this.props.params.busId}</h1>
+                            <PageHeader>Linia <Button bsStyle="danger">{this.props.params.busId}</Button></PageHeader>
                     </Col>
                 </Row>
 
@@ -23,7 +23,7 @@ export default class BusDetails extends React.Component {
 
                     </Col>
                 </Row>
-            </Row>
+            </div>
         )
 
     }

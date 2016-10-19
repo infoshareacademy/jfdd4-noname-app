@@ -1,9 +1,10 @@
-import { REQUEST_STOPS, RECEIVE_STOPS, MARK_STOP_AS_FAVORITE} from './actionTypes'
+import { REQUEST_STOPS, RECEIVE_STOPS, SET_FILTER_VALUE, MARK_STOP_AS_FAVORITE} from './actionTypes'
 
 const initialState = {
     stops: [],
     fetchingStops: false,
     favoriteStopsIds: JSON.parse(localStorage.getItem('favoriteStopsIds')) || []
+    currentFilterValue: ''
 };
 
 export default (state = initialState, action) => {
@@ -22,6 +23,11 @@ export default (state = initialState, action) => {
                 favoriteStopsIds: state.favoriteStopsIds.indexOf(action.stopId) === -1
                     ? state.favoriteStopsIds.concat([action.stopId])
                     : state.favoriteStopsIds
+            });
+
+        case SET_FILTER_VALUE:
+            return Object.assign({}, state, {
+                currentFilterValue: action.filterValue
             });
         default:
             return state

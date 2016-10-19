@@ -1,35 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router';
-import data from '../data/data.js';
+import { connect } from 'react-redux'
 import { ListGroup, ListGroupItem } from 'react-bootstrap'
 
+const mapStateToProps = (state) => ({
+    lineNumber: state.busesData.lineNumber,
+    fetchingLineNumbers: state.busesData.fetchingLineNumbers
+})
 
-export default class BusLines extends React.Component{
-
-    constructor () {
-        super();
-
-        this.state = {
-            busesArray: []
-        }
-
-    }
-
-    componentWillMount () {
-        this.setState ({
-            busesArray: data.buses
-        })
-    }
+class BusLines extends React.Component{
 
     render () {
-        var mapBusArray = this.state.busesArray;
+        var {
+            lineNumber,
+            fetchingLineNumbers
+        } = this.props
 
         return (
             <div>
                 <h1>Lista linii autobusowych:</h1>
 
                 <ListGroup>
-                    {mapBusArray.map(function (busListItem, index) {
+                    {lineNumber.map(function (busListItem, index) {
                         return <ListGroupItem key={index}>
                             <Link to={`/bus-details/${busListItem.lineNumber}`}>
                                 {busListItem.lineNumber}
@@ -41,3 +33,5 @@ export default class BusLines extends React.Component{
         )
     }
 }
+
+export default connect(mapStateToProps)(BusLines)

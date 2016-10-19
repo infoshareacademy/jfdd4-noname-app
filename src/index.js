@@ -23,13 +23,13 @@ ReactDOM.render(
     <Provider store={store}>
     <Router history={browserHistory}>
         <Route path="/" component={App}>
-            <IndexRoute component={StopsMap}/>
+            <IndexRoute component={StopsMap} onEnter={() => store.dispatch(fetchStops())}/>
             <Route path="/bus-stops" component={BusStops} onEnter={() => store.dispatch(fetchStops())}/>
             <Route path="/bus-stops/:busStopId" component={BusStop}/>
             <Route path="/bus-details/:busId" component={BusDetails}/>
             <Route path="/bus-lines" component={BusLines}/>
             <Route path="/map" component={Map}/>
-            <Route path="/" component={StopsMap}/>
+
         </Route>
     </Router>
     </Provider>,

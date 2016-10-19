@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import data from '../data/data.js';
-import { Row, Label, ListGroup, ListGroupItem } from 'react-bootstrap'
+import { ListGroup, ListGroupItem } from 'react-bootstrap'
 
 
 export default class BusLines extends React.Component{

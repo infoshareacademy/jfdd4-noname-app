@@ -3,11 +3,21 @@ import LineStops from '../line-stops/LineStops';
 import {Button, PageHeader, Row, Col} from 'react-bootstrap'
 import GoogleMap from 'google-map-react';
 import Place from '../map/place/Place'
+import data from '../data/data.js'
 
 
 export default class BusDetails extends React.Component {
 
+
     render () {
+
+        var currentBus = data.buses.find(function(bus) {
+            return bus.lineNumber === parseInt(this.props.params.busId);
+        }.bind(this));
+
+        var busStops = data.stops.filter(function (stop) {
+            return currentBus.stops.indexOf(stop.id) !== -1
+        });
 
         return(
 
@@ -21,7 +31,7 @@ export default class BusDetails extends React.Component {
                 <Row>
                     <Col md={6}>
 
-                        <LineStops busId={this.props.params.busId}/>
+                        <LineStops stops={busStops}/>
 
                     </Col>
                 </Row>
@@ -32,10 +42,8 @@ export default class BusDetails extends React.Component {
                         }}
                         center={[54.357267, 18.682472]}
                         zoom={12}>
-                        {data.stops.filter(function (stop) {
-                            return currentBus.stops.indexOf(stop.id) !== -1
-                        }).map(function (stop) {
-                            return <Place lat={stop.cox} lng={stop.coy} text={'B'}/>
+                        {busStops.map(function (stop) {
+                            return <Place key={stop.id} lat={stop.cox} lng={stop.coy} text={'B'}/>
                         })}
                     </GoogleMap>
                 </div>

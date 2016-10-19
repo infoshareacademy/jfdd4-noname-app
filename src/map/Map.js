@@ -1,11 +1,10 @@
-
 import React from 'react'
 import GoogleMap from 'google-map-react'
 import Place from './place/Place'
 
 export default  class Map extends React.Component {
     render() {
-        return <div style={{width: '300px', height: '300px'}}>
+        return <div style={{width: '100%', height: '300px'}}>
             {this.props.x} {this.props.y}
             <GoogleMap
                 bootstrapURLKeys={{

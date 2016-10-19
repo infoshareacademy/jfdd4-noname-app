@@ -3,7 +3,7 @@ import { REQUEST_STOPS, RECEIVE_STOPS, SET_FILTER_VALUE, MARK_STOP_AS_FAVORITE} 
 const initialState = {
     stops: [],
     fetchingStops: false,
-    favoriteStopsIds: JSON.parse(localStorage.getItem('favoriteStopsIds')) || []
+    favoriteStopsIds: JSON.parse(localStorage.getItem('favoriteStopsIds')) || [],
     currentFilterValue: ''
 };
 

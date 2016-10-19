@@ -14,7 +14,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    setFilterValue: (newFilterValue) => dispatch(setFilterValue(newFilterValue))
+    setFilterValue: (newFilterValue) => dispatch(setFilterValue(newFilterValue)),
     favouriteStop: (stopId) => dispatch(markStopAsFavorite(stopId))
 });
 

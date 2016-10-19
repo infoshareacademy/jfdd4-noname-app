@@ -25,7 +25,6 @@ export const fetchStops = () => dispatch => {
     return fetch(`${process.env.PUBLIC_URL}/data/data-stops.json`)
         .then(response => { console.log(response); return response.json()})
         .then(json => { console.log(json); return dispatch(receiveStops(json))})
-};
 }
 
 export function setFilterValue(newFilterValue) {

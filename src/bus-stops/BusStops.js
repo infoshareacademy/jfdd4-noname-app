@@ -3,37 +3,55 @@ import data from '../data/data.js';
 import Search from '../search/Search'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
+import { setFilterValue } from './actionCreators'
 
 const mapStateToProps = (state) => ({
     stops: state.stopsData.stops,
     fetchingStops: state.stopsData.fetchingStops,
+    currentFilterValue: state.stopsData.currentFilterValue
 
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+    setFilterValue: (newFilterValue) => dispatch(setFilterValue(newFilterValue))
+
+});
+
+class BusStops extends React.Component {
+
+    render() {
+        var {
+            stops,
+            fechingStops,
+            setFilterValue,
+            currentFilterValue
+        } = this.props;
 
 
-const BusStops = ({
-    stops,
-    fetchingCourses
+        return (
 
-}) => (
+            <div>
+                <p>Znajdz przystanek: <input
+                    placeholder="Wpisz szukany przystanek"
+                    defaultValue=""
+                    onChange={(event) => setFilterValue(event.target.value)}
 
-    <div>
+                /></p>
+                <div>
+                    {stops
+                        .filter(function(stop) {
+                            return stop.name.toLowerCase().indexOf(currentFilterValue.toLowerCase()) !== -1;
+                        })
+                        .map(function (stop) {
+                            return <li key={stop.id}>
+                                <Link to={`/bus-stops/${stop.id}`}>{stop.name}</Link></li>
+                        })}</div>
 
-    <div>   {stops.map(function (stop) {
-                    return <li key={stop.id}>
-                            <Link to={`/bus-stops/${stop.id}`}>{stop.name}</Link>
+            </div>
 
-                        </li>
-                    })}</div>
-
-    </div>
-
-)
-
-
-
+        )
+    }
+}
 
 
 // export default class BusStops extends React.Component {

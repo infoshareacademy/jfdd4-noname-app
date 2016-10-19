@@ -19,7 +19,9 @@ export default (state = initialState, action) => {
             });
         case MARK_STOP_AS_FAVORITE:
             return Object.assign({}, state, {
-                favoriteStopsIds: state.favoriteStopsIds.concat([action.stopId])
+                favoriteStopsIds: state.favoriteStopsIds.indexOf(action.stopId) === -1
+                    ? state.favoriteStopsIds.concat([action.stopId])
+                    : state.favoriteStopsIds
             });
         default:
             return state

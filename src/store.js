@@ -2,10 +2,11 @@ import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import stopsReducer from './bus-stops/reducer'
+import busesReducer from './bus-lines/reducer'
 
 let reducer = combineReducers({
-
-    stopsData: stopsReducer,
+    busesData: busesReducer,
+    stopsData: stopsReducer
 
 });
 

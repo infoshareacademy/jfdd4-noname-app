@@ -24,7 +24,6 @@ const BusStops = ({
     <div>   {stops.map(function (stop) {
                     return <li key={stop.id}>
                             <Link to={`/bus-stops/${stop.id}`}>{stop.name}</Link>
-
                         </li>
                     })}</div>
 

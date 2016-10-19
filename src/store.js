@@ -2,6 +2,7 @@ import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import stopsReducer from './bus-stops/reducer'
+
 let reducer = combineReducers({
 
     stopsData: stopsReducer,

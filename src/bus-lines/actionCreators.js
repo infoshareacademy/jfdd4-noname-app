@@ -16,7 +16,7 @@ function requestLineNumbers() {
 function receiveLineNumbers(lineNumber) {
     return {
         type: RECEIVE_LINE_NUMBERS,
-        lineNumber: lineNumber
+        lineNumber: lineNumber.sort((l1,l2) => l1.lineNumber - l2.lineNumber)
     }
 }
 

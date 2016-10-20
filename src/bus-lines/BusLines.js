@@ -32,6 +32,7 @@ class BusLines extends React.Component{
                 <p>
                     <input
                         placeholder="Wpisz szukaną linię"
+                        defaultValue=""
                         onChange={(event) => setFilterValue(event.target.value)}
                     />
                 </p>

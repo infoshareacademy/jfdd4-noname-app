@@ -3,3 +3,13 @@ nav a {
 }
 
 
+.App-Menu-Item {
+    list-style: none outside none;
+    display: inline;
+    padding: 0 10px;
+    margin: 0;
+}
+
+.App-Menu-Item .active {
+    color: #ff9999;
+}

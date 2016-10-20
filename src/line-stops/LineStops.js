@@ -13,11 +13,6 @@ export default class LineStops extends React.Component {
 
             <ListGroup>
                 {this.props.stops.map(function (stop) {
-                    console.log(stop, "------");
-                    console.log(data.buses.map(function(xyz)
-                    {
-                      console.log(xyz, "++++++++++++")
-                    }));
                     return (
                         <ListGroupItem key={stop.id}>
                             <Link to={`/bus-stops/${stop.id}`}>
@@ -25,25 +20,23 @@ export default class LineStops extends React.Component {
                             </Link>
                                 <div>
                                     <content>Dostępne przesiadki:</content>
-                                {data.buses.filter(function(fff) {
-                                    console.log(fff, "ooooooooooooooo");
-                                    return currentStop = fff.stops.indexOf(stop.id) !== -1;
-                                }).map(function (dupa) {
-                                    console.log(dupa, "***********************");
-                                    console.log(dupa.lineNumber, "xxxxxxxxxxxxxxxxx");
-                                    return (
-                                        <content>
-                                            <content>{" "}</content>
-                                            <Label>
-                                                <Link to={`/bus-details/${dupa.lineNumber}`}>
-                                                    {dupa.lineNumber}
-                                                </Link>
-                                            </Label>
-                                        </content>
-                                    )
-                                })
+                                        {data.buses
+                                            .filter(function(filteredBuses) {
+                                                return currentStop = filteredBuses.stops.indexOf(stop.id) !== -1;
+                                                    }).map(function (filteredLineNumber, index) {
+                                                        return (
+                                                            <content key={index}>
+                                                                <content>{" "}</content>
+                                                                <Label>
+                                                                    <Link to={`/bus-details/${filteredLineNumber.lineNumber}`}>
+                                                                        {filteredLineNumber.lineNumber}
+                                                                    </Link>
+                                                                </Label>
+                                                            </content>
+                                                        )
+                                                    })
 
-                                }
+                                        }
                                 </div>
                         </ListGroupItem>
                     )

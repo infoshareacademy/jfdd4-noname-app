@@ -6,6 +6,8 @@ export default class LineStops extends React.Component {
 
     render() {
 
+        var przesiadka;
+
         return (
 
             <ListGroup>
@@ -14,6 +16,9 @@ export default class LineStops extends React.Component {
                         <ListGroupItem key={stop.id}>
                             <Link to={`/bus-stops/${stop.id}`}>
                                 {stop.name}
+                                {przesiadka = data.stops.find(function (czyMozliwa) {
+                                    czyMozliwa.id ===
+                                }) }
                             </Link>
                         </ListGroupItem>
                     )

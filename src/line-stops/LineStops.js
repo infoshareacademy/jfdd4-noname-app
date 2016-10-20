@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import {ListGroup, ListGroupItem, Label} from 'react-bootstrap'
 import data from '../data/data.js'
+import './LineStops.css';
+
 
 export default class LineStops extends React.Component {
 
@@ -11,11 +13,11 @@ export default class LineStops extends React.Component {
 
         return (
 
-            <ListGroup>
+            <ListGroup className="LineStops-ListChild" >
                 {this.props.stops.map(function (stop) {
                     return (
-                        <ListGroupItem key={stop.id}>
-                            <Link to={`/bus-stops/${stop.id}`}>
+                        <ListGroupItem  key={stop.id}>
+                            <Link  to={`/bus-stops/${stop.id}`}>
                                 {stop.name + " "}
                             </Link>
                                 <div>

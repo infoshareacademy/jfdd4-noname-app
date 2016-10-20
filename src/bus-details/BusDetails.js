@@ -4,7 +4,7 @@ import {Button, PageHeader, Row, Col, Link} from 'react-bootstrap'
 import GoogleMap from 'google-map-react';
 import Place from '../map/place/Place'
 import data from '../data/data.js'
-
+import './BusDetails.css';
 
 
 export default class BusDetails extends React.Component {
@@ -46,7 +46,7 @@ export default class BusDetails extends React.Component {
 
             <div>
                 <Row>
-                    <Col md={8}>
+                    <Col md={12}>
                             <PageHeader>Linia <Button bsStyle="danger">{this.props.params.busId}</Button>
                                 <content>{" -> "+ listaPrzystankow[0]+" -> "+listaPrzystankow[listaPrzystankow.length-1]}</content>
                             </PageHeader>
@@ -56,7 +56,7 @@ export default class BusDetails extends React.Component {
                 <Row>
                     <Col md={6}>
 
-                        <LineStops stops={busStops}/>
+                        <LineStops className="BusDetails-ListChild" stops={busStops}/>
 
                     </Col>
                     <Col md={6}>

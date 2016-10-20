@@ -1,0 +1,13 @@
+.list-group-item:first-child{
+    /*font-weight: bolder;*/
+    /*background-color: ghostwhite;*/
+}
+
+.list-group-item:last-child{
+    /*font-weight: bolder;*/
+    /*background-color: ghostwhite;*/
+}
+
+.list-group-item:hover {
+    background-color: rgba(224,224,224,0.1);
+}

@@ -8,8 +8,15 @@ nav a {
     display: inline;
     padding: 0 10px;
     margin: 0;
+
 }
 
-.App-Menu-Item .active {
-    color: #ff9999;
+
+.App-Menu-Item .navbar-default .navbar-nav > .open > a, .App-Menu-Item .navbar-default .navbar-nav > .active > a {
+    background-image: -webkit-linear-gradient(top, red 0%, red 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(red), to(red));
+    background-image: linear-gradient(to bottom, red 60%, red 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdbdbdb', endColorstr='#ffe2e2e2', GradientType=0);
+    background-repeat: repeat-x;
+    box-shadow: inset 0 3px 9px rgba(0, 0, 0, .075);
 }

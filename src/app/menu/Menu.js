@@ -4,6 +4,11 @@ import logo from './logo.png';
 import './Menu.css';
 import {IndexLinkContainer, LinkContainer} from 'react-router-bootstrap'
 import {Navbar, Nav, NavItem} from 'react-bootstrap'
+import { connect } from 'react-redux'
+
+const mapStateToProps = (state) => ({
+ favoriteStops: state.stopsData.favoriteStopsIds
+})
 
 
 class Menu extends Component {
@@ -19,7 +24,7 @@ class Menu extends Component {
                 <Navbar.Collapse>
                     <Nav>
                         <IndexLinkContainer to={`/`}>
-                            <NavItem eventKey={0} href="#">Mapa przystanków</NavItem>
+                            <NavItem eventKey={0} href="#">Mapa</NavItem>
                         </IndexLinkContainer>
                         <LinkContainer to={`/bus-stops`}>
                             <NavItem eventKey={1} href="#">Lista przystanków</NavItem>
@@ -30,6 +35,7 @@ class Menu extends Component {
                         </LinkContainer>
                     </Nav>
                     <Nav pullRight>
+                        <NavItem>Ulubione ({this.props.favoriteStops.length})</NavItem>
                         <LinkContainer to={'*'}>
                             <NavItem eventKey={3} href="#">Zaloguj się</NavItem>
                         </LinkContainer>
@@ -40,4 +46,6 @@ class Menu extends Component {
     }
 }
 
-export default Menu;
+
+
+export default connect( mapStateToProps )(Menu)

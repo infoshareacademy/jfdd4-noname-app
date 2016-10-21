@@ -16,7 +16,11 @@ function requestStops() {
 function receiveStops(stops) {
     return {
         type: RECEIVE_STOPS,
-        stops: stops
+        stops: stops.sort((s1,s2) => {
+            if (s1.name < s2.name) return -1;
+            else if (s1.name > s2.name) return 1;
+            else return 0;
+        })
     }
 }
 

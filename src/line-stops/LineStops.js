@@ -9,10 +9,6 @@ export default class LineStops extends React.Component {
 
     render() {
 
-        var currentStop;
-
-
-
         return (
 
             <ListGroup className="LineStops-ListChild" >

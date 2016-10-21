@@ -12,6 +12,18 @@ export default class BusDetails extends React.Component {
 
     render () {
 
+
+
+        var busListMinusCurrentBus = data.buses.filter(function(bus) {
+            return bus.lineNumber !== parseInt(this.props.params.busId);
+        }.bind(this));
+
+        var possibleBusLineChange =  busListMinusCurrentBus.map(function (thing){
+            return thing.lineNumber});
+
+        console.log(possibleBusLineChange, "-------------------------");
+
+
         var currentBus = data.buses.find(function(bus) {
             return bus.lineNumber === parseInt(this.props.params.busId);
         }.bind(this));
@@ -20,27 +32,13 @@ export default class BusDetails extends React.Component {
             return currentBus.stops.indexOf(stop.id) !== -1
         });
 
-        var firstStop =  busStops.map(function (firstChild) {
-            return firstChild
-        });
+        console.log(busStops, "++++++++");
 
-        console.log(currentBus);
-        console.log(busStops, "---------------------");
-        console.log(firstStop.filter(function (dupa) {
-            return currentBus.stops.indexOf(dupa.id) !== -1
-        }).map(function (xyz) {
-            console.log(xyz.name, "hhhhhhhhhhhhhhhhhhhhhhhhhh")
-            return xyz.name
-        }), "xxxxxxxxxxxxxxxxxxxxxxx");
-
-        console.log(firstStop, "*****************************")
-
-        var listaPrzystankow = firstStop.filter(function (dupa) {
-            return currentBus.stops.indexOf(dupa.id) !== -1
+        var busLineStopsList = busStops.filter(function (busStopId) {
+            return currentBus.stops.indexOf(busStopId.id) !== -1
         }).map(function (xyz) {
             return xyz.name});
 
-        console.log(listaPrzystankow, "duuuuuuuuuuuupaaaa");
 
         return(
 
@@ -48,7 +46,7 @@ export default class BusDetails extends React.Component {
                 <Row>
                     <Col md={12}>
                             <PageHeader>Linia <Button bsStyle="danger">{this.props.params.busId}</Button>
-                                <content>{" -> "+ listaPrzystankow[0]+" -> "+listaPrzystankow[listaPrzystankow.length-1]}</content>
+                                <content>{" -> "+ busLineStopsList[0]+" -> "+busLineStopsList[busLineStopsList.length-1]}</content>
                             </PageHeader>
                     </Col>
                 </Row>
@@ -56,7 +54,7 @@ export default class BusDetails extends React.Component {
                 <Row>
                     <Col md={6}>
 
-                        <LineStops className="BusDetails-ListChild" stops={busStops}/>
+                        <LineStops className="BusDetails-ListChild" stops={busStops} currentBus={currentBus.lineNumber}/>
 
                     </Col>
                     <Col md={6}>

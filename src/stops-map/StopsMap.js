@@ -1,8 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import GoogleMap from 'google-map-react'
 import Map from '../map/Map'
-import Stop from './stop-place/Stop'
 
 const mapStateToProps = state => ({
     stops: state.stopsData.stops

@@ -59,7 +59,7 @@ class BusDetails extends React.Component {
                     </Col>
                     <Col md={6}>
                         <div style={{width: '100%', height: '500px'}}>
-                            <Map center={[54.357267, 18.682472]} points={firstStop} />
+                            <Map center={[54.34782, 18.6694]} points={firstStop} />
                         </div>
                     </Col>
                 </Row>

@@ -1,5 +1,7 @@
 import React from 'react'
 import stopMarker from './bus-stop-marker.svg'
+import { Link } from 'react-router'
+
 
 var MARKER_SIZE = 40;
 const markerStyle = {
@@ -26,7 +28,9 @@ const getLabelStyle=(props)=>({
     position: 'absolute',
     width: 200,
     marginLeft: -100,
+    color: 'darkred',
     textAlign: 'center',
+    textDecoration: 'none',
     border: '3px solid darkred',
     background: 'whitesmoke',
     borderRadius: 7,
@@ -35,9 +39,9 @@ const getLabelStyle=(props)=>({
 
 
 export default (props) =>
-    <div>
+    <Link to={props.to}>
         <div style={getMarkerStyle(props)}>
             <img src={stopMarker} alt="bus-stop"/>
         </div>
-        <div style={getLabelStyle(props)} className="stopLabel">{props.children}</div>
-    </div>
+        <a style={getLabelStyle(props)} className="stopLabel">{props.children}</a>
+    </Link>

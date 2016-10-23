@@ -35,7 +35,6 @@ class BusStop extends React.Component {
                 </div>
                 <br />
                 Linie autobusowe przejeżdające przez dany przystanek:
-                //TODO: dodać przyciski autobusów
                 {buses.filter(function (bus) {
                     return bus.stops.indexOf(stopId) !== -1
                 }).map(function(bus) {

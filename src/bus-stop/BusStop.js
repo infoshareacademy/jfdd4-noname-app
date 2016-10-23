@@ -1,43 +1,42 @@
 import React from 'react';
-import data from '../data/data.js';
+import {connect} from 'react-redux'
 import Bus from './Bus';
 import Map from '../map/Map'
 
-export default class BusStop extends React.Component {
-    constructor() {
-        super();
+const mapStateToProps = (state) => ({
+    buses: state.busesData.buses,
+    stops: state.stopsData.stops
+});
 
-        this.state = {
-            stops: [],
-            buses: []
-        }
-    }
-
-    componentWillMount() {
-        this.setState({
-            stops: data.stops,
-            buses: data.buses
-        })
-    }
+class BusStop extends React.Component {
 
     render() {
-        var busId = parseInt(this.props.params.busStopId);
+        var {
+            buses,
+            stops
+        } = this.props;
+
+        var stopId = parseInt(this.props.params.busStopId);
+        var currentStop = stops.filter(function (stop) {
+            return stop.id === stopId
+        });
+        var currentCoordinates = currentStop.map((stop) => {
+            return [stop.cox, stop.coy]
+        });
+
 
         return (
             <div>
-
-                {this.state.stops.filter(function (stop) {
-                    return stop.id === busId
-                }).map(function (stops) {
-                    return <div>
-                        <p>Przystanek:  {stops.name} </p>
-                        <Map x={stops.cox} y={stops.coy}/>
-                    </div>
+                {currentStop.map(function (stop) {
+                    return <p>Przystanek: {stop.name}</p>
                 })}
+                <div style={{width: '100%', height: '450'}}>
+                    <Map center={currentCoordinates[0]} points={currentStop} />
+                </div>
                 <br />
                 Linie autobusowe przejeżdające przez dany przystanek:
-                {this.state.buses.filter(function (bus) {
-                    return bus.stops.indexOf(busId) !== -1
+                {buses.filter(function (bus) {
+                    return bus.stops.indexOf(stopId) !== -1
                 }).map(function(bus) {
                     return <Bus>{bus.lineNumber}</Bus>
                 })}
@@ -46,3 +45,4 @@ export default class BusStop extends React.Component {
     }
 }
 
+export default connect(mapStateToProps)(BusStop)

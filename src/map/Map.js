@@ -1,18 +1,20 @@
 import React from 'react'
 import GoogleMap from 'google-map-react'
-import Place from './place/Place'
+import Stop from '../stops-map/stop-place/Stop'
 
 export default  class Map extends React.Component {
     render() {
-        return <div style={{width: '100%', height: '300px'}}>
+        return <div style={{width: '100%', height: '100%'}}>
             {this.props.x} {this.props.y}
             <GoogleMap
                 bootstrapURLKeys={{
                     key: 'AIzaSyCkDbleAYeCPGyTEDJ8Jk94gwXDxombvRE'
                 }}
-                center={[this.props.x, this.props.y]}
-                zoom={15}>
-                <Place lat={this.props.x} lng={this.props.y} text={'A'}/>
+                center={this.props.center}
+                zoom={13}>
+                {this.props.points.map(function (point) {
+                    return <Stop lat={point.cox} lng={point.coy}/>
+                })}
             </GoogleMap>
         </div>
     }

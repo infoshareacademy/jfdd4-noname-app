@@ -6,7 +6,7 @@ import Stop from './stop-place/Stop'
 
 const mapStateToProps = state => ({
     stops: state.stopsData.stops
-})
+});
 
 const StopsMap = ({
     stops

@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import LineStops from '../line-stops/LineStops';
 import {Button, PageHeader, Row, Col, Link} from 'react-bootstrap'
 import GoogleMap from 'google-map-react';
@@ -15,14 +15,14 @@ const mapStateToProps = (state) => ({
 class BusDetails extends React.Component {
 
 
-    render () {
+    render() {
 
         var {
             buses,
             stops
         } = this.props;
 
-        var currentBus = buses.find(function(bus) {
+        var currentBus = buses.find(function (bus) {
             return bus.lineNumber === parseInt(this.props.params.busId);
         }.bind(this));
 
@@ -30,25 +30,26 @@ class BusDetails extends React.Component {
             return currentBus.stops.indexOf(stop.id) !== -1
         });
 
-        var firstStop =  busStops.map(function (firstChild) {
+        var firstStop = busStops.map(function (firstChild) {
             return firstChild
         });
 
 
-        var listaPrzystankow = firstStop.filter(function (dupa) {
+        var stopsList = firstStop.filter(function (dupa) {
             return currentBus.stops.indexOf(dupa.id) !== -1
         }).map(function (xyz) {
-            return xyz.name});
+            return xyz.name
+        });
 
 
-        return(
+        return (
 
             <div>
                 <Row>
                     <Col md={12}>
-                            <PageHeader>Linia <Button bsStyle="danger">{this.props.params.busId}</Button>
-                                <content>{" -> "+ listaPrzystankow[0]+" -> "+listaPrzystankow[listaPrzystankow.length-1]}</content>
-                            </PageHeader>
+                        <PageHeader>Linia <Button bsStyle="danger">{this.props.params.busId}</Button>
+                            <content>{" : " + stopsList[0] + " – " + stopsList[stopsList.length - 1]}</content>
+                        </PageHeader>
                     </Col>
                 </Row>
 
@@ -60,20 +61,19 @@ class BusDetails extends React.Component {
                     </Col>
                     <Col md={6}>
                         <div style={{width: '100%', height: '500px'}}>
-                        <GoogleMap
-                            bootstrapURLKeys={{
-                                key: 'AIzaSyCkDbleAYeCPGyTEDJ8Jk94gwXDxombvRE'
-                            }}
-                            center={[54.357267, 18.682472]}
-                            zoom={12}>
-                            {busStops.map(function (stop) {
-                                return <Place key={stop.id} lat={stop.cox} lng={stop.coy} text={'B'}/>
-                            })}
-                        </GoogleMap>
+                            <GoogleMap
+                                bootstrapURLKeys={{
+                                    key: 'AIzaSyCkDbleAYeCPGyTEDJ8Jk94gwXDxombvRE'
+                                }}
+                                center={[54.357267, 18.682472]}
+                                zoom={12}>
+                                {busStops.map(function (stop) {
+                                    return <Place key={stop.id} lat={stop.cox} lng={stop.coy} text={'B'}/>
+                                })}
+                            </GoogleMap>
                         </div>
                     </Col>
                 </Row>
-
 
 
             </div>

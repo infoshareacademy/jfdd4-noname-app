@@ -2,10 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux'
 import LineStops from '../line-stops/LineStops';
 import {Button, PageHeader, Row, Col, Link} from 'react-bootstrap'
-import GoogleMap from 'google-map-react';
-import Place from '../map/place/Place'
-import data from '../data/data.js'
 import './BusDetails.css';
+import Map from '../map/Map'
 
 const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
@@ -35,10 +33,10 @@ class BusDetails extends React.Component {
         });
 
 
-        var stopsList = firstStop.filter(function (dupa) {
-            return currentBus.stops.indexOf(dupa.id) !== -1
-        }).map(function (xyz) {
-            return xyz.name
+        var stopsList = firstStop.filter(function (stop) {
+            return currentBus.stops.indexOf(stop.id) !== -1
+        }).map(function (stop) {
+            return stop.name
         });
 
 
@@ -61,24 +59,12 @@ class BusDetails extends React.Component {
                     </Col>
                     <Col md={6}>
                         <div style={{width: '100%', height: '500px'}}>
-                            <GoogleMap
-                                bootstrapURLKeys={{
-                                    key: 'AIzaSyCkDbleAYeCPGyTEDJ8Jk94gwXDxombvRE'
-                                }}
-                                center={[54.357267, 18.682472]}
-                                zoom={12}>
-                                {busStops.map(function (stop) {
-                                    return <Place key={stop.id} lat={stop.cox} lng={stop.coy} text={'B'}/>
-                                })}
-                            </GoogleMap>
+                            <Map center={[54.357267, 18.682472]} points={firstStop} />
                         </div>
                     </Col>
                 </Row>
-
-
             </div>
         )
-
     }
 }
 

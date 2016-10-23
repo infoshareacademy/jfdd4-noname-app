@@ -6,6 +6,7 @@ import {
 
 const initialState = {
     lineNumber: [],
+    buses: [],
     currentFilterValue: []
 }
 
@@ -18,6 +19,7 @@ export default (state = initialState, action) => {
         case RECEIVE_BUSES:
             return Object.assign({}, state, {
                 lineNumber: action.lineNumber,
+                buses: action.buses,
                 fetchingLineNumber: false
             })
         case SET_FILTER_VALUE:

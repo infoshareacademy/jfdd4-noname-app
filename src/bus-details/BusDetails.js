@@ -8,7 +8,7 @@ import data from '../data/data.js'
 import './BusDetails.css';
 
 const mapStateToProps = (state) => ({
-    buses: state.stopsData.buses,
+    buses: state.busesData.buses,
     stops: state.stopsData.stops
 });
 

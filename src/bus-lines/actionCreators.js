@@ -16,7 +16,8 @@ function requestBuses() {
 function receiveBuses(buses) {
     return {
         type: RECEIVE_BUSES,
-        lineNumber: buses.sort((l1,l2) => l1.lineNumber - l2.lineNumber)
+        lineNumber: buses.sort((l1,l2) => l1.lineNumber - l2.lineNumber),
+        buses: buses
     }
 }
 

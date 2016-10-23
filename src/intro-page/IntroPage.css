@@ -1,33 +1,29 @@
 .Intro-col {
-    margin: auto;
+    margin: 10px auto;
     text-align: center;
 }
-.Intro-icon{
+
+.Intro-icon {
+    min-height: 200px;
+    max-width: 250px;
     margin: 20px auto;
-    list-style: none;
-}
-.Intro-icon li{
-    height: 150px;
-    width: 150px;
-    margin: auto;
-    border-radius: 50%;
+    border-radius: 15%;
     border:6px solid #fff;
     box-shadow: 2px 2px 0 0 rgba(0,0,0,0.3);
     transition:all 1s ease;
+
 }
-.Intro-icon ul{
-   padding: 0;
-}
+
 
 
 .Intro-img {
-    max-width: 60%;
+    max-width: 30%;
     margin: 20px auto;
 }
-.Intro-icon li:hover{
+.Intro-icon:hover{
     border:6px solid #333;
     box-shadow: 0px 0px 20px 0 rgba(255,255,255,.5);
 }
-.Intro-icon li:hover img{
+.Intro-icon .Intro-col:hover img{
     cursor: pointer;
 }

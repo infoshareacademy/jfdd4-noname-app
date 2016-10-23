@@ -10,28 +10,27 @@ export default class IntroPage extends React.Component {
 
     render() {
         return (
+            <div>
+                <Col sm={4} className="Intro-col">
+                    <div className="Intro-icon"><Link to={`/`}><img src={functionbusicon} className="Intro-img"
+                                                                    alt="logo"/></Link>
+                        <div>Linie autobusowe</div>
+                    </div>
+                </Col>
+                <Col sm={4} className="Intro-col">
+                    <div className="Intro-icon"><Link to={`/`}><img src={functionmapicon} className="Intro-img"
+                                                                    alt="logo"/></Link>
+                        <div>Mapa przystanków</div>
+                    </div>
+                </Col>
+                <Col sm={4} className="Intro-col">
+                    <div className="Intro-icon"><Link to={`/`}><img src={functionticketicon} className="Intro-img"
+                                                                    alt="logo"/></Link>
+                        <div>Lista przystanków</div>
+                    </div>
 
-            <Grid>
-                <Row className="Intro-icon">
-                    <Col sm={4} className="Intro-col">
-                        <ul className="Intro-icon">
-                            <li><Link to={`/`}><img src={functionbusicon} className="Intro-img" alt="logo"/></Link></li>
-                        </ul>
-                    </Col>
-                    <Col sm={4} className="Intro-col">
-                        <ul className="Intro-icon">
-                            <li><Link to={`/`}><img src={functionmapicon} className="Intro-img" alt="logo"/></Link></li>
-                        </ul>
-                    </Col>
-                    <Col sm={4}  className="Intro-col">
-                        <ul className="Intro-icon">
-                            <li><Link to={`/`}><img src={functionticketicon} className="Intro-img" alt="logo"/></Link></li>
-                        </ul>
-                    </Col>
-                </Row>
-
-
-            </Grid>
+                </Col>
+            </div>
 
         )
     }

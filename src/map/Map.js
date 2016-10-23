@@ -11,8 +11,9 @@ export default  class Map extends React.Component {
                     key: 'AIzaSyCkDbleAYeCPGyTEDJ8Jk94gwXDxombvRE'
                 }}
                 center={this.props.center}
-                zoom={13}>
+                zoom={14}>
                 {this.props.points.map(function (point) {
+                    console.log(point);
                     return <Stop lat={point.cox} lng={point.coy}/>
                 })}
             </GoogleMap>

@@ -1,30 +1,30 @@
 import {
-    REQUEST_LINE_NUMBERS,
-    RECEIVE_LINE_NUMBERS,
+    REQUEST_BUSES,
+    RECEIVE_BUSES,
     SET_FILTER_VALUE
 
 } from './actionTypes'
 
 import fetch from 'isomorphic-fetch'
 
-function requestLineNumbers() {
+function requestBuses() {
     return {
-        type: REQUEST_LINE_NUMBERS
+        type: REQUEST_BUSES
     }
 }
 
-function receiveLineNumbers(lineNumber) {
+function receiveBuses(buses) {
     return {
-        type: RECEIVE_LINE_NUMBERS,
-        lineNumber: lineNumber.sort((l1,l2) => l1.lineNumber - l2.lineNumber)
+        type: RECEIVE_BUSES,
+        lineNumber: buses.sort((l1,l2) => l1.lineNumber - l2.lineNumber)
     }
 }
 
-export const fetchLineNumbers = () => dispatch => {
-    dispatch(requestLineNumbers())
+export const fetchBuses = () => dispatch => {
+    dispatch(requestBuses())
     return fetch(`${process.env.PUBLIC_URL}/data/data-buses.json`)
         .then(response => { console.log(response); return response.json()})
-        .then(json => { console.log(json); return dispatch(receiveLineNumbers(json))})
+        .then(json => { console.log(json); return dispatch(receiveBuses(json))})
 }
 
 export function setFilterValue(newFilterValue) {

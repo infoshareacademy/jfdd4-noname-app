@@ -20,14 +20,3 @@ const StopsMap = ({
 
 export default connect(mapStateToProps)(StopsMap)
 
-
-// <GoogleMap
-// bootstrapURLKeys={{
-//     key: 'AIzaSyCkDbleAYeCPGyTEDJ8Jk94gwXDxombvRE'
-// }}
-// center={[54.357267, 18.682472]}
-// zoom={12}>
-//     {stops.map(function (stops) {
-//         return <Stop lat={stops.cox} lng={stops.coy} text={'x'}/>
-//     })}
-// </GoogleMap>

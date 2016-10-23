@@ -1,6 +1,6 @@
 import {
-    REQUEST_LINE_NUMBERS,
-    RECEIVE_LINE_NUMBERS,
+    REQUEST_BUSES,
+    RECEIVE_BUSES,
     SET_FILTER_VALUE
 } from './actionTypes'
 
@@ -11,11 +11,11 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case REQUEST_LINE_NUMBERS:
+        case REQUEST_BUSES:
             return Object.assign({}, state, {
                 fetchingLineNumber: true
             })
-        case RECEIVE_LINE_NUMBERS:
+        case RECEIVE_BUSES:
             return Object.assign({}, state, {
                 lineNumber: action.lineNumber,
                 fetchingLineNumber: false

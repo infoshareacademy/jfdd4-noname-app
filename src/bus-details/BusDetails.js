@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import LineStops from '../line-stops/LineStops';
 import {Button, PageHeader, Row, Col, Link} from 'react-bootstrap'
 import GoogleMap from 'google-map-react';
@@ -6,17 +7,26 @@ import Place from '../map/place/Place'
 import data from '../data/data.js'
 import './BusDetails.css';
 
+const mapStateToProps = (state) => ({
+    buses: state.stopsData.buses,
+    stops: state.stopsData.stops
+});
 
-export default class BusDetails extends React.Component {
+class BusDetails extends React.Component {
 
 
     render () {
 
-        var currentBus = data.buses.find(function(bus) {
+        var {
+            buses,
+            stops
+        } = this.props;
+
+        var currentBus = buses.find(function(bus) {
             return bus.lineNumber === parseInt(this.props.params.busId);
         }.bind(this));
 
-        var busStops = data.stops.filter(function (stop) {
+        var busStops = stops.filter(function (stop) {
             return currentBus.stops.indexOf(stop.id) !== -1
         });
 
@@ -24,23 +34,12 @@ export default class BusDetails extends React.Component {
             return firstChild
         });
 
-        console.log(currentBus);
-        console.log(busStops, "---------------------");
-        console.log(firstStop.filter(function (dupa) {
-            return currentBus.stops.indexOf(dupa.id) !== -1
-        }).map(function (xyz) {
-            console.log(xyz.name, "hhhhhhhhhhhhhhhhhhhhhhhhhh")
-            return xyz.name
-        }), "xxxxxxxxxxxxxxxxxxxxxxx");
-
-        console.log(firstStop, "*****************************")
 
         var listaPrzystankow = firstStop.filter(function (dupa) {
             return currentBus.stops.indexOf(dupa.id) !== -1
         }).map(function (xyz) {
             return xyz.name});
 
-        console.log(listaPrzystankow, "duuuuuuuuuuuupaaaa");
 
         return(
 
@@ -82,3 +81,5 @@ export default class BusDetails extends React.Component {
 
     }
 }
+
+export default connect(mapStateToProps)(BusDetails)

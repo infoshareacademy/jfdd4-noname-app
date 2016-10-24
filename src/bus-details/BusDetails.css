@@ -27,4 +27,7 @@ span.label.label-default a:hover{
 li.list-group-item {
     color: gray !important;
 }
+button.btn.btn-danger a{
+    color: whitesmoke !important;
+}
 

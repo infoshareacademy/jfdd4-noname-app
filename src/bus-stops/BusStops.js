@@ -1,11 +1,11 @@
 import React from 'react'
-import {ListGroup, ListGroupItem} from 'react-bootstrap'
+import {ListGroupItem} from 'react-bootstrap'
 import {Link} from 'react-router'
 import {connect} from 'react-redux'
 import {setFilterValue} from './actionCreators'
 import ReactCSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup'
 import './BusStops.css'
-import {Glyphicon, Button, FormControl} from 'react-bootstrap'
+import {FormControl} from 'react-bootstrap'
 
 const mapStateToProps = (state) => ({
     stops: state.stopsData.stops,
@@ -24,8 +24,7 @@ class BusStops extends React.Component {
             stops,
             fechingStops,
             setFilterValue,
-            currentFilterValue,
-            favouriteStop
+            currentFilterValue
         } = this.props;
 
 

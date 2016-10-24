@@ -2,10 +2,16 @@ import React from 'react';
 import {connect} from 'react-redux'
 import Bus from './Bus';
 import Map from '../map/Map'
+import {markStopAsFavorite} from '../bus-stops/actionCreators'
+import {Glyphicon, Button} from 'react-bootstrap'
 
 const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
     stops: state.stopsData.stops
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    favouriteStop: (stopId) => dispatch(markStopAsFavorite(stopId))
 });
 
 class BusStop extends React.Component {
@@ -13,7 +19,8 @@ class BusStop extends React.Component {
     render() {
         var {
             buses,
-            stops
+            stops,
+            favouriteStop
         } = this.props;
 
         var stopId = parseInt(this.props.params.busStopId);
@@ -28,7 +35,10 @@ class BusStop extends React.Component {
         return (
             <div>
                 {currentStop.map(function (stop) {
-                    return <p>Przystanek: {stop.name}</p>
+                    return <p>Przystanek: {stop.name} {""}
+                        <Button onClick={() => favouriteStop(stop.id)} bsSize="xsmall">
+                            <Glyphicon glyph="star"/> Dodaj do ulubionych</Button>
+                    </p>
                 })}
                 <div style={{width: '100%', height: '450'}}>
                     <Map center={currentCoordinates[0]} points={currentStop} />
@@ -45,4 +55,4 @@ class BusStop extends React.Component {
     }
 }
 
-export default connect(mapStateToProps)(BusStop)
+export default connect(mapStateToProps, mapDispatchToProps)(BusStop)

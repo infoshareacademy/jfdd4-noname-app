@@ -28,16 +28,10 @@ class BusDetails extends React.Component {
             return currentBus.stops.indexOf(stop.id) !== -1
         });
 
-        var firstStop = busStops.map(function (firstChild) {
-            return firstChild
-        });
-
-
-        var stopsList = firstStop.filter(function (stop) {
+        var stopsList = busStops.filter(function (stop) {
             return currentBus.stops.indexOf(stop.id) !== -1
         }).map(function (stop) {
-            return stop.name
-        });
+            return stop.name});
 
 
         return (
@@ -54,12 +48,12 @@ class BusDetails extends React.Component {
                 <Row>
                     <Col md={6}>
 
-                        <LineStops className="BusDetails-ListChild" stops={busStops}/>
+                        <LineStops className="BusDetails-ListChild" stops={busStops} currentBus={currentBus.lineNumber}/>
 
                     </Col>
                     <Col md={6}>
                         <div style={{width: '100%', height: '500px'}}>
-                            <Map center={[54.34782, 18.6694]} points={firstStop} />
+                            <Map center={[54.34782, 18.6694]} points={stopsList} />
                         </div>
                     </Col>
                 </Row>

@@ -6,7 +6,6 @@ import { ListGroup, ListGroupItem } from 'react-bootstrap'
 
 const mapStateToProps = (state) => ({
     lineNumber: state.busesData.lineNumber,
-    fetchingLineNumbers: state.busesData.fetchingLineNumbers,
     currentFilterValue: state.busesData.currentFilterValue
 })
 
@@ -21,7 +20,6 @@ class BusLines extends React.Component{
             lineNumber,
             setFilterValue,
             currentFilterValue,
-            fetchingLineNumbers
         } = this.props
 
 

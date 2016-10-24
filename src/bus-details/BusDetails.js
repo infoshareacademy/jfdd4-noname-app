@@ -41,8 +41,6 @@ class BusDetails extends React.Component {
 
         console.log(lastFirstStop, "---------");
 
-
-
         return (
 
             <div>

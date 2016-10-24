@@ -1,13 +1,11 @@
 .BusDetails-ListChild{
     font-weight: bold;
     display: block;
-
 }
-
 
 .label-default {
     background-color: #8b0000 !important;
-    font-style:
+    background-image:-webkit-linear-gradient(top, #d9534f 5%, #8b0000 95%);
 }
 
 span.label.label-default a:visited{
@@ -29,6 +27,13 @@ span.label.label-default a:hover{
 li.list-group-item {
     color: gray !important;
 }
+
+button.btn.btn-danger {
+    background-color: #8b0000 !important;
+    background-image:-webkit-linear-gradient(top, #d9534f 5%, #8b0000 95%);
+    margin-bottom: 10px;
+}
+
 button.btn.btn-danger a{
     color: whitesmoke !important;
 }

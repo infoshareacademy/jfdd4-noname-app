@@ -1,13 +1,12 @@
 import React from 'react'
-import data from '../data/data.js';
-import Search from '../search/Search'
-import { Link } from 'react-router'
-import { connect } from 'react-redux'
+import {ListGroup, ListGroupItem} from 'react-bootstrap'
+import {Link} from 'react-router'
+import {connect} from 'react-redux'
 import {markStopAsFavorite} from './actionCreators'
-import { setFilterValue } from './actionCreators'
+import {setFilterValue} from './actionCreators'
 import ReactCSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup'
 import './BusStops.css'
-import {Glyphicon, Button} from 'react-bootstrap'
+import {Glyphicon, Button, FormControl} from 'react-bootstrap'
 
 const mapStateToProps = (state) => ({
     stops: state.stopsData.stops,
@@ -35,26 +34,26 @@ class BusStops extends React.Component {
         return (
 
             <div>
-                <p>Znajdz przystanek: <input
+                <p><FormControl
                     placeholder="Wpisz szukany przystanek"
                     defaultValue=""
                     onChange={(event) => setFilterValue(event.target.value)}
 
                 /></p>
-                <div>  <ReactCSSTransitionGroup
+                <div><ReactCSSTransitionGroup
                     transitionName="example"
                     transitionEnterTimeout={200}
                     transitionLeaveTimeout={500}>
                     {stops
-                        .filter(function(stop) {
+                        .filter(function (stop) {
                             return stop.name.toLowerCase().indexOf(currentFilterValue.toLowerCase()) !== -1;
                         })
 
                         .map(function (stop) {
-                            return <li key={stop.id}>
+                            return <ListGroupItem key={stop.id}>
                                 <Link className="BusStops-list" to={`/bus-stops/${stop.id}`}>{stop.name}</Link> {''}
-                                    <Button onClick={() => favouriteStop(stop.id)} bsSize="xsmall"><Glyphicon glyph="star" /> Dodaj do ulubionych</Button>
-                            </li>
+                                <Button onClick={() => favouriteStop(stop.id)} bsSize="xsmall"><Glyphicon glyph="star"/></Button>
+                            </ListGroupItem>
                         })}</ReactCSSTransitionGroup></div>
 
             </div>

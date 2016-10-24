@@ -8,6 +8,7 @@ import BusLines from './bus-lines/BusLines'
 import BusDetails from './bus-details/BusDetails'
 import Map from './map/Map'
 import StopsMap from './stops-map/StopsMap'
+import IntroPage from './intro-page/IntroPage'
 
 import store from './store';
 import {Provider} from 'react-redux';
@@ -26,13 +27,13 @@ ReactDOM.render(
             <Route path="/" component={App} onEnter={() => {
                 store.dispatch(fetchStops());
                 store.dispatch(fetchBuses())
-            }}>
-                <IndexRoute component={StopsMap}/>
+            }}>>
+                <IndexRoute component={IntroPage} onEnter={() => store.dispatch(fetchStops())}/>
                 <Route path="/bus-stops" component={BusStops}/>
                 <Route path="/bus-stops/:busStopId" component={BusStop}/>
                 <Route path="/bus-details/:busId" component={BusDetails}/>
                 <Route path="/bus-lines" component={BusLines}/>
-                <Route path="/map" component={Map}/>
+                <Route path="/map" component={StopsMap}/>
             </Route>
         </Router>
     </Provider>,

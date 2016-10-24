@@ -3,11 +3,11 @@ import {Link} from 'react-router'
 import logo from './logo.png';
 import './Menu.css';
 import {IndexLinkContainer, LinkContainer} from 'react-router-bootstrap'
-import {Navbar, Nav, NavItem} from 'react-bootstrap'
-import { connect } from 'react-redux'
+import {Navbar, Nav, NavItem, Glyphicon} from 'react-bootstrap'
+import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
- favoriteStops: state.stopsData.favoriteStopsIds
+    favoriteStops: state.stopsData.favoriteStopsIds
 })
 
 
@@ -23,21 +23,21 @@ class Menu extends Component {
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
-                        <IndexLinkContainer to={`/`}>
-                            <NavItem eventKey={0} href="#">Mapa</NavItem>
+                        <IndexLinkContainer to={`/map`}>
+                            <NavItem eventKey={1} href="#">Mapa</NavItem>
                         </IndexLinkContainer>
                         <LinkContainer to={`/bus-stops`}>
-                            <NavItem eventKey={1} href="#">Lista przystanków</NavItem>
+                            <NavItem eventKey={2} href="#">Lista przystanków</NavItem>
                         </LinkContainer>
                         <LinkContainer to={`/bus-lines`}>
-                            <NavItem eventKey={2} href="#">Lista autobusów
+                            <NavItem eventKey={3} href="#">Lista autobusów
                             </NavItem>
                         </LinkContainer>
                     </Nav>
                     <Nav pullRight>
-                        <NavItem>Ulubione ({this.props.favoriteStops.length})</NavItem>
+                        <NavItem><Glyphicon glyph="star" /> Ulubione ({this.props.favoriteStops.length})</NavItem>
                         <LinkContainer to={'*'}>
-                            <NavItem eventKey={3} href="#">Zaloguj się</NavItem>
+                            <NavItem eventKey={4} href="#">Zaloguj się</NavItem>
                         </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>
@@ -47,5 +47,4 @@ class Menu extends Component {
 }
 
 
-
-export default connect( mapStateToProps )(Menu)
+export default connect(mapStateToProps)(Menu)

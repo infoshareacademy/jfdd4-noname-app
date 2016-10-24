@@ -1,6 +1,5 @@
 import React from 'react'
-import data from '../data/data.js';
-import Search from '../search/Search'
+import { ListGroup, ListGroupItem } from 'react-bootstrap'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import {markStopAsFavorite} from './actionCreators'
@@ -52,10 +51,10 @@ class BusStops extends React.Component {
                         })
 
                         .map(function (stop) {
-                            return <li key={stop.id}>
+                            return <ListGroupItem key={stop.id}>
                                 <Link className="BusStops-list" to={`/bus-stops/${stop.id}`}>{stop.name}</Link> {''}
-                                    <Button onClick={() => favouriteStop(stop.id)} bsSize="xsmall"><Glyphicon glyph="star" /> Dodaj do ulubionych</Button>
-                            </li>
+                                    <Button onClick={() => favouriteStop(stop.id)} bsSize="xsmall"><Glyphicon glyph="star" /></Button>
+                            </ListGroupItem>
                         })}</ReactCSSTransitionGroup></div>
 
             </div>

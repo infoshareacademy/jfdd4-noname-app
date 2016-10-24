@@ -48,7 +48,7 @@ class BusDetails extends React.Component {
                 <Row>
                     <Col md={6}>
 
-                        <LineStops className="BusDetails-ListChild" stops={busStops}/>
+                        <LineStops className="BusDetails-ListChild" stops={busStops} currentBus={currentBus.lineNumber}/>
 
                     </Col>
                     <Col md={6}>

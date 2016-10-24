@@ -27,7 +27,6 @@ export default  class Map extends React.Component {
                 center={this.props.center}
                 zoom={14}>
                 {this.props.points.map(function (point) {
-                    console.log(point);
                     return <Stop to={`/bus-stops/${point.id}`} lat={point.cox} lng={point.coy}>
                         {point.name}
                     </Stop>

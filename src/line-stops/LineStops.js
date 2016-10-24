@@ -1,15 +1,25 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import { Link } from 'react-router';
 import {ListGroup, ListGroupItem, Label} from 'react-bootstrap'
 import data from '../data/data.js'
 import './LineStops.css';
 
 
-export default class LineStops extends React.Component {
+const mapStateToProps = (state) => ({
+    buses: state.busesData.buses,
+});
+
+class LineStops extends React.Component {
 
     render() {
 
+        var {
+            buses,
+        } = this.props;
+
         return (
+
 
             <ListGroup className="LineStops-ListChild" >
                 {this.props.stops.map(stop =>
@@ -20,7 +30,7 @@ export default class LineStops extends React.Component {
                             </Link>
                                 <div>
                                     <content>Dostępne przesiadki:</content>
-                                        {data.buses
+                                        {buses
                                             .filter(bus => bus.stops.indexOf(stop.id) !== -1 && bus.lineNumber !== this.props.currentBus)
                                             .map(function (filteredLineNumber, index) {
                                                 return (
@@ -49,5 +59,7 @@ export default class LineStops extends React.Component {
 
     }
 }
+
+export default connect(mapStateToProps)(LineStops)
 
 

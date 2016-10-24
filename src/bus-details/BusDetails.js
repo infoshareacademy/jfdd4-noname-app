@@ -25,6 +25,10 @@ class BusDetails extends React.Component {
             return bus.lineNumber === parseInt(this.props.params.busId);
         }.bind(this));
 
+        if (currentBus === undefined) {
+            return <div>Trwa ładowanie danych...</div>
+        }
+
         var busStops = stops.filter(function (stop) {
             return currentBus.stops.indexOf(stop.id) !== -1
         });
@@ -64,7 +68,7 @@ class BusDetails extends React.Component {
                     </Col>
                     <Col md={6}>
                         <div style={{width: '100%', height: '500px'}}>
-                            <Map center={[54.34782, 18.6694]} points={stopsList} />
+                            <Map center={[54.350610, 18.663068]} points={busStops} />
                         </div>
                     </Col>
                 </Row>

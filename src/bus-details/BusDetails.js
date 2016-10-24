@@ -34,6 +34,8 @@ class BusDetails extends React.Component {
         }).map(function (stop) {
             return stop.name});
 
+        console.log(busStops, "---------");
+
 
         return (
 
@@ -41,7 +43,7 @@ class BusDetails extends React.Component {
                 <Row>
                     <Col md={12}>
                         <PageHeader>Linia <Link to={`/bus-lines`}><Button bsStyle="danger">{this.props.params.busId}</Button></Link>
-                            <content>{" : " + stopsList[0] + " – " + stopsList[stopsList.length - 1]}</content>
+                            <content>{" : "}<Link to={`/bus-lines/${stopsList.id}`}>{stopsList[0]}</Link>{" – " + stopsList[stopsList.length - 1]}</content>
                         </PageHeader>
                     </Col>
                 </Row>

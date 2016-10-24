@@ -1,12 +1,11 @@
 import React from 'react'
-import {ListGroup, ListGroupItem} from 'react-bootstrap'
+import {ListGroupItem} from 'react-bootstrap'
 import {Link} from 'react-router'
 import {connect} from 'react-redux'
-import {markStopAsFavorite} from './actionCreators'
 import {setFilterValue} from './actionCreators'
 import ReactCSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup'
 import './BusStops.css'
-import {Glyphicon, Button, FormControl} from 'react-bootstrap'
+import {FormControl} from 'react-bootstrap'
 
 const mapStateToProps = (state) => ({
     stops: state.stopsData.stops,
@@ -16,7 +15,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     setFilterValue: (newFilterValue) => dispatch(setFilterValue(newFilterValue)),
-    favouriteStop: (stopId) => dispatch(markStopAsFavorite(stopId))
 });
 
 class BusStops extends React.Component {
@@ -26,8 +24,7 @@ class BusStops extends React.Component {
             stops,
             fechingStops,
             setFilterValue,
-            currentFilterValue,
-            favouriteStop
+            currentFilterValue
         } = this.props;
 
 
@@ -52,7 +49,7 @@ class BusStops extends React.Component {
                         .map(function (stop) {
                             return <ListGroupItem key={stop.id}>
                                 <Link className="BusStops-list" to={`/bus-stops/${stop.id}`}>{stop.name}</Link> {''}
-                                <Button onClick={() => favouriteStop(stop.id)} bsSize="xsmall"><Glyphicon glyph="star"/></Button>
+
                             </ListGroupItem>
                         })}</ReactCSSTransitionGroup></div>
 

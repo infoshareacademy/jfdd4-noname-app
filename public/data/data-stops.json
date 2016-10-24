@@ -10,14 +10,14 @@
   {"id": 9, "name": "Muzeum Narodowe", "cox": 54.344758, "coy": 18.649533},
   {"id": 10, "name": "Brama Wyżynna", "cox": 54.349983, "coy": 18.646293},
 
-  {"id": 11, "name": "Dworzec Główny", "cox": 54.349983, "coy": 18.646293},
-  {"id": 12, "name": "Żabi Kruk", "cox": 54.349983, "coy": 18.646293},
-  {"id": 13, "name": "Lenartowicza", "cox": 54.349983, "coy": 18.646293},
-  {"id": 14, "name": "Sucharskiego", "cox": 54.349983, "coy": 18.646293},
-  {"id": 15, "name": "Chmielna", "cox": 54.349983, "coy": 18.646293},
-  {"id": 16, "name": "Mostek", "cox": 54.349983, "coy": 18.646293},
-  {"id": 17, "name": "Wałowa", "cox": 54.349983, "coy": 18.646293},
-  {"id": 18, "name": "Aksamitna", "cox": 54.349983, "coy": 18.646293},
-  {"id": 19, "name": "Wały Piastowskie", "cox": 54.349983, "coy": 18.646293},
-  {"id": 20, "name": "Hucisko", "cox": 54.349983, "coy": 18.646293}
+  {"id": 11, "name": "Dworzec Główny", "cox": 54.355379, "coy": 18.645165},
+  {"id": 12, "name": "Żabi Kruk", "cox": 54.346768, "coy": 18.650995},
+  {"id": 13, "name": "Lenartowicza", "cox": 54.358109, "coy": 18.687335},
+  {"id": 14, "name": "Sucharskiego", "cox": 54.359870, "coy": 18.691361},
+  {"id": 15, "name": "Chmielna", "cox": 54.345619, "coy": 18.656311},
+  {"id": 16, "name": "Mostek", "cox": 54.349330, "coy": 18.674652},
+  {"id": 17, "name": "Wałowa", "cox": 54.357640, "coy": 18.658826},
+  {"id": 18, "name": "Aksamitna", "cox": 54.358506, "coy": 18.653140},
+  {"id": 19, "name": "Wały Piastowskie", "cox": 54.358979, "coy": 18.647235},
+  {"id": 20, "name": "Hucisko", "cox": 54.351930, "coy": 18.645680}
 ]

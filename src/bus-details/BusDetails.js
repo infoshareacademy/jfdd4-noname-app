@@ -24,6 +24,10 @@ class BusDetails extends React.Component {
             return bus.lineNumber === parseInt(this.props.params.busId);
         }.bind(this));
 
+        if (currentBus === undefined) {
+            return <div>Trwa ładowanie danych...</div>
+        }
+
         var busStops = stops.filter(function (stop) {
             return currentBus.stops.indexOf(stop.id) !== -1
         });

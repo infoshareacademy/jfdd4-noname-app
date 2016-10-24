@@ -34,7 +34,13 @@ class BusDetails extends React.Component {
         }).map(function (stop) {
             return stop.name});
 
-        console.log(busStops, "---------");
+        var lastFirstStop = busStops.filter(function (stop) {
+            return stopsList.indexOf(stop.name) !== -1
+        }).map(function (stop) {
+            return stop.id});
+
+        console.log(lastFirstStop, "---------");
+
 
 
         return (
@@ -43,7 +49,11 @@ class BusDetails extends React.Component {
                 <Row>
                     <Col md={12}>
                         <PageHeader>Linia <Link to={`/bus-lines`}><Button bsStyle="danger">{this.props.params.busId}</Button></Link>
-                            <content>{" : "}<Link to={`/bus-lines/${stopsList.id}`}>{stopsList[0]}</Link>{" – " + stopsList[stopsList.length - 1]}</content>
+                            <content>{" : " }
+                            <Link to={`/bus-stops/${lastFirstStop[0]}`}>{stopsList[0]}</Link>
+                                {" – "}
+                            <Link to={`/bus-stops/${lastFirstStop[lastFirstStop.length - 1]}`}>{stopsList[stopsList.length - 1]}</Link>
+                            </content>
                         </PageHeader>
                     </Col>
                 </Row>

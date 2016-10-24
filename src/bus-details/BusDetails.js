@@ -48,12 +48,12 @@ class BusDetails extends React.Component {
                 <Row>
                     <Col md={6}>
 
-                        <LineStops className="BusDetails-ListChild" stops={busStops} currentBus={currentBus.lineNumber}/>
+                        <LineStops className="BusDetails-ListChild" stops={busStops}/>
 
                     </Col>
                     <Col md={6}>
                         <div style={{width: '100%', height: '500px'}}>
-                            <Map center={[54.34782, 18.6694]} points={stopsList} />
+                            <Map center={[54.34782, 18.6694]} points={busStops} />
                         </div>
                     </Col>
                 </Row>

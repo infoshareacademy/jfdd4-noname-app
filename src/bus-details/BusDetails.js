@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router';
 import {connect} from 'react-redux'
 import LineStops from '../line-stops/LineStops';
-import {Button, PageHeader, Row, Col, Link} from 'react-bootstrap'
+import {Button, PageHeader, Row, Col} from 'react-bootstrap'
 import './BusDetails.css';
 import Map from '../map/Map'
 
@@ -33,14 +34,26 @@ class BusDetails extends React.Component {
         }).map(function (stop) {
             return stop.name});
 
+        var lastFirstStop = busStops.filter(function (stop) {
+            return stopsList.indexOf(stop.name) !== -1
+        }).map(function (stop) {
+            return stop.id});
+
+        console.log(lastFirstStop, "---------");
+
+
 
         return (
 
             <div>
                 <Row>
                     <Col md={12}>
-                        <PageHeader>Linia <Button bsStyle="danger">{this.props.params.busId}</Button>
-                            <content>{" : " + stopsList[0] + " – " + stopsList[stopsList.length - 1]}</content>
+                        <PageHeader>Linia <Link to={`/bus-lines`}><Button bsStyle="danger">{this.props.params.busId}</Button></Link>
+                            <content>{" : " }
+                            <Link to={`/bus-stops/${lastFirstStop[0]}`}>{stopsList[0]}</Link>
+                                {" – "}
+                            <Link to={`/bus-stops/${lastFirstStop[lastFirstStop.length - 1]}`}>{stopsList[stopsList.length - 1]}</Link>
+                            </content>
                         </PageHeader>
                     </Col>
                 </Row>

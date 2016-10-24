@@ -1,5 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
+import { Link } from 'react-router';
+import {Label} from 'react-bootstrap'
 import Bus from './Bus';
 import Map from '../map/Map'
 import {markStopAsFavorite} from '../bus-stops/actionCreators'
@@ -48,7 +50,11 @@ class BusStop extends React.Component {
                 {buses.filter(function (bus) {
                     return bus.stops.indexOf(stopId) !== -1
                 }).map(function(bus) {
-                    return <Bus>{bus.lineNumber}</Bus>
+                    return <Label style={{'margin': '2px'}}>
+                            <Link to={`/bus-details/${bus.lineNumber}`}>
+                                {bus.lineNumber}
+                            </Link>
+                        </Label>
                 })}
             </div>
         );

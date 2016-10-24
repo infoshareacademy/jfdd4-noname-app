@@ -12,18 +12,6 @@ export default class BusDetails extends React.Component {
 
     render () {
 
-
-
-        var busListMinusCurrentBus = data.buses.filter(function(bus) {
-            return bus.lineNumber !== parseInt(this.props.params.busId);
-        }.bind(this));
-
-        var possibleBusLineChange =  busListMinusCurrentBus.map(function (thing){
-            return thing.lineNumber});
-
-        console.log(possibleBusLineChange, "-------------------------");
-
-
         var currentBus = data.buses.find(function(bus) {
             return bus.lineNumber === parseInt(this.props.params.busId);
         }.bind(this));
@@ -31,8 +19,6 @@ export default class BusDetails extends React.Component {
         var busStops = data.stops.filter(function (stop) {
             return currentBus.stops.indexOf(stop.id) !== -1
         });
-
-        console.log(busStops, "++++++++");
 
         var busLineStopsList = busStops.filter(function (busStopId) {
             return currentBus.stops.indexOf(busStopId.id) !== -1

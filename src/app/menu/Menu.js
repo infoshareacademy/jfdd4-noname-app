@@ -3,7 +3,7 @@ import {Link} from 'react-router'
 import logo from './logo.png';
 import './Menu.css';
 import {IndexLinkContainer, LinkContainer} from 'react-router-bootstrap'
-import {Navbar, Nav, NavItem} from 'react-bootstrap'
+import {Navbar, Nav, NavItem, Glyphicon} from 'react-bootstrap'
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
@@ -35,7 +35,7 @@ class Menu extends Component {
                         </LinkContainer>
                     </Nav>
                     <Nav pullRight>
-                        <NavItem>Ulubione ({this.props.favoriteStops.length})</NavItem>
+                        <NavItem><Glyphicon glyph="star" /> Ulubione ({this.props.favoriteStops.length})</NavItem>
                         <LinkContainer to={'*'}>
                             <NavItem eventKey={4} href="#">Zaloguj się</NavItem>
                         </LinkContainer>

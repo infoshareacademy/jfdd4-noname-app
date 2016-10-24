@@ -11,6 +11,10 @@ export default class IntroPage extends React.Component {
     render() {
         return (
             <div>
+                <Col sm={12} className="Intro-col">
+                    <h2> Zaplanuj optymalnie swoją podróż!
+                    </h2>
+                </Col>
                 <Col sm={4} className="Intro-col">
                     <div className="Intro-icon"><Link to={`/`}><img src={functionbusicon} className="Intro-img"
                                                                     alt="logo"/></Link>
@@ -30,6 +34,8 @@ export default class IntroPage extends React.Component {
                     </div>
 
                 </Col>
+
+
             </div>
 
         )

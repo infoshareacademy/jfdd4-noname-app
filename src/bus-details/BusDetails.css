@@ -1,3 +1,35 @@
 .BusDetails-ListChild{
     font-weight: bold;
+    display: block;
+
 }
+
+
+.label-default {
+    background-color: #8b0000 !important;
+    font-style:
+}
+
+span.label.label-default a:visited{
+    color: whitesmoke;
+}
+
+span.label.label-default a:link{
+    color: whitesmoke;
+}
+
+span.label.label-default a:hover{
+    color: whitesmoke !important;
+}
+
+.BusDetails-ListChild {
+    color: black;
+}
+
+li.list-group-item {
+    color: gray !important;
+}
+button.btn.btn-danger a{
+    color: whitesmoke !important;
+}
+

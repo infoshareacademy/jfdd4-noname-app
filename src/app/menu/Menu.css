@@ -1,12 +1,9 @@
 .Menu-logo {
     left: 20px;
-    max-width: 100px;
+    width: 125px;
 
 }
 
-.Menu {
-    min-height: 50px;
-}
 
 .navbar-inverse {
     background-image: -webkit-linear-gradient(top, whitesmoke 30%, #ffebee 100%) !important;

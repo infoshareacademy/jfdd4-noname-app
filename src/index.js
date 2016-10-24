@@ -31,7 +31,7 @@ ReactDOM.render(
                 <IndexRoute component={IntroPage} onEnter={() => store.dispatch(fetchStops())}/>
                 <Route path="/bus-stops" component={BusStops}/>
                 <Route path="/bus-stops/:busStopId" component={BusStop}/>
-                <Route path="/bus-details/:busId" component={BusDetails}/>
+                <Route path="/bus-details/:busId" component={BusDetails} />
                 <Route path="/bus-lines" component={BusLines}/>
                 <Route path="/map" component={StopsMap}/>
             </Route>

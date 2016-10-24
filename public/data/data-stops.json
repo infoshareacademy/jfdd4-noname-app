@@ -8,5 +8,16 @@
   {"id": 7, "name": "Śluza", "cox": 54.341325, "coy": 18.658063},
   {"id": 8, "name": "Kamienna Grobla", "cox": 54.341688, "coy": 18.655638},
   {"id": 9, "name": "Muzeum Narodowe", "cox": 54.344758, "coy": 18.649533},
-  {"id": 10, "name": "Brama Wyżynna", "cox": 54.349983, "coy": 18.646293}
+  {"id": 10, "name": "Brama Wyżynna", "cox": 54.349983, "coy": 18.646293},
+
+  {"id": 11, "name": "Dworzec Główny", "cox": 54.349983, "coy": 18.646293},
+  {"id": 12, "name": "Żabi Kruk", "cox": 54.349983, "coy": 18.646293},
+  {"id": 13, "name": "Lenartowicza", "cox": 54.349983, "coy": 18.646293},
+  {"id": 14, "name": "Sucharskiego", "cox": 54.349983, "coy": 18.646293},
+  {"id": 15, "name": "Brama Wyżynna", "cox": 54.349983, "coy": 18.646293},
+  {"id": 16, "name": "Brama Wyżynna", "cox": 54.349983, "coy": 18.646293},
+  {"id": 17, "name": "Brama Wyżynna", "cox": 54.349983, "coy": 18.646293},
+  {"id": 18, "name": "Brama Wyżynna", "cox": 54.349983, "coy": 18.646293},
+  {"id": 19, "name": "Brama Wyżynna", "cox": 54.349983, "coy": 18.646293},
+  {"id": 20, "name": "Brama Wyżynna", "cox": 54.349983, "coy": 18.646293}
 ]

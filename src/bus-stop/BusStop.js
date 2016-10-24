@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux'
 import { Link } from 'react-router';
 import {Label} from 'react-bootstrap'
-import Bus from './Bus';
 import Map from '../map/Map'
 import {markStopAsFavorite} from '../bus-stops/actionCreators'
 import {Glyphicon, Button} from 'react-bootstrap'

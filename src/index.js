@@ -27,7 +27,7 @@ ReactDOM.render(
             <Route path="/" component={App} onEnter={() => {
                 store.dispatch(fetchStops());
                 store.dispatch(fetchBuses())
-            }}>>
+            }}>
                 <IndexRoute component={IntroPage} onEnter={() => store.dispatch(fetchStops())}/>
                 <Route path="/bus-stops" component={BusStops}/>
                 <Route path="/bus-stops/:busStopId" component={BusStop}/>

@@ -35,7 +35,7 @@ class BusStops extends React.Component {
         return (
 
             <div>
-                <p>Znajdz przystanek: <input
+                <p>Znajdź przystanek: <input
                     placeholder="Wpisz szukany przystanek"
                     defaultValue=""
                     onChange={(event) => setFilterValue(event.target.value)}

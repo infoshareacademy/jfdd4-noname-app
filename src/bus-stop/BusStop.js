@@ -1,48 +1,63 @@
 import React from 'react';
-import data from '../data/data.js';
-import Bus from './Bus';
+import {connect} from 'react-redux'
+import { Link } from 'react-router';
+import {Label} from 'react-bootstrap'
 import Map from '../map/Map'
+import {markStopAsFavorite} from '../bus-stops/actionCreators'
+import {Glyphicon, Button} from 'react-bootstrap'
 
-export default class BusStop extends React.Component {
-    constructor() {
-        super();
+const mapStateToProps = (state) => ({
+    buses: state.busesData.buses,
+    stops: state.stopsData.stops
+});
 
-        this.state = {
-            stops: [],
-            buses: []
-        }
-    }
+const mapDispatchToProps = (dispatch) => ({
+    favouriteStop: (stopId) => dispatch(markStopAsFavorite(stopId))
+});
 
-    componentWillMount() {
-        this.setState({
-            stops: data.stops,
-            buses: data.buses
-        })
-    }
+class BusStop extends React.Component {
 
     render() {
-        var busId = parseInt(this.props.params.busStopId);
+        var {
+            buses,
+            stops,
+            favouriteStop
+        } = this.props;
+
+        var stopId = parseInt(this.props.params.busStopId);
+        var currentStop = stops.filter(function (stop) {
+            return stop.id === stopId
+        });
+        var currentCoordinates = currentStop.map((stop) => {
+            return [stop.cox, stop.coy]
+        });
+
 
         return (
             <div>
-
-                {this.state.stops.filter(function (stop) {
-                    return stop.id === busId
-                }).map(function (stops) {
-                    return <div>
-                        <p>Przystanek:  {stops.name} </p>
-                        <Map x={stops.cox} y={stops.coy}/>
-                    </div>
+                {currentStop.map(function (stop) {
+                    return <p>Przystanek: {stop.name} {""}
+                        <Button onClick={() => favouriteStop(stop.id)} bsSize="xsmall">
+                            <Glyphicon glyph="star"/> Dodaj do ulubionych</Button>
+                    </p>
                 })}
+                <div style={{width: '100%', height: '450'}}>
+                    <Map center={currentCoordinates[0]} points={currentStop} />
+                </div>
                 <br />
                 Linie autobusowe przejeżdające przez dany przystanek:
-                {this.state.buses.filter(function (bus) {
-                    return bus.stops.indexOf(busId) !== -1
+                {buses.filter(function (bus) {
+                    return bus.stops.indexOf(stopId) !== -1
                 }).map(function(bus) {
-                    return <Bus>{bus.lineNumber}</Bus>
+                    return <Label style={{'margin': '2px'}}>
+                            <Link to={`/bus-details/${bus.lineNumber}`}>
+                                {bus.lineNumber}
+                            </Link>
+                        </Label>
                 })}
             </div>
         );
     }
 }
 
+export default connect(mapStateToProps, mapDispatchToProps)(BusStop)

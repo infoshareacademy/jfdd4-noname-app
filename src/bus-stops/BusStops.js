@@ -1,21 +1,20 @@
 import React from 'react'
-import data from '../data/data.js';
-import Search from '../search/Search'
-import { Link } from 'react-router'
-import { connect } from 'react-redux'
-import {markStopAsFavorite} from './actionCreators'
-import { setFilterValue } from './actionCreators'
+import {ListGroupItem} from 'react-bootstrap'
+import {Link} from 'react-router'
+import {connect} from 'react-redux'
+import {setFilterValue} from './actionCreators'
+import ReactCSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup'
+import './BusStops.css'
+import {FormControl} from 'react-bootstrap'
 
 const mapStateToProps = (state) => ({
     stops: state.stopsData.stops,
     fetchingStops: state.stopsData.fetchingStops,
     currentFilterValue: state.stopsData.currentFilterValue
-
 });
 
 const mapDispatchToProps = (dispatch) => ({
     setFilterValue: (newFilterValue) => dispatch(setFilterValue(newFilterValue)),
-    favouriteStop: (stopId) => dispatch(markStopAsFavorite(stopId))
 });
 
 class BusStops extends React.Component {
@@ -25,33 +24,42 @@ class BusStops extends React.Component {
             stops,
             fechingStops,
             setFilterValue,
-            currentFilterValue,
-            favouriteStop
+            currentFilterValue
         } = this.props;
 
 
         return (
 
             <div>
-                <p>Znajdz przystanek: <input
+                <p><FormControl
                     placeholder="Wpisz szukany przystanek"
                     defaultValue=""
                     onChange={(event) => setFilterValue(event.target.value)}
 
                 /></p>
-                <div>
+                <div><ReactCSSTransitionGroup
+                    transitionName="example"
+                    transitionEnterTimeout={200}
+                    transitionLeaveTimeout={500}>
                     {stops
-                        .filter(function(stop) {
+                        .filter(function (stop) {
                             return stop.name.toLowerCase().indexOf(currentFilterValue.toLowerCase()) !== -1;
+                        }).sort((s1,s2) => {
+                            if (s1.name < s2.name) return -1;
+                            else if (s1.name > s2.name) return 1;
+                            else return 0;
+                        })
+                        .sort((s1, s2) => {
+                            if (s1.name < s2.name) return -1;
+                            else if (s1.name > s2.name) return 1;
+                            else return 0;
                         })
                         .map(function (stop) {
-                            return <li key={stop.id}>
-                                <Link to={`/bus-stops/${stop.id}`}>{stop.name}</Link>
-                                <button onClick={() => favouriteStop(stop.id)}>
-                                    (+)
-                                </button>
-                            </li>
-                        })}</div>
+                            return <ListGroupItem key={stop.id}>
+                                <Link className="BusStops-list" to={`/bus-stops/${stop.id}`}>{stop.name}</Link> {''}
+
+                            </ListGroupItem>
+                        })}</ReactCSSTransitionGroup></div>
 
             </div>
 
@@ -59,56 +67,5 @@ class BusStops extends React.Component {
     }
 }
 
-
-// export default class BusStops extends React.Component {
-//
-//     constructor() {
-//         super();
-//
-//         this.state = {
-//             stops: [],
-//             filterText: ''
-//         }
-//     }
-//
-//     filterUpdate(value) {
-//         this.setState({
-//             filterText: value
-//         })
-//
-//     }
-//
-//     componentWillMount() {
-//         this.setState({
-//             stops: data.stops
-//         })
-//     }
-//
-//     render() {
-//     let filteredBusStops = this.state.stops.filter(
-//         (name) => {
-//             return name.name.toLowerCase().indexOf(this.state.filterText.toLowerCase()) !== -1
-//         }
-//
-//     );
-//         return (
-//             <div>
-//                 <Search
-//                     filterText={this.state.filterText}
-//                     filterUpdate={this.filterUpdate.bind(this)}
-//                 />
-//                 <ul>
-//                     {filteredBusStops.map(function (stop) {
-//                         return <li key={stop.id}>
-//                             <Link to={`/bus-stops/${stop.id}`}>{stop.name}</Link>
-//
-//                         </li>
-//                     })}
-//                     {this.state.filterText}
-//                 </ul>
-//             </div>
-//         );
-//     }
-// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BusStops)

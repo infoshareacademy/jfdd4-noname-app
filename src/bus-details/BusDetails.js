@@ -1,54 +1,82 @@
 import React from 'react';
+import { Link } from 'react-router';
+import {connect} from 'react-redux'
 import LineStops from '../line-stops/LineStops';
 import {Button, PageHeader, Row, Col} from 'react-bootstrap'
-import GoogleMap from 'google-map-react';
-import Place from '../map/place/Place'
-import data from '../data/data.js'
+import './BusDetails.css';
+import Map from '../map/Map'
+
+const mapStateToProps = (state) => ({
+    buses: state.busesData.buses,
+    stops: state.stopsData.stops
+});
+
+class BusDetails extends React.Component {
 
 
-export default class BusDetails extends React.Component {
+    render() {
 
+        var {
+            buses,
+            stops
+        } = this.props;
 
-    render () {
-
-        var currentBus = data.buses.find(function(bus) {
+        var currentBus = buses.find(function (bus) {
             return bus.lineNumber === parseInt(this.props.params.busId);
         }.bind(this));
 
-        var busStops = data.stops.filter(function (stop) {
+        if (currentBus === undefined) {
+            return <div>Trwa ładowanie danych...</div>
+        }
+
+        var busStops = stops.filter(function (stop) {
             return currentBus.stops.indexOf(stop.id) !== -1
         });
 
-        return(
+        var stopsList = busStops.filter(function (stop) {
+            return currentBus.stops.indexOf(stop.id) !== -1
+        }).map(function (stop) {
+            return stop.name});
+
+        var lastFirstStop = busStops.filter(function (stop) {
+            return stopsList.indexOf(stop.name) !== -1
+        }).map(function (stop) {
+            return stop.id});
+
+        console.log(lastFirstStop, "---------");
+
+
+
+        return (
 
             <div>
                 <Row>
-                    <Col md={6}>
-                            <PageHeader>Linia <Button bsStyle="danger">{this.props.params.busId}</Button></PageHeader>
+                    <Col md={12}>
+                        <PageHeader>Linia <Link to={`/bus-lines`}><Button bsStyle="danger">{this.props.params.busId}</Button></Link>
+                            <content>{" : " }
+                            <Link to={`/bus-stops/${lastFirstStop[0]}`}>{stopsList[0]}</Link>
+                                {" – "}
+                            <Link to={`/bus-stops/${lastFirstStop[lastFirstStop.length - 1]}`}>{stopsList[stopsList.length - 1]}</Link>
+                            </content>
+                        </PageHeader>
                     </Col>
                 </Row>
 
                 <Row>
                     <Col md={6}>
 
-                        <LineStops stops={busStops}/>
+                        <LineStops className="BusDetails-ListChild" stops={busStops} currentBus={currentBus.lineNumber}/>
 
                     </Col>
+                    <Col md={6}>
+                        <div style={{width: '100%', height: '500px'}}>
+                            <Map center={[54.350610, 18.663068]} points={busStops} />
+                        </div>
+                    </Col>
                 </Row>
-                <div style={{width: '100%', height: '500px'}}>
-                    <GoogleMap
-                        bootstrapURLKeys={{
-                            key: 'AIzaSyCkDbleAYeCPGyTEDJ8Jk94gwXDxombvRE'
-                        }}
-                        center={[54.357267, 18.682472]}
-                        zoom={12}>
-                        {busStops.map(function (stop) {
-                            return <Place key={stop.id} lat={stop.cox} lng={stop.coy} text={'B'}/>
-                        })}
-                    </GoogleMap>
-                </div>
             </div>
         )
-
     }
 }
+
+export default connect(mapStateToProps)(BusDetails)

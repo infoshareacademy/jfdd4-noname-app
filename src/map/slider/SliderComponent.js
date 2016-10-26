@@ -5,7 +5,7 @@ const React = require('react');
 const Slider = require('rc-slider');
 
 const mapStateToProps = (state) => ({
-    hourValue: state.sliderData
+    hourValue: state.sliderData.hourValue
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -47,6 +47,7 @@ class SliderComponent extends React.Component {
             onChangeValue
         } = this.props
 
+
         return(
             <div>
                 <div style={wrapperStyle}>
@@ -55,9 +56,12 @@ class SliderComponent extends React.Component {
                     <Slider
                         min={0}
                         max={24}
+                        step={1}
                         defaultValue={0}
                         handle={<CustomHandle />}
-                        onAfterChange={() => onChangeValue()}
+                        onChange={function (value) {
+                            return onChangeValue(value)
+                        }}
                     />
                 </div>
             </div>

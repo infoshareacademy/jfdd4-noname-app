@@ -27,6 +27,7 @@ class BusStop extends React.Component {
         var stopId = parseInt(this.props.params.busStopId);
         var currentStop = stops.filter(function (stop) {
             return stop.id === stopId
+
         });
         var currentCoordinates = currentStop.map((stop) => {
             return [stop.cox, stop.coy]
@@ -56,13 +57,37 @@ class BusStop extends React.Component {
                     })}
                 </Col>
                 <Col sm={6} className="Intro-col ">
-                   <p>Rozkłady jazdy</p>
+                    <p>Rozkłady jazdy:
+                        {currentStop.map(function (stop) {
+                            return <span> {stop.name} </span>
+                        })}
+
+                    </p>
+                    {buses.filter(function (bus) {
+                        return bus.stops.indexOf(stopId) !== -1
+                    }).map(function (bus) {
+                            return <div>
+                                <Link to={`/bus-details/${bus.lineNumber}`}>
+                                    Linia autobusowa numer: {bus.lineNumber}
+                                    {buses.filter(function (bus) {
+                                        return stopId === bus.stops
+                                    }).map(function (bus) {
+                                        return <p>{bus.routes}</p>
+
+                                    })}
+                                </Link>
+                            </div>
+                        }
+                    )}
+                    <div>
+
+                    </div>
 
                 </Col>
                 <Col sm={6} className="Intro-col ">
-                <div style={{width: '100%', height: '450'}}>
-                    <Map center={currentCoordinates[0]} points={currentStop}/>
-                </div>
+                    <div style={{width: '100%', height: '450'}}>
+                        <Map center={currentCoordinates[0]} points={currentStop}/>
+                    </div>
 
 
                 </Col>

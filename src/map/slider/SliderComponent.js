@@ -1,8 +1,16 @@
 require('rc-slider/assets/index.css');
-
+import { registerHour } from './actionCreators'
 import {connect} from 'react-redux';
 const React = require('react');
 const Slider = require('rc-slider');
+
+const mapStateToProps = (state) => ({
+    hourValue: state.sliderData
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    onChangeValue: (value) => dispatch(registerHour(value))
+});
 
 const wrapperStyle = { width: 400, margin: 50 };
 
@@ -25,10 +33,6 @@ const CustomHandle = props => {
     );
 };
 
-const mapStateToProps = (state) => ({
-
-});
-
 CustomHandle.propTypes = {
     value: React.PropTypes.any,
     offset: React.PropTypes.number,
@@ -38,16 +42,22 @@ class SliderComponent extends React.Component {
 
     render() {
 
+        var {
+            hourValue,
+            onChangeValue
+        } = this.props
+
         return(
             <div>
                 <div style={wrapperStyle}>
+                    <h1>Mamy godzinę: {hourValue}</h1>
                     <p>Aktualna godzina</p>
                     <Slider
                         min={0}
                         max={24}
                         defaultValue={0}
                         handle={<CustomHandle />}
-                        onAfterChange={function (xyz) { console.log(xyz)}}
+                        onAfterChange={() => onChangeValue()}
                     />
                 </div>
             </div>
@@ -56,7 +66,7 @@ class SliderComponent extends React.Component {
     }
 }
 
-export default connect(mapStateToProps)(SliderComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(SliderComponent)
 
 
 

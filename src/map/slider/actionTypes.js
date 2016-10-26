@@ -1,3 +1,1 @@
-/**
- * Created by kgodlewski on 26.10.16.
- */
+export const REGISTER_HOUR = 'slider/REGISTER_HOUR'

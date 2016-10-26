@@ -5,6 +5,8 @@ import LineStops from '../line-stops/LineStops';
 import {Button, PageHeader, Row, Col} from 'react-bootstrap'
 import './BusDetails.css';
 import Map from '../map/Map'
+import SliderComponent from '../map/slider/SliderComponent'
+
 
 const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
@@ -73,6 +75,9 @@ class BusDetails extends React.Component {
                             <Map center={[54.350610, 18.663068]} points={busStops} />
                         </div>
                     </Col>
+                </Row>
+                <Row>
+                    <SliderComponent />
                 </Row>
             </div>
         )

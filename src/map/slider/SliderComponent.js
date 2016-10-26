@@ -26,6 +26,7 @@ const CustomHandle = props => {
 };
 
 const mapStateToProps = (state) => ({
+
 });
 
 CustomHandle.propTypes = {
@@ -41,7 +42,13 @@ class SliderComponent extends React.Component {
             <div>
                 <div style={wrapperStyle}>
                     <p>Aktualna godzina</p>
-                    <Slider min={0} max={24} defaultValue={0} handle={<CustomHandle />} />
+                    <Slider
+                        min={0}
+                        max={24}
+                        defaultValue={0}
+                        handle={<CustomHandle />}
+                        onAfterChange={function (xyz) { console.log(xyz)}}
+                    />
                 </div>
             </div>
             )

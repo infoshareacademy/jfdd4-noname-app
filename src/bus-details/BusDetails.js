@@ -29,9 +29,12 @@ class BusDetails extends React.Component {
             return <div>Trwa ładowanie danych...</div>
         }
 
-        var busStops = stops.filter(function (stop) {
-            return currentBus.stops.indexOf(stop.id) !== -1
-        });
+        var busStops = currentBus.stops.map(lineStop =>
+            stops.find(s => s.id === lineStop ));
+
+        // var busStops = stops.filter(function (stop) {
+        //     return currentBus.stops.indexOf(stop.id) !== -1
+        // });
 
         var stopsList = busStops.filter(function (stop) {
             return currentBus.stops.indexOf(stop.id) !== -1

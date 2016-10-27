@@ -18,15 +18,17 @@ class LineStops extends React.Component {
             buses,
         } = this.props;
 
+        console.log('DOOABR', this.props);
         return (
 
+            <div>
 
             <ListGroup className="LineStops-ListChild" >
                 {this.props.stops.map(stop =>
                     (
                         <ListGroupItem  key={stop.id}>
                             <Link  to={`/bus-stops/${stop.id}`}>
-                                {stop.name + " "}
+                                {stop.id + " " + stop.name + " "}
                             </Link>
                                 <div>
                                     <content>Dostępne przesiadki:</content>
@@ -34,7 +36,7 @@ class LineStops extends React.Component {
                                             .filter(bus => bus.stops.indexOf(stop.id) !== -1 && bus.lineNumber !== this.props.currentBus)
                                             .map(function (filteredLineNumber, index) {
                                                 return (
-                                                    <content>
+                                                    <content key={index}>
                                                         {/*<BusLink bus={filteredLineNumber}/>*/}
                                                         <content key={index}>
                                                             <content>{" "}</content>
@@ -55,6 +57,7 @@ class LineStops extends React.Component {
 
                 )}
             </ListGroup>
+                </div>
         )
 
     }

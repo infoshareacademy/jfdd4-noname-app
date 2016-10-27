@@ -66,15 +66,17 @@ class BusStop extends React.Component {
                     {buses.filter(function (bus) {
                         return bus.stops.indexOf(stopId) !== -1
                     }).map(function (bus) {
-                        let busStopIndex = bus.stops.indexOf(stopId)
+                        let busStopIndex = bus.stops.indexOf(stopId);
                             return (
                                 <div>
                                     <Link to={`/bus-details/${bus.lineNumber}`}>
                                         Linia autobusowa numer: {bus.lineNumber}
                                     </Link>
-                                    <p>{bus.routes
+                                    <p>{bus.routes.map(function (route){
+                                        return route[busStopIndex]
+                                    })}</p>
 
-                                        [busStopIndex]}</p>
+
                                 </div>
                             )
                         }

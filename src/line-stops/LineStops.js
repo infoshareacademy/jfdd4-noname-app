@@ -18,7 +18,7 @@ class LineStops extends React.Component {
             buses,
         } = this.props;
 
-        console.log('DOOABR', this.props);
+
         return (
 
             <div>
@@ -28,7 +28,7 @@ class LineStops extends React.Component {
                     (
                         <ListGroupItem  key={stop.id}>
                             <Link  to={`/bus-stops/${stop.id}`}>
-                                {stop.id + " " + stop.name + " "}
+                                {stop.name + " "}
                             </Link>
                                 <div>
                                     <content>Dostępne przesiadki:</content>

@@ -19,5 +19,9 @@
   {"id": 17, "name": "Wałowa", "cox": 54.357640, "coy": 18.658826},
   {"id": 18, "name": "Aksamitna", "cox": 54.358506, "coy": 18.653140},
   {"id": 19, "name": "Wały Piastowskie", "cox": 54.358979, "coy": 18.647235},
-  {"id": 20, "name": "Hucisko", "cox": 54.351930, "coy": 18.645680}
+  {"id": 20, "name": "Hucisko", "cox": 54.351930, "coy": 18.645680},
+  {"id": 21, "name": "Dobra", "cox": 54.3412324, "coy": 18.6552649},
+  {"id": 22, "name": "Wróbla", "cox": 54.3405327, "coy": 18.65787},
+  {"id": 23, "name": "Elbląska", "cox": 54.3491987, "coy": 18.6701683}
+
 ]

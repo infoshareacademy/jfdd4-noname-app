@@ -21,7 +21,7 @@ class BusStop extends React.Component {
         var {
             buses,
             stops,
-            favouriteStop
+            favoriteStop
         } = this.props;
 
         var stopId = parseInt(this.props.params.busStopId);
@@ -37,7 +37,7 @@ class BusStop extends React.Component {
             <div>
                 {currentStop.map(function (stop) {
                     return <p>Przystanek: {stop.name} {""}
-                        <Button onClick={() => favouriteStop(stop.id)} bsSize="xsmall">
+                        <Button onClick={() => favoriteStop(stop.id)} bsSize="xsmall">
                             <Glyphicon glyph="star"/> Dodaj do ulubionych</Button>
                     </p>
                 })}

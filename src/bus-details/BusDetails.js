@@ -58,11 +58,10 @@ class BusDetails extends React.Component {
                             <content>{" : " }
                             <Link to={`/bus-stops/${lastFirstStop[0]}`}>{stopsList[0]}</Link>
                                 {" – "}
-                            <Link to={`/bus-stops/${lastFirstStop[lastFirstStop.length - 1]}`}>{stopsList[stopsList.length - 1]}</Link>
+                            <Link to={`/bus-stops/${lastFirstStop[lastFirstStop.length - 1]}`}>{stopsList[stopsList.length - 1]}</Link>{' '}
 
                             <Button onClick={() => favoriteBus(currentBus.lineNumber)} bsSize="xsmall">
-                                <Glyphicon glyph="star"/>
-                                Dodaj do ulubionych
+                                <Glyphicon glyph="star"/>Dodaj do ulubionych
                             </Button>
 
                             </content>

@@ -12,7 +12,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    favouriteStop: (stopId) => dispatch(markStopAsFavorite(stopId))
+    favoriteStop: (stopId) => dispatch(markStopAsFavorite(stopId))
 });
 
 class BusStop extends React.Component {

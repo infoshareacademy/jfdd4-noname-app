@@ -1,18 +1,11 @@
 import {
     REQUEST_BUSES,
     RECEIVE_BUSES,
-    SET_FILTER_VALUE,
-    MARK_BUS_AS_FAVORITE
+    SET_FILTER_VALUE
+
 } from './actionTypes'
 
 import fetch from 'isomorphic-fetch'
-
-export function markBusAsFavorite(busId) {
-    return {
-        type: MARK_BUS_AS_FAVORITE,
-        busId: busId
-    }
-}
 
 function requestBuses() {
     return {

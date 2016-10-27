@@ -2,14 +2,19 @@ import React from 'react';
 import { Link } from 'react-router';
 import {connect} from 'react-redux'
 import LineStops from '../line-stops/LineStops';
-import {Button, PageHeader, Row, Col} from 'react-bootstrap'
+import {Button, Glyphicon, PageHeader, Row, Col} from 'react-bootstrap'
 import './BusDetails.css';
 import Map from '../map/Map'
+import {markBusAsFavorite} from '../bus-lines/actionCreators'
 
 const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
     stops: state.stopsData.stops
 });
+
+const mapDispatchToProps = (dispatch) => ({
+    favoriteBus: (busId) => dispatch(markBusAsFavorite(busId))
+})
 
 class BusDetails extends React.Component {
 
@@ -18,7 +23,8 @@ class BusDetails extends React.Component {
 
         var {
             buses,
-            stops
+            stops,
+            favoriteBus
         } = this.props;
 
         var currentBus = buses.find(function (bus) {
@@ -43,10 +49,6 @@ class BusDetails extends React.Component {
         }).map(function (stop) {
             return stop.id});
 
-        console.log(lastFirstStop, "---------");
-
-
-
         return (
 
             <div>
@@ -57,6 +59,12 @@ class BusDetails extends React.Component {
                             <Link to={`/bus-stops/${lastFirstStop[0]}`}>{stopsList[0]}</Link>
                                 {" – "}
                             <Link to={`/bus-stops/${lastFirstStop[lastFirstStop.length - 1]}`}>{stopsList[stopsList.length - 1]}</Link>
+
+                            <Button onClick={() => favoriteBus(currentBus.lineNumber)} bsSize="xsmall">
+                                <Glyphicon glyph="star"/>
+                                Dodaj do ulubionych
+                            </Button>
+
                             </content>
                         </PageHeader>
                     </Col>
@@ -79,4 +87,4 @@ class BusDetails extends React.Component {
     }
 }
 
-export default connect(mapStateToProps)(BusDetails)
+export default connect(mapStateToProps, mapDispatchToProps)(BusDetails)

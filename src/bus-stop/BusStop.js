@@ -5,6 +5,7 @@ import {Label} from 'react-bootstrap'
 import Map from '../map/Map'
 import {markStopAsFavorite} from '../bus-stops/actionCreators'
 import {Glyphicon, Button, Col} from 'react-bootstrap'
+import './Bus.css'
 
 const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
@@ -56,37 +57,33 @@ class BusStop extends React.Component {
                         </Label>
                     })}
                 </Col>
-                <Col sm={6} className="Intro-col ">
+                <Col sm={6} className="BusStops-col">
                     <p>Rozkłady jazdy:
                         {currentStop.map(function (stop) {
                             return <span> {stop.name} </span>
                         })}
 
                     </p>
+
                     {buses.filter(function (bus) {
                         return bus.stops.indexOf(stopId) !== -1
                     }).map(function (bus) {
                         let busStopIndex = bus.stops.indexOf(stopId);
                             return (
-                                <div>
+                                <Col sm={6} className="BusStop-col">
                                     <Link to={`/bus-details/${bus.lineNumber}`}>
                                         Linia autobusowa numer: {bus.lineNumber}
                                     </Link>
                                     <p>{bus.routes.map(function (route){
-                                        return route[busStopIndex]
+                                        return <b>{route[busStopIndex] + ' '}</b>
                                     })}</p>
-
-
-                                </div>
+                                </Col>
                             )
                         }
                     )}
-                    <div>
-
-                    </div>
 
                 </Col>
-                <Col sm={6} className="Intro-col ">
+                <Col sm={6} className="Map-col">
                     <div style={{width: '100%', height: '450'}}>
                         <Map center={currentCoordinates[0]} points={currentStop}/>
                     </div>

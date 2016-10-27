@@ -29,7 +29,10 @@ const handleStyle = {
 const CustomHandle = props => {
     const style = Object.assign({ left: `${props.offset}%` }, handleStyle);
     return (
-        <div style={style}>{props.value.toFixed(2)}</div>
+        <div style={style}>
+            {/*{props.value.toFixed(2)}*/}
+            {((props.value/60).toFixed(0))}{":"}{( (props.value) % 60 )}
+            </div>
     );
 };
 

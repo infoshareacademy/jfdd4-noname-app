@@ -51,11 +51,11 @@ class SliderComponent extends React.Component {
         return(
             <div>
                 <div style={wrapperStyle}>
-                    <h1>Mamy godzinę: {hourValue}</h1>
+                    <h1>Mamy godzinę: {((hourValue/60).toFixed(0))}{":"}{( (hourValue) % 60 )}</h1>
                     <p>Aktualna godzina</p>
                     <Slider
                         min={0}
-                        max={24}
+                        max={1440}
                         step={1}
                         defaultValue={0}
                         handle={<CustomHandle />}

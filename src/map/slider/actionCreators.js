@@ -1,8 +1,8 @@
 import { REGISTER_HOUR } from './actionTypes'
 
-export function registerHour(value) {
-    console.log(value);
+export function registerHour(date) {
+    console.log(date);
     return {
         type: REGISTER_HOUR,
-        payload: value.toFixed(2)
+        payload: date
     }}

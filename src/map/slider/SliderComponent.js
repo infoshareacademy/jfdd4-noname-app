@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onChangeValue: (value) => dispatch(registerHour(value))
+    onChangeValue: (date) => dispatch(registerHour(date))
 });
 
 const wrapperStyle = { width: 400, margin: 50 };
@@ -50,14 +50,13 @@ class SliderComponent extends React.Component {
             onChangeValue,
             currentHourSet,
             currentMinuteSet,
-            date
         } = this.props
 
 
         return(
             <div>
                 <div style={wrapperStyle}>
-                    <h1>Mamy godzinę: {((hourValue/60).toFixed(0))}{":"}{( (hourValue) % 60 )}</h1>
+                    {/*<h1>Mamy godzinę: {((hourValue/60).toFixed(0))}{":"}{( (hourValue) % 60 )}</h1>*/}
                     <p>Aktualna godzina</p>
                     <Slider
                         min={0}
@@ -69,10 +68,13 @@ class SliderComponent extends React.Component {
                             currentHourSet = parseInt((value / 60).toFixed(0));
                             currentMinuteSet = parseInt((value) % 60);
                             console.log(currentMinuteSet, "xxxxxxxxxxxxxxx");
-                            date = new Date(55, 5, 24, currentHourSet, currentMinuteSet);
+                            {/*var date = new Date(11, 5, 24, currentHourSet, currentMinuteSet);*/}
+                            var date = new Date();
+                            date.setHours(currentHourSet);
+                            date.setMinutes(currentMinuteSet);
                             console.log(date, "**********************************************");
                             console.log(onChangeValue(date.toDateString()), "--------------------------------------");
-                            return onChangeValue(value)
+                            return onChangeValue(date)
                         }}
                     />
                 </div>

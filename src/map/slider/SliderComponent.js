@@ -47,7 +47,10 @@ class SliderComponent extends React.Component {
 
         var {
             hourValue,
-            onChangeValue
+            onChangeValue,
+            currentHourSet,
+            currentMinuteSet,
+            date
         } = this.props
 
 
@@ -63,6 +66,12 @@ class SliderComponent extends React.Component {
                         defaultValue={0}
                         handle={<CustomHandle />}
                         onChange={function (value) {
+                            currentHourSet = parseInt((value / 60).toFixed(0));
+                            currentMinuteSet = parseInt((value) % 60);
+                            console.log(currentMinuteSet, "xxxxxxxxxxxxxxx");
+                            date = new Date(55, 5, 24, currentHourSet, currentMinuteSet);
+                            console.log(date, "**********************************************");
+                            console.log(onChangeValue(date.toDateString()), "--------------------------------------");
                             return onChangeValue(value)
                         }}
                     />

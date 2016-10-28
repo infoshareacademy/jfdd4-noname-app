@@ -34,7 +34,7 @@ const StopsMap = ({
             <Map center={[54.352325, 18.671786]} points={activeStops}/>
         </div>
         <p>
-            {hourObj.getHours() + ':' + hourObj.getMinutes()}
+            {/*{hourObj.getHours() + ':' + hourObj.getMinutes()}*/}
             {((hourValue / 60).toFixed(0))}{":"}{( (hourValue) % 60 )}
 
             {/*{console.log(stops, "**********************")}*/}

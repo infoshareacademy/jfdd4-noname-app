@@ -7,7 +7,6 @@
 
 .label-default {
     background-color: #8b0000 !important;
-    font-style:
 }
 
 span.label.label-default a:visited{
@@ -33,3 +32,8 @@ button.btn.btn-danger a{
     color: whitesmoke !important;
 }
 
+
+
+.BusDetails-Lists {
+    font-size: 15px;
+}

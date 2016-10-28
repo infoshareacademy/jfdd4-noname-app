@@ -51,7 +51,6 @@ class BusDetails extends React.Component {
 
 
         return (
-
             <div>
                 <Row>
                     <Col md={12}>
@@ -66,10 +65,8 @@ class BusDetails extends React.Component {
                 </Row>
 
                 <Row>
-                    <Col md={6}>
-
+                    <Col md={6} className="BusDetails-Lists">
                         <LineStops className="BusDetails-ListChild" stops={busStops} currentBus={currentBus.lineNumber}/>
-
                     </Col>
                     <Col md={6}>
                         <div style={{width: '100%', height: '500px'}}>

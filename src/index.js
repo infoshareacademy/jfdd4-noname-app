@@ -6,9 +6,9 @@ import BusStops from './bus-stops/BusStops'
 import BusStop from './bus-stop/BusStop'
 import BusLines from './bus-lines/BusLines'
 import BusDetails from './bus-details/BusDetails'
-import Map from './map/Map'
 import StopsMap from './stops-map/StopsMap'
 import IntroPage from './intro-page/IntroPage'
+import Favorites from './favorites/Favorites'
 
 import store from './store';
 import {Provider} from 'react-redux';
@@ -34,6 +34,7 @@ ReactDOM.render(
                 <Route path="/bus-details/:busId" component={BusDetails} />
                 <Route path="/bus-lines" component={BusLines}/>
                 <Route path="/map" component={StopsMap}/>
+                <Route path="/favorites" component={Favorites}/>
             </Route>
         </Router>
     </Provider>,

@@ -1,36 +1,43 @@
 import {
-    REQUEST_BUSES,
-    RECEIVE_BUSES,
-    SET_FILTER_VALUE
-
+    REQUEST_FAVORITE_STOPS,
+    RECEIVE_FAVORITE_STOPS,
+    REQUEST_FAVORITE_BUSES,
+    RECEIVE_FAVORITE_BUSES,
+    ADD_FAVORITE_STOP_BEGIN,
+    ADD_FAVORITE_STOP_END,
+    ADD_FAVORITE_BUS_BEGIN,
+    ADD_FAVORITE_BUS_END
 } from './actionTypes'
 
 import fetch from 'isomorphic-fetch'
 
-function requestBuses() {
+var favoriteStopsUrl = 'https://stark-peak-50225.herokuapp.com/favoriteStops/';
+var favoriteBusesUrl = 'https://stark-peak-50225.herokuapp.com/favoriteBuses/';
+
+
+function requestFavoriteStops() {
     return {
-        type: REQUEST_BUSES
+        type: REQUEST_FAVORITE_STOPS
+    }
+}
+function receiveFavoriteStops() {
+    return {
+        type: RECEIVE_FAVORITE_STOPS
     }
 }
 
-function receiveBuses(buses) {
+export function fetchFavoriteStops()
+
+
+function requestFavoriteBuses() {
     return {
-        type: RECEIVE_BUSES,
-        lineNumber: buses.sort((l1,l2) => l1.lineNumber - l2.lineNumber),
-        buses: buses
+        type: REQUEST_FAVORITE_BUSES
+    }
+}
+function receiveFavoriteBuses() {
+    return {
+        type: RECEIVE_FAVORITE_BUSES
     }
 }
 
-export const fetchBuses = () => dispatch => {
-    dispatch(requestBuses())
-    return fetch(`${process.env.PUBLIC_URL}/data/data-buses.json`)
-        .then(response => { console.log(response); return response.json()})
-        .then(json => { console.log(json); return dispatch(receiveBuses(json))})
-}
-
-export function setFilterValue(newFilterValue) {
-    return {
-        type: SET_FILTER_VALUE,
-        filterValue: newFilterValue
-    }
-}
+export function fetchFavoriteBuses()

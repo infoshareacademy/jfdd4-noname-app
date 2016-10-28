@@ -1,3 +1,11 @@
-export const REQUEST_BUSES = 'data-buses/REQUEST_BUSES'
-export const RECEIVE_BUSES = 'data-buses/RECEIVE_BUSES'
-export const SET_FILTER_VALUE = 'data-buses/SET_FILTER_VALUE'
+export const REQUEST_FAVORITE_STOPS = 'favorites/REQUEST_FAVORITE_STOPS'
+export const RECEIVE_FAVORITE_STOPS = 'favorites/RECEIVE_FAVORITE_STOPS'
+
+export const REQUEST_FAVORITE_BUSES = 'favorites/REQUEST_FAVORITE_BUSES'
+export const RECEIVE_FAVORITE_BUSES = 'favorites/RECEIVE_FAVORITE_BUSES'
+
+export const ADD_FAVORITE_STOP_BEGIN = 'favorites/ADD_FAVORITE_STOP_BEGIN'
+export const ADD_FAVORITE_STOP_END = 'favorites/ADD_FAVORITE_STOP_END'
+
+export const ADD_FAVORITE_BUS_BEGIN = 'favorites/ADD_FAVORITE_BUS_BEGIN'
+export const ADD_FAVORITE_BUS_END = 'favorites/ADD_FAVORITE_BUS_END'

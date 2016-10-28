@@ -29,15 +29,15 @@ function receiveBuses(buses) {
 }
 
 export const fetchBuses = () => dispatch => {
-    dispatch(requestBuses())
+    dispatch(requestBuses());
     return fetch(`${process.env.PUBLIC_URL}/data/data-buses.json`)
         .then(response => { console.log(response); return response.json()})
         .then(json => { console.log(json); return dispatch(receiveBuses(json))})
-}
+};
 
 export function setFilterValue(newFilterValue) {
     return {
         type: SET_FILTER_VALUE,
         filterValue: newFilterValue
     }
-}
+};

@@ -22,9 +22,8 @@ const StopsMap = ({
     }).map(function (abc) {
         abc.map(function (qwerty) {
             var tablicaPomnozonaGodziny = [];
-            // console.log(parseInt(qwerty.slice(0, 2)) * 60)
             tablicaPomnozonaGodziny.push(parseInt(qwerty.slice(0, 2)) * 60);
-            // console.log(tablicaPomnozonaGodziny, 'gggggggggggggggg')
+            console.log(tablicaPomnozonaGodziny, "------------------------")
         })
     })
 }) => (
@@ -33,9 +32,9 @@ const StopsMap = ({
         <div style={{width: '100%', height: '500px'}}>
             <Map center={[54.352325, 18.671786]} points={activeStops}/>
         </div>
+        <p>Mamy godzinę: {new Date(hourValue).getHours() + ':' + new Date(hourValue).getMinutes()} </p>
         <p>
-            {/*{hourObj.getHours() + ':' + hourObj.getMinutes()}*/}
-            {/*{((hourValue / 60).toFixed(0))}{":"}{( (hourValue) % 60 )}*/}
+
             {new Date(hourValue).toUTCString()}
 
             {/*{console.log(stops, "**********************")}*/}

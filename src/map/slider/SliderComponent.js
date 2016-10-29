@@ -65,15 +65,11 @@ class SliderComponent extends React.Component {
                         defaultValue={0}
                         handle={<CustomHandle />}
                         onChange={function (value) {
-                            currentHourSet = parseInt((value / 60).toFixed(0));
+                            currentHourSet = parseInt((value / 60));
                             currentMinuteSet = parseInt((value) % 60);
-                            console.log(currentMinuteSet, "xxxxxxxxxxxxxxx");
-                            {/*var date = new Date(11, 5, 24, currentHourSet, currentMinuteSet);*/}
                             var date = new Date();
                             date.setHours(currentHourSet);
                             date.setMinutes(currentMinuteSet);
-                            console.log(date, "**********************************************");
-                            console.log(onChangeValue(date.toDateString()), "--------------------------------------");
                             return onChangeValue(date)
                         }}
                     />

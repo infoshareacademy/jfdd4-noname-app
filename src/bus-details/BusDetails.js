@@ -10,7 +10,8 @@ import SliderComponent from '../map/slider/SliderComponent'
 
 const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
-    stops: state.stopsData.stops
+    stops: state.stopsData.stops,
+    hourValue: state.sliderData.hourValue
 });
 
 class BusDetails extends React.Component {
@@ -20,6 +21,7 @@ class BusDetails extends React.Component {
 
         var {
             buses,
+            hourValue,
             stops
         } = this.props;
 
@@ -45,9 +47,14 @@ class BusDetails extends React.Component {
         }).map(function (stop) {
             return stop.id});
 
-        console.log(lastFirstStop, "---------");
+        var obecnyNumer = this.props.params.busId;
+        var ileMinutWGodzinie =  new Date(hourValue).getMinutes();
+        var ileGodziWDobie = new Date(hourValue).getHours();
+        var liczbaGodzina = ileGodziWDobie.toString() + ":" + ileMinutWGodzinie.toString();
 
+        var jajco;
 
+        console.log(liczbaGodzina, "ffffffffffffffffffffffffffffff");
 
         return (
 
@@ -76,6 +83,27 @@ class BusDetails extends React.Component {
                         </div>
                     </Col>
                 </Row>
+                <Row>
+                    <p>Mamy godzinę: {new Date(hourValue).getHours() + ':' + new Date(hourValue).getMinutes()} </p>
+                    {console.log(buses, "*************")}
+                    {console.log(obecnyNumer)}
+
+                    {buses.filter(function (xyz){
+                        console.log(xyz, "ooooooooooooo");
+                        return obecnyNumer.indexOf(xyz.lineNumber) !== -1;
+                    }).filter(function (abc) {
+                        console.log(abc, "chuuuuuuuuuuuuuuuuuuuuuuj");
+                        var polaczoneTabele = abc.routes[0].concat(abc.routes[1]);
+                        console.log(polaczoneTabele.indexOf(liczbaGodzina) !== -1, "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
+                        console.log(polaczoneTabele.findIndex(function (warunek) {
+                        return warunek === liczbaGodzina;
+                        }), "///////////////////////////////////////");
+                        return polaczoneTabele.indexOf(liczbaGodzina) !== -1
+                    }).map(function (qwerty) {
+                        console.log(qwerty, "gggggggggggggggggggggggggggggggggggggggggggg");
+                    })
+                    }
+                    </Row>
                 <Row>
                     <SliderComponent />
                 </Row>

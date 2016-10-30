@@ -7,7 +7,8 @@ import './LineStops.css';
 
 const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
-    stops: state.stopsData.stops
+    stops: state.stopsData.stops.concat,
+    hourValue: state.sliderData.hourValue
 });
 
 class BusTable extends React.Component {
@@ -15,6 +16,9 @@ class BusTable extends React.Component {
     render() {
 
         var {
+            buses,
+            stops,
+            hourValue
         } = this.props;
 
         return (

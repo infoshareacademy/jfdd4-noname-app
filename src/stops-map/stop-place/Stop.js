@@ -41,7 +41,7 @@ const getLabelStyle=(props)=>({
 export default (props) =>
     <Link to={props.to}>
         <div style={getMarkerStyle(props)}>
-            <img src={stopMarker} alt="bus-stop"/>
+            <img src={stopMarker} alt="bus-stop-selected"/>
         </div>
         <a style={getLabelStyle(props)} className="stopLabel">{props.children}</a>
     </Link>

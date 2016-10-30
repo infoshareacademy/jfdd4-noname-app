@@ -1,13 +1,15 @@
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
+import persistState from 'redux-localstorage'
+import sliderReducer from './map/slider/reducer'
 import stopsReducer from './bus-stops/reducer'
 import busesReducer from './bus-lines/reducer'
 
 let reducer = combineReducers({
     busesData: busesReducer,
-    stopsData: stopsReducer
-
+    stopsData: stopsReducer,
+    sliderData: sliderReducer
 });
 
 // Create a Redux store holding the state of your app.
@@ -21,7 +23,8 @@ let store = createStore(
         applyMiddleware(
             thunkMiddleware, // lets us dispatch() functions
             loggerMiddleware
-        )
+        ),
+        persistState(['sliderData'])
     )
 );
 

@@ -9,6 +9,7 @@ import BusDetails from './bus-details/BusDetails'
 import Map from './map/Map'
 import StopsMap from './stops-map/StopsMap'
 import IntroPage from './intro-page/IntroPage'
+import Slider from './map/slider/SliderComponent'
 
 import store from './store';
 import {Provider} from 'react-redux';

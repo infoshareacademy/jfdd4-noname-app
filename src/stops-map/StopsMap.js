@@ -15,17 +15,7 @@ const StopsMap = ({
     stops,
     buses,
     hourValue,
-    activeStops = stops.map(s => s.id === 1),
-    sprawdzGodzinaSie = buses.map(function (xyz) {
-        // console.log(xyz.routes, '//////////////////')
-        return xyz.routes
-    }).map(function (abc) {
-        abc.map(function (qwerty) {
-            var tablicaPomnozonaGodziny = [];
-            tablicaPomnozonaGodziny.push(parseInt(qwerty.slice(0, 2)) * 60);
-            console.log(tablicaPomnozonaGodziny, "------------------------")
-        })
-    })
+    activeStops = stops.map(s => s.id === 1)
 }) => (
 
     <div>
@@ -37,9 +27,7 @@ const StopsMap = ({
 
             {new Date(hourValue).toUTCString()}
 
-            {/*{console.log(stops, "**********************")}*/}
-            {/*{console.log(buses, "oooooooooooooooooooooo")}*/}
-            {console.log(sprawdzGodzinaSie)}
+            {console.log(activeStops, "********************************aktywne stopy")}
         </p>
     </div>
 );

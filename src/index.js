@@ -20,13 +20,16 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router'
 import {fetchStops} from './bus-stops/actionCreators'
 import {fetchBuses} from './bus-lines/actionCreators'
+import {fetchFavoriteStops, fetchFavoriteBuses} from './favorites/actionCreators'
 
 ReactDOM.render(
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={App} onEnter={() => {
                 store.dispatch(fetchStops());
-                store.dispatch(fetchBuses())
+                store.dispatch(fetchBuses());
+                store.dispatch(fetchFavoriteStops());
+                store.dispatch(fetchFavoriteBuses());
             }}>
                 <IndexRoute component={IntroPage} onEnter={() => store.dispatch(fetchStops())}/>
                 <Route path="/bus-stops" component={BusStops}/>

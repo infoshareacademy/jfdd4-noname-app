@@ -49,11 +49,6 @@ class BusStops extends React.Component {
                             else if (s1.name > s2.name) return 1;
                             else return 0;
                         })
-                        .sort((s1, s2) => {
-                            if (s1.name < s2.name) return -1;
-                            else if (s1.name > s2.name) return 1;
-                            else return 0;
-                        })
                         .map(function (stop) {
                             return <ListGroupItem key={stop.id}>
                                 <Link className="BusStops-list" to={`/bus-stops/${stop.id}`}>{stop.name}</Link> {''}

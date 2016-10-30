@@ -5,6 +5,7 @@ import {Label} from 'react-bootstrap'
 import Map from '../map/Map'
 import {markStopAsFavorite} from '../bus-stops/actionCreators'
 import {Glyphicon, Button} from 'react-bootstrap'
+import {addFavoriteStop} from '../favorites/actionCreators'
 
 const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
@@ -12,7 +13,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    favoriteStop: (stopId) => dispatch(markStopAsFavorite(stopId))
+    addFavoriteStop: (stopId) => dispatch(addFavoriteStop(stopId))
 });
 
 class BusStop extends React.Component {
@@ -21,7 +22,7 @@ class BusStop extends React.Component {
         var {
             buses,
             stops,
-            favoriteStop
+            addFavoriteStop
         } = this.props;
 
         var stopId = parseInt(this.props.params.busStopId);
@@ -37,7 +38,7 @@ class BusStop extends React.Component {
             <div>
                 {currentStop.map(function (stop) {
                     return <p>Przystanek: {stop.name} {""}
-                        <Button onClick={() => favoriteStop(stop.id)} bsSize="xsmall">
+                        <Button onClick={() => addFavoriteStop(stop.id)} bsSize="xsmall">
                             <Glyphicon glyph="star"/> Dodaj do ulubionych</Button>
                     </p>
                 })}

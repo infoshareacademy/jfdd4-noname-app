@@ -1,32 +1,37 @@
 import {
-    REQUEST_BUSES,
-    RECEIVE_BUSES,
-    SET_FILTER_VALUE
+    REQUEST_FAVORITE_STOPS,
+    RECEIVE_FAVORITE_STOPS,
+    REQUEST_FAVORITE_BUSES,
+    RECEIVE_FAVORITE_BUSES,
 } from './actionTypes'
 
 const initialState = {
-    lineNumber: [],
-    buses: [],
-    currentFilterValue: []
+    fetchingFavoriteStops: false,
+    fetchingFavoriteBuses: false,
+    favoriteStops: [],
+    favoriteBuses: [],
 }
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case REQUEST_BUSES:
+        case REQUEST_FAVORITE_STOPS:
             return Object.assign({}, state, {
-                fetchingLineNumber: true
-            })
-        case RECEIVE_BUSES:
+                fetchingFavoriteStops: true
+            });
+        case RECEIVE_FAVORITE_STOPS:
             return Object.assign({}, state, {
-                lineNumber: action.lineNumber,
-                buses: action.buses,
-                fetchingLineNumber: false
-            })
-        case SET_FILTER_VALUE:
+                favoriteStops: action.favoriteStops,
+                fetchingFavoriteStops: false
+            });
+        case REQUEST_FAVORITE_BUSES:
             return Object.assign({}, state, {
-                currentFilterValue: action.filterValue
-            })
-
+                fetchingFavoriteBuses: true
+            });
+        case RECEIVE_FAVORITE_BUSES:
+            return Object.assign({}, state, {
+                favoriteBuses: action.favoriteBuses,
+                fetchingFavoriteBuses: false
+            });
         default:
             return state
     }

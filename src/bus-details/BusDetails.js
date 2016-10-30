@@ -6,6 +6,8 @@ import {Button, Glyphicon, PageHeader, Row, Col} from 'react-bootstrap'
 import './BusDetails.css';
 import Map from '../map/Map'
 import {markBusAsFavorite} from '../bus-lines/actionCreators'
+import {addFavoriteBus} from '../favorites/actionCreators'
+
 
 const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
@@ -13,7 +15,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    favoriteBus: (busId) => dispatch(markBusAsFavorite(busId))
+    addFavoriteBus: (lineNumber) => dispatch(addFavoriteBus(lineNumber))
 })
 
 class BusDetails extends React.Component {
@@ -24,7 +26,7 @@ class BusDetails extends React.Component {
         var {
             buses,
             stops,
-            favoriteBus
+            addFavoriteBus
         } = this.props;
 
         var currentBus = buses.find(function (bus) {
@@ -60,7 +62,7 @@ class BusDetails extends React.Component {
                                 {" – "}
                             <Link to={`/bus-stops/${lastFirstStop[lastFirstStop.length - 1]}`}>{stopsList[stopsList.length - 1]}</Link>{' '}
 
-                            <Button onClick={() => favoriteBus(currentBus.lineNumber)} bsSize="xsmall">
+                            <Button onClick={() => addFavoriteBus(currentBus.lineNumber)} bsSize="xsmall">
                                 <Glyphicon glyph="star"/>Dodaj do ulubionych
                             </Button>
 

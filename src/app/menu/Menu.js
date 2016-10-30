@@ -35,7 +35,9 @@ class Menu extends Component {
                         </LinkContainer>
                     </Nav>
                     <Nav pullRight>
-                        <NavItem><Glyphicon glyph="star" /> Ulubione ({this.props.favoriteStops.length})</NavItem>
+                        <LinkContainer to={`/favorites`}>
+                            <NavItem eventKey={5} href="#"><Glyphicon glyph="star" />Ulubione ({this.props.favoriteStops.length})</NavItem>
+                        </LinkContainer>
                         <LinkContainer to={'*'}>
                             <NavItem eventKey={4} href="#">Zaloguj się</NavItem>
                         </LinkContainer>

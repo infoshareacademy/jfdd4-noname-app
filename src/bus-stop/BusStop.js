@@ -23,7 +23,9 @@ class BusStop extends React.Component {
             buses,
             stops,
             favouriteStop,
-            cos
+            dupa,
+            filteredBus,
+            cos = []
         } = this.props;
 
         var stopId = parseInt(this.props.params.busStopId);
@@ -34,33 +36,39 @@ class BusStop extends React.Component {
             return [stop.cox, stop.coy]
         });
 
-        var gowno = buses.filter(function (bus) {
-            return bus.stops.indexOf(stopId) !== -1
-        }).map(function(bus) {
-            console.log(bus, "kutas1");
-            return bus}).filter(
-            function (jajo) {
-                var i;
-                var j;
-                for (i = 0; i < jajo.routes[i].length; i++){
-                    console.log(jajo.routes[i], "kutas2");
-                    console.log(jajo.lineNumber);
-                    for (j = i; j < jajo.routes[i].length; j++){
-                        jajo.routes[j].forEach(function (dupa) {
-                            console.log(jajo.lineNumber + " " + dupa );
-                            var $dopisanie = $('<li>').append(" "+  jajo.lineNumber + " " + dupa);
-                            $dopisanie.appendTo('ul')
-                        })
-                    }
-                }
-            }
-        );
+        var tablica = [];
+
+            // var gowno = buses.filter(function (bus) {
+            //     console.log(bus.stops.indexOf(stopId) !== -1);
+            //     return bus.stops.indexOf(stopId) !== -1
+            // }).map(function (dupa) {
+            //     console.log(dupa);
+            //     tablica.push(dupa);
+            //     console.log(tablica, "tablica");
+            //     return dupa
+            // }).map(function(filteredBus) {
+            //     console.log(filteredBus, "kutas1");
+            //         var i;
+            //         var j;
+            //         for (i = 0; i < filteredBus.routes.length; i++) {
+            //             console.log(filteredBus.routes[i], "kutas2");
+            //             console.log(filteredBus.lineNumber);
+            //             console.log(i, "numer petla");
+            //             filteredBus.routes.forEach(function (dupa) {
+            //                 console.log(filteredBus.lineNumber + " " + dupa);
+            //                 var $dopisanie = $('<li>').append(" " + filteredBus.lineNumber + " " + dupa);
+            //                 return $dopisanie.appendTo('ul');
+            //             });
+            //         }
+            // });
+
+
 
         var stonka;
         var tablicaDlugosci = [];
         var tablicaDanych = [];
 
-        console.log(gowno, "sssssssssssssssssssssssssssssssss");
+        // console.log(gowno, "sssssssssssssssssssssssssssssssss");
 
         // var dupa = function dupa () {
         //     var i;
@@ -82,7 +90,6 @@ class BusStop extends React.Component {
         //     }
         // };
 
-            console.log(tablicaDlugosci, "tablcia dlugosci");
 
         console.log(stonka, "-----------------------------------------------------------xxx ");
 
@@ -126,44 +133,30 @@ class BusStop extends React.Component {
                 <ul className="stolczyk">
 
                     {buses.filter(function (bus) {
+                        console.log(bus.stops.indexOf(stopId) !== -1);
                         return bus.stops.indexOf(stopId) !== -1
-                    }).map(function (bus) {
-                        return (
-                            <p className="stolec">
-                            <Label style={{'margin': '2px'}}>
-                                <Link to={`/bus-details/${bus.lineNumber}`}>
-                                   {bus.lineNumber + " "}
+                    }).map(function (dupa) {
+                        console.log(dupa);
+                        tablica.push(dupa);
+                        console.log(tablica, "tablica");
+                        return dupa
+                    }).map(function(filteredBus) {
+                        console.log(filteredBus, "kutas1");
+                        var i;
 
-                                </Link>
-                            </Label>
-                                </p>
-                        )
-                    })
-                    }
-
-
-                    {/*{buses.map(function (xyz) {*/}
-                        {/*console.log(xyz, "/////////////////////////////");*/}
-                        {/*cos =xyz;*/}
-                        {/*console.log(cos, "**************************************************");*/}
-                         {/*return cos}).map(function (dupa) {*/}
-                            {/*return (*/}
-                                {/*<li className="dupa">{dupa.lineNumber + " "}{dupa.routes.map(function (kamien){*/}
-                                    {/*return <content>{kamien}</content>*/}
-                                {/*})}</li>*/}
-                            {/*)*/}
-                    {/*})}*/}
-
-                    {console.log(cos, "--------------------------------------")}
-
-                    {/*{cos.lineNumber.forEach(function (dupa) {*/}
-                             {/*var i;*/}
-                                {/*for(i =1 ; i <dupa.routes.length; i++ ) {*/}
-                                        {/*<li>1</li>*/}
-                                {/*}*/}
-                            {/*})*/}
-                        {/*}*/}
-
+                        for (i = 0; i < filteredBus.routes.length; i++) {
+                            {/*console.log(filteredBus.routes[i], "kutas2");*/}
+                            console.log(i, "numer petla");
+                            filteredBus.routes.forEach(function (dupa) {
+                                console.log(filteredBus.lineNumber + " " + dupa);
+                                {/*var $dopisanie = $('<li>').append(" " + filteredBus.lineNumber + " " + dupa);*/}
+                                {/*return $dopisanie.appendTo('ul');*/}
+                                console.log(<li>{" " + filteredBus.lineNumber + " " + dupa}</li>);
+                                   cos.push(<li>{" " + filteredBus.lineNumber + " " + dupa}</li>)
+                            });
+                        }
+                        return cos;
+                    })}
                     </ul>
             </div>
         );

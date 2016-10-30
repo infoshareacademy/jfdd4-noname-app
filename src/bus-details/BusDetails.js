@@ -51,6 +51,7 @@ class BusDetails extends React.Component {
         var ileMinutWGodzinie =  new Date(hourValue).getMinutes();
         var ileGodziWDobie = new Date(hourValue).getHours();
         var liczbaGodzina = ileGodziWDobie.toString() + ":" + ileMinutWGodzinie.toString();
+        var przystanekGodzina;
 
         var jajco;
 
@@ -101,8 +102,11 @@ class BusDetails extends React.Component {
                         return polaczoneTabele.indexOf(liczbaGodzina) !== -1
                     }).map(function (qwerty) {
                         console.log(qwerty, "gggggggggggggggggggggggggggggggggggggggggggg");
+                        return qwerty = przystanekGodzina;
                     })
                     }
+
+                    {console.log(busStops, "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")}
                     </Row>
                 <Row>
                     <SliderComponent />

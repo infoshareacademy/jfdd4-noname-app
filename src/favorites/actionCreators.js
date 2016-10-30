@@ -86,7 +86,7 @@ export function addFavoriteStop(stopId) {
             .then(response => response.json())
             .then(stopId => {
                 dispatch(addFavoriteStopEnd());
-                // dispatch(fetchFavoriteStops())
+                dispatch(fetchFavoriteStops())
             })
     }
 }
@@ -119,7 +119,7 @@ export function addFavoriteBus(lineNumber) {
             .then(response => response.json())
             .then(lineNumber => {
                 dispatch(addFavoriteBusEnd());
-                // dispatch(fetchFavoriteBuses())
+                dispatch(fetchFavoriteBuses())
             })
     }
 }

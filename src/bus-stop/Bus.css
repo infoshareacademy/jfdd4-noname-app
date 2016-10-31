@@ -3,3 +3,12 @@
     display: inline-block;
     margin: 0 2px;
 }
+
+.BusStop-col {
+    border: 1px solid;
+    font-size: 10px;
+}
+
+.BusStop-col p {
+    margin: 0.5px auto;
+}

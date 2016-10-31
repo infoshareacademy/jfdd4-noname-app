@@ -145,7 +145,8 @@ class BusStop extends React.Component {
                         var i;
 
                         for (i = 0; i < filteredBus.routes.length; i++) {
-                            {/*console.log(filteredBus.routes[i], "kutas2");*/}
+                            console.log(filteredBus.routes[i], "kutas2");
+                            console.log(filteredBus.lineNumber);
                             console.log(i, "numer petla");
                             filteredBus.routes.forEach(function (dupa) {
                                 console.log(filteredBus.lineNumber + " " + dupa);

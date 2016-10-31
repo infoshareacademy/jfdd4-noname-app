@@ -6,7 +6,11 @@ import {
     ADD_FAVORITE_STOP_BEGIN,
     ADD_FAVORITE_STOP_END,
     ADD_FAVORITE_BUS_BEGIN,
-    ADD_FAVORITE_BUS_END
+    ADD_FAVORITE_BUS_END,
+    DELETE_FAVORITE_STOP_BEGIN,
+    DELETE_FAVORITE_STOP_END,
+    DELETE_FAVORITE_BUS_BEGIN,
+    DELETE_FAVORITE_BUS_END
 } from './actionTypes'
 
 import fetch from 'isomorphic-fetch'
@@ -119,6 +123,57 @@ export function addFavoriteBus(lineNumber) {
             .then(response => response.json())
             .then(lineNumber => {
                 dispatch(addFavoriteBusEnd());
+                dispatch(fetchFavoriteBuses())
+            })
+    }
+}
+
+function deleteFavoriteStopBegin() {
+    return {
+        type: DELETE_FAVORITE_STOP_BEGIN
+    }
+}
+function deleteFavoriteStopEnd() {
+    return {
+        type: DELETE_FAVORITE_STOP_END
+    }
+}
+
+export function deleteFavoriteStop(stopId) {
+    return function (dispatch) {
+        dispatch(deleteFavoriteStopBegin());
+        return fetch(favoriteStopsUrl + stopId, {
+            method: 'DELETE'
+        })
+            .then(response => response.json())
+            .then(stopId => {
+                dispatch(deleteFavoriteStopEnd());
+                dispatch(fetchFavoriteStops())
+            })
+    }
+}
+
+
+function deleteFavoriteBusBegin() {
+    return {
+        type: DELETE_FAVORITE_BUS_BEGIN
+    }
+}
+function deleteFavoriteBusEnd() {
+    return {
+        type: DELETE_FAVORITE_BUS_END
+    }
+}
+
+export function deleteFavoriteBus(lineNumber) {
+    return function (dispatch) {
+        dispatch(deleteFavoriteBusBegin());
+        return fetch(favoriteBusesUrl + lineNumber, {
+            method: 'DELETE'
+        })
+            .then(response => response.json())
+            .then(lineNumber => {
+                dispatch(deleteFavoriteBusEnd());
                 dispatch(fetchFavoriteBuses())
             })
     }

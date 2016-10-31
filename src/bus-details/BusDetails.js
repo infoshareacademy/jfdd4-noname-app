@@ -11,12 +11,14 @@ import {addFavoriteBus} from '../favorites/actionCreators'
 
 const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
-    stops: state.stopsData.stops
+    stops: state.stopsData.stops,
+    favoriteLineNumbers: state.favorites.favoriteBuses.map(bus => bus.lineNumber)
 });
+
 
 const mapDispatchToProps = (dispatch) => ({
     addFavoriteBus: (lineNumber) => dispatch(addFavoriteBus(lineNumber))
-})
+});
 
 class BusDetails extends React.Component {
 
@@ -26,11 +28,13 @@ class BusDetails extends React.Component {
         var {
             buses,
             stops,
-            addFavoriteBus
+            addFavoriteBus,
+            favoriteLineNumbers
         } = this.props;
 
+
         var currentBus = buses.find(function (bus) {
-            return bus.lineNumber === parseInt(this.props.params.busId);
+            return bus.lineNumber = this.props.params.busId;
         }.bind(this));
 
         if (currentBus === undefined) {
@@ -62,7 +66,10 @@ class BusDetails extends React.Component {
                                 {" – "}
                             <Link to={`/bus-stops/${lastFirstStop[lastFirstStop.length - 1]}`}>{stopsList[stopsList.length - 1]}</Link>{' '}
 
-                            <Button onClick={() => addFavoriteBus(currentBus.lineNumber)} bsSize="xsmall">
+                            <Button onClick={
+                                    favoriteLineNumbers.indexOf(currentBus.lineNumber) === -1
+                                    ? addFavoriteBus(currentBus.lineNumber) : null
+                                } bsSize="xsmall">
                                 <Glyphicon glyph="star"/>Dodaj do ulubionych
                             </Button>
 

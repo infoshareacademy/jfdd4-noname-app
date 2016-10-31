@@ -9,8 +9,8 @@ const initialState = {
     fetchingFavoriteStops: false,
     fetchingFavoriteBuses: false,
     favoriteStops: [],
-    favoriteBuses: [],
-}
+    favoriteBuses: []
+};
 
 export default (state = initialState, action) => {
     switch (action.type) {

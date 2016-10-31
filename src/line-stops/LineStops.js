@@ -18,8 +18,10 @@ class LineStops extends React.Component {
             buses,
         } = this.props;
 
+
         return (
 
+            <div>
 
             <ListGroup className="LineStops-ListChild" >
                 {this.props.stops.map(stop =>
@@ -34,7 +36,7 @@ class LineStops extends React.Component {
                                             .filter(bus => bus.stops.indexOf(stop.id) !== -1 && bus.lineNumber !== this.props.currentBus)
                                             .map(function (filteredLineNumber, index) {
                                                 return (
-                                                    <content>
+                                                    <content key={index}>
                                                         {/*<BusLink bus={filteredLineNumber}/>*/}
                                                         <content key={index}>
                                                             <content>{" "}</content>
@@ -55,6 +57,7 @@ class LineStops extends React.Component {
 
                 )}
             </ListGroup>
+                </div>
         )
 
     }

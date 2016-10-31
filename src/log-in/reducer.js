@@ -5,7 +5,7 @@ import {
 
 const initialState = {
     key: null,
-    username: 'Użytkowniku'
+    username: 'Zaloguj się'
 }
 
 export default (state = initialState, action) => {
@@ -17,7 +17,7 @@ export default (state = initialState, action) => {
         // })
         case RECEIVE_USER:
             return Object.assign({}, state, {
-                username: action.username
+                username: 'Witaj, ' + action.username
             })
         default:
             return state

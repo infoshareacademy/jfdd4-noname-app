@@ -7,7 +7,8 @@ import {Navbar, Nav, NavItem, Glyphicon} from 'react-bootstrap'
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
-    favoriteStops: state.stopsData.favoriteStopsIds
+    favoriteStops: state.stopsData.favoriteStopsIds,
+    userName: state.login.username
 })
 
 
@@ -36,7 +37,9 @@ class Menu extends Component {
                     <Nav pullRight>
                         <NavItem><Glyphicon glyph="star" /> Ulubione ({this.props.favoriteStops.length})</NavItem>
                         <LinkContainer to={`/log-in`}>
-                            <NavItem eventKey={4} href="#">Zaloguj się</NavItem>
+                            <NavItem eventKey={4} href="#">
+                                <div>{this.props.userName}</div>
+                            </NavItem>
                         </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>

@@ -24,7 +24,7 @@ class BusStop extends React.Component {
             buses,
             stops,
             favouriteStop,
-            cos = []
+            routesItemsArray = []
         } = this.props;
 
         var stopId = parseInt(this.props.params.busStopId);
@@ -35,8 +35,6 @@ class BusStop extends React.Component {
         var currentCoordinates = currentStop.map((stop) => {
             return [stop.cox, stop.coy]
         });
-
-        var tablica = [];
 
         return (
             <div>
@@ -79,27 +77,29 @@ class BusStop extends React.Component {
                     {buses.filter(function (bus) {
                         console.log(bus.stops.indexOf(stopId) !== -1);
                         return bus.stops.indexOf(stopId) !== -1
-                    }).map(function (mappedRoute) {
-                        console.log(mappedRoute);
-                        tablica.push(mappedRoute);
-                        console.log(tablica, "tablica");
-                        return mappedRoute
-                    }).map(function(filteredBus) {
-                        console.log(filteredBus, "****");
-                        var i;
+                    }).map(function(mappedBus) {
+                        console.log(mappedBus, "****");
+                        return mappedBus.routes.map(
+                            route =>
+                                <li>
+                                    {mappedBus.lineNumber}
+                                    {route[mappedBus.stops.indexOf(stopId)]}
+                                </li>
+                        );
+                        // var i;
+                        // for (i = 0; i < mappedBus.routes[i].length; i++) {
+                        //     console.log(mappedBus.routes[i], "++++");
+                        //     console.log(mappedBus.lineNumber);
+                        //     console.log(i, "numer petla");
+                        {/*mappedBus.routes[i].forEach(function (course) {*/}
+                        {/*console.log(mappedBus.lineNumber + " " + course);*/}
+                        {/*console.log(<li>{" " + mappedBus.lineNumber + " " + course}</li>);*/}
+                        {/*console.log(i,"push");*/}
+                        {/*routesItemsArray.push(<li>{" " + mappedBus.lineNumber + " " + course}</li>)*/}
+                        {/*});*/}
 
-                        for (i = 0; i < filteredBus.routes[i].length; i++) {
-                            console.log(filteredBus.routes[i], "++++");
-                            console.log(filteredBus.lineNumber);
-                            console.log(i, "numer petla");
-                            filteredBus.routes[i].forEach(function (kurs) {
-                                console.log(filteredBus.lineNumber + " " + kurs);
-                                console.log(<li>{" " + filteredBus.lineNumber + " " + kurs}</li>);
-                                   cos.push(<li>{" " + filteredBus.lineNumber + " " + kurs}</li>)
-                            });
-                            return cos;
-                        }
-
+                        {/*}*/}
+                        {/*return routesItemsArray;*/}
                     })}
                     </ul>
             </div>

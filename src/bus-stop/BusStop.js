@@ -84,16 +84,6 @@ class BusStop extends React.Component {
         //         }
         //     };
 
-        // var stolec = function () {
-        //     for (var i = 0; i > gowno.length; i++){
-        //
-        //     }
-        // };
-
-
-        console.log(stonka, "-----------------------------------------------------------xxx ");
-
-
         return (
             <div>
                 {currentStop.map(function (stop) {
@@ -130,30 +120,31 @@ class BusStop extends React.Component {
                         )
                 })}
 
-                <ul className="stolczyk">
+                <ul>
 
                     {buses.filter(function (bus) {
                         console.log(bus.stops.indexOf(stopId) !== -1);
                         return bus.stops.indexOf(stopId) !== -1
-                    }).map(function (dupa) {
-                        console.log(dupa);
-                        tablica.push(dupa);
+                    }).map(function (mappedRoute) {
+                        console.log(mappedRoute);
+                        tablica.push(mappedRoute);
                         console.log(tablica, "tablica");
-                        return dupa
+                        return mappedRoute
                     }).map(function(filteredBus) {
-                        console.log(filteredBus, "kutas1");
+                        console.log(filteredBus, "****");
                         var i;
 
                         for (i = 0; i < filteredBus.routes.length; i++) {
-                            console.log(filteredBus.routes[i], "kutas2");
+                            console.log(filteredBus.routes[i], "++++");
                             console.log(filteredBus.lineNumber);
                             console.log(i, "numer petla");
-                            filteredBus.routes.forEach(function (dupa) {
-                                console.log(filteredBus.lineNumber + " " + dupa);
+
+                            filteredBus.routes.forEach(function (kurs) {
+                                console.log(filteredBus.lineNumber + " " + kurs);
                                 {/*var $dopisanie = $('<li>').append(" " + filteredBus.lineNumber + " " + dupa);*/}
                                 {/*return $dopisanie.appendTo('ul');*/}
-                                console.log(<li>{" " + filteredBus.lineNumber + " " + dupa}</li>);
-                                   cos.push(<li>{" " + filteredBus.lineNumber + " " + dupa}</li>)
+                                console.log(<li>{" " + filteredBus.lineNumber + " " + kurs}</li>);
+                                   cos.push(<li>{" " + filteredBus.lineNumber + " " + kurs}</li>)
                             });
                         }
                         return cos;

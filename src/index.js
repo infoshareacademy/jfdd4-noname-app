@@ -9,6 +9,7 @@ import BusDetails from './bus-details/BusDetails'
 import Map from './map/Map'
 import StopsMap from './stops-map/StopsMap'
 import IntroPage from './intro-page/IntroPage'
+import LoginForm from './log-in/LoginForm'
 
 import store from './store';
 import {Provider} from 'react-redux';
@@ -34,6 +35,7 @@ ReactDOM.render(
                 <Route path="/bus-details/:busId" component={BusDetails} />
                 <Route path="/bus-lines" component={BusLines}/>
                 <Route path="/map" component={StopsMap}/>
+                <Route path="/log-in" component={LoginForm}/>
             </Route>
         </Router>
     </Provider>,

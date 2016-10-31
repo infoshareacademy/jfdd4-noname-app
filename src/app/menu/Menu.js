@@ -30,13 +30,12 @@ class Menu extends Component {
                             <NavItem eventKey={2} href="#">Lista przystanków</NavItem>
                         </LinkContainer>
                         <LinkContainer to={`/bus-lines`}>
-                            <NavItem eventKey={3} href="#">Lista autobusów
-                            </NavItem>
+                            <NavItem eventKey={3} href="#">Lista autobusów</NavItem>
                         </LinkContainer>
                     </Nav>
                     <Nav pullRight>
                         <NavItem><Glyphicon glyph="star" /> Ulubione ({this.props.favoriteStops.length})</NavItem>
-                        <LinkContainer to={'*'}>
+                        <LinkContainer to={`/log-in`}>
                             <NavItem eventKey={4} href="#">Zaloguj się</NavItem>
                         </LinkContainer>
                     </Nav>

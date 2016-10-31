@@ -17,7 +17,61 @@
   {"id": 15, "name": "Chmielna", "cox": 54.345619, "coy": 18.656311},
   {"id": 16, "name": "Mostek", "cox": 54.349330, "coy": 18.674652},
   {"id": 17, "name": "Wałowa", "cox": 54.357640, "coy": 18.658826},
-  {"id": 18, "name": "Aksamitna", "cox": 54.358506, "coy": 18.653140},
   {"id": 19, "name": "Wały Piastowskie", "cox": 54.358979, "coy": 18.647235},
-  {"id": 20, "name": "Hucisko", "cox": 54.351930, "coy": 18.645680}
+  {"id": 20, "name": "Hucisko", "cox": 54.351930, "coy": 18.645680},
+  {"id": 21, "name": "Dobra", "cox": 54.3412324, "coy": 18.6552649},
+  {"id": 22, "name": "Wróbla", "cox": 54.3405327, "coy": 18.65787},
+  {"id": 23, "name": "Elbląska", "cox": 54.3491987, "coy": 18.6701683},
+
+  {"id": 24, "name": "Suchanino", "cox": 54.3541499, "coy": 18.6074482},
+  {"id": 25, "name": "Naj Jarem - Zakosy", "cox": 54.3537701, "coy": 18.6143079},
+  {"id": 26, "name": "Wagnera", "cox": 54.3557708, "coy": 18.6135951},
+  {"id": 27, "name": "Otwarta", "cox": 54.3560076, "coy": 18.6038141},
+  {"id": 28, "name": "Kurpińskiego", "cox": 54.3553963 , "coy": 18.5974401},
+  {"id": 29, "name": "Schuberta", "cox": 54.3574268, "coy":18.5995591 },
+  {"id": 30, "name": "Schumana", "cox": 54.3593336 , "coy": 18.6045353},
+  {"id": 31, "name": "Pomorskie Szkoły Rzemiósł", "cox":54.3609728 , "coy":  18.6098319},
+  {"id": 32, "name": "Jarowa", "cox": 54.3646117, "coy": 18.612197},
+  {"id": 33, "name": "Kręta", "cox":54.3667658 , "coy":18.6128575 },
+  {"id": 34, "name": "Traugutta - Sobieskiego", "cox":54.3700597 , "coy":18.6124538},
+  {"id": 35, "name": "Uphagena", "cox": 54.3766671, "coy": 18.615071},
+  {"id": 36, "name": "Wrzeszcz PKP", "cox": 54.3808401, "coy": 18.6065181},
+  {"id": 37, "name": "Galeria Bałtycka", "cox": 54.3815506, "coy":18.5991166 },
+
+  {"id": 38, "name": "Wały Piatowskie", "cox": 54.3593746, "coy": 18.6475722},
+  {"id": 39, "name": "Zaroślak", "cox": 54.3423576, "coy": 18.642917},
+  {"id": 40, "name": "Elmet", "cox": 54.3393926, "coy": 18.639636},
+  {"id": 41, "name": "Zremb", "cox": 54.3356086 , "coy": 18.6361143},
+  {"id": 42, "name": "Sandomierska", "cox": 54.3324316 , "coy":  18.634464},
+  {"id": 43, "name": "Ptasia", "cox": 54.3303015, "coy": 18.6281414},
+  {"id": 44, "name": "Małomiejska", "cox": 54.3291945 , "coy": 18.6177015},
+  {"id": 45, "name": "Platynowa", "cox": 54.3262833, "coy": 18.6113883},
+  {"id": 46, "name": "Krzemowa", "cox":54.3246147 , "coy": 18.6178464},
+  {"id": 47, "name": "Uranowa", "cox":  54.3261504 , "coy": 18.6203442},
+  {"id": 48, "name": "Orunia Górna", "cox": 54.3251664, "coy": 18.6184177},
+
+  {"id": 49, "name": "Bajki", "cox": 54.3563523, "coy": 18.681856},
+  {"id": 50, "name": "Dickensa", "cox": 54.3571777, "coy": 18.6898057},
+  {"id": 51, "name": "Budzysza", "cox": 54.3606078, "coy": 18.6920256},
+  {"id": 52, "name": "Kontenerowa", "cox":  54.3804066, "coy": 18.6965592} ,
+  {"id": 53, "name": "Terminal DCT", "cox": 54.3828466, "coy": 18.7092125} ,
+  {"id": 54, "name": "Sucharskiego - PKP", "cox": 54.3719037, "coy":  18.6833008} ,
+  {"id": 55, "name": "Ku Ujściu", "cox": 54.3800012, "coy":  18.6789612},
+
+  {"id": 56, "name": "Skarżyńskiego", "cox": 54.3868631, "coy": 18.6010551 },
+  {"id": 57, "name": "Zaspa SKM", "cox": 54.3895598, "coy": 18.5944068 },
+  {"id": 58, "name": "Dywizjonu 303", "cox": 54.3931968, "coy":18.6001257  },
+  {"id": 59, "name": "Rzeczypospolitej", "cox":  54.3960639, "coy": 18.6037814 },
+  {"id": 60, "name": "Leszczyńskich", "cox": 54.3999864, "coy": 18.6079511 },
+  {"id": 61, "name": "Zaspa - Szpital", "cox": 54.4022345, "coy": 18.6103476  },
+  {"id": 62, "name": "Czarny Dwór", "cox": 54.4067917, "coy": 18.6164315 },
+  {"id": 63, "name": "al. Hallera", "cox": 54.4011056, "coy": 18.6235759 }
+
+
+
+
+
+
+
+
 ]

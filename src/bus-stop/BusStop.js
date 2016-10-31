@@ -1,11 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import { Link } from 'react-router';
+import {Link} from 'react-router';
 import {Label} from 'react-bootstrap'
 import Map from '../map/Map'
 import $ from 'jquery';
 import {markStopAsFavorite} from '../bus-stops/actionCreators'
-import {Glyphicon, Button} from 'react-bootstrap'
+import {Glyphicon, Button, Col} from 'react-bootstrap'
+import './Bus.css'
 
 const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
@@ -31,6 +32,7 @@ class BusStop extends React.Component {
         var stopId = parseInt(this.props.params.busStopId);
         var currentStop = stops.filter(function (stop) {
             return stop.id === stopId
+
         });
         var currentCoordinates = currentStop.map((stop) => {
             return [stop.cox, stop.coy]

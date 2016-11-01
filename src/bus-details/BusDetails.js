@@ -11,12 +11,13 @@ import {addFavoriteBus} from '../favorites/actionCreators'
 
 const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
-    stops: state.stopsData.stops
+    stops: state.stopsData.stops,
+    favoriteLineNumbers: state.favorites.favoriteBuses.map(bus => bus.lineNumber)
 });
 
 const mapDispatchToProps = (dispatch) => ({
     addFavoriteBus: (lineNumber) => dispatch(addFavoriteBus(lineNumber))
-})
+});
 
 class BusDetails extends React.Component {
 
@@ -26,7 +27,8 @@ class BusDetails extends React.Component {
         var {
             buses,
             stops,
-            addFavoriteBus
+            addFavoriteBus,
+            favoriteLineNumbers
         } = this.props;
 
         var currentBus = buses.find(function (bus) {
@@ -56,7 +58,7 @@ class BusDetails extends React.Component {
             <div>
                 <Row>
                     <Col md={12}>
-                        <PageHeader>Linia
+                        <PageHeader>Linia {' '}
                             <Link to={`/bus-lines`}>
                                 <Button bsStyle="danger">{this.props.params.busId}</Button>
                             </Link>

@@ -56,7 +56,10 @@ class BusDetails extends React.Component {
             <div>
                 <Row>
                     <Col md={12}>
-                        <PageHeader>Linia <Link to={`/bus-lines`}><Button bsStyle="danger">{this.props.params.busId}</Button></Link>
+                        <PageHeader>Linia
+                            <Link to={`/bus-lines`}>
+                                <Button bsStyle="danger">{this.props.params.busId}</Button>
+                            </Link>
                             <content>{" : " }
                             <Link to={`/bus-stops/${lastFirstStop[0]}`}>{stopsList[0]}</Link>
                                 {" – "}

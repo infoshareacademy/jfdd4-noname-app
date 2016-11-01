@@ -34,16 +34,13 @@ class LineStops extends React.Component {
                                             .filter(bus => bus.stops.indexOf(stop.id) !== -1 && bus.lineNumber !== this.props.currentBus)
                                             .map(function (filteredLineNumber, index) {
                                                 return (
-                                                    <content>
-                                                        {/*<BusLink bus={filteredLineNumber}/>*/}
-                                                        <content key={index}>
-                                                            <content>{" "}</content>
-                                                            <Label>
-                                                                <Link to={`/bus-details/${filteredLineNumber.lineNumber}`}>
-                                                                    {filteredLineNumber.lineNumber}
-                                                                </Link>
-                                                            </Label>
-                                                        </content>
+                                                    <content key={index}>
+                                                        <content>{" "}</content>
+                                                        <Label>
+                                                            <Link to={`/bus-details/${filteredLineNumber.lineNumber}`}>
+                                                                {filteredLineNumber.lineNumber}
+                                                            </Link>
+                                                        </Label>
                                                     </content>
                                                 )
                                             })

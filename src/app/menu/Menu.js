@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import {Link} from 'react-router'
 import logo from './logo.png';
 import './Menu.css';
+import LoginForm from '../../log-in/LoginForm'
 import {IndexLinkContainer, LinkContainer} from 'react-router-bootstrap'
-import {Navbar, Nav, NavItem, Glyphicon} from 'react-bootstrap'
+import {Navbar, Nav, NavItem, Glyphicon, NavDropdown , MenuItem} from 'react-bootstrap'
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
@@ -36,11 +37,10 @@ class Menu extends Component {
                     </Nav>
                     <Nav pullRight>
                         <NavItem><Glyphicon glyph="star" /> Ulubione ({this.props.favoriteStops.length})</NavItem>
-                        <LinkContainer to={`/log-in`}>
-                            <NavItem eventKey={4} href="#">
-                                <div>{this.props.userName}</div>
-                            </NavItem>
-                        </LinkContainer>
+
+                        <NavDropdown eventKey={5} title={this.props.userName} id="basic-nav-dropdown">
+                            <LoginForm />
+                        </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

@@ -3,13 +3,16 @@ import {
     LOGIN_FAILURE,
     LOGIN_SUCCESS,
     RECEIVE_USER,
+    LOGOUT_SUCCESS
 } from './actionTypes'
 
 import fetch from 'isomorphic-fetch'
 
+var url = 'https://stark-peak-50225.herokuapp.com/';
+
 export function logIn(username, password) {
     return function (dispatch) {
-        return fetch('http://localhost:3010/api/Users/login', {
+        return fetch(url + 'api/Users/login', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -38,11 +41,25 @@ export function logIn(username, password) {
 
 export function fetchUser(token, userId) {
     return function (dispatch) {
-        return fetch('http://localhost:3010/api/Users/' + userId + '?access_token=' + token)
+        return fetch(url + 'api/Users/' + userId + '?access_token=' + token)
             .then(response => response.json())
             .then(user => dispatch({
                 type: RECEIVE_USER,
                 username: user.username
             }))
+    }
+}
+
+
+export function logOut(token) {
+    return function (dispatch) {
+        return fetch(url + 'api/Users/logout?access_token=' + token, {
+            method: 'DELETE'
+        }).then(
+            authData => {
+                dispatch({
+                    type: LOGOUT_SUCCESS
+                })
+            })
     }
 }

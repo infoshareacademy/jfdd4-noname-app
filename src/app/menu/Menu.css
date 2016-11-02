@@ -11,3 +11,7 @@
     background-image: linear-gradient(to bottom, whitesmoke 30%, #ffebee 100%) !important;
     /*background-color: grey !important;*/
 }
+
+.NavDropdown {
+    width: 300px;
+}

@@ -1,6 +1,7 @@
 import {
     LOGIN_SUCCESS,
-    RECEIVE_USER
+    RECEIVE_USER,
+    LOGOUT_SUCCESS
 } from './actionTypes'
 
 const initialState = {
@@ -18,6 +19,10 @@ export default (state = initialState, action) => {
         case RECEIVE_USER:
             return Object.assign({}, state, {
                 username: 'Witaj, ' + action.username
+            })
+        case LOGOUT_SUCCESS:
+            return Object.assign({}, state, {
+                username: 'Zaloguj się'
             })
         default:
             return state

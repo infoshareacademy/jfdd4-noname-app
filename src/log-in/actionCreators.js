@@ -56,7 +56,7 @@ export function logOut(token) {
         return fetch(url + 'api/Users/logout?access_token=' + token, {
             method: 'DELETE'
         }).then(
-            authData => {
+            response => {
                 dispatch({
                     type: LOGOUT_SUCCESS
                 })

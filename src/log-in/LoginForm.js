@@ -27,54 +27,51 @@ class LoginForm extends React.Component {
     render() {
         return (
             <div>
+                { this.props.userName === 'Zaloguj się'
+                    ?
+                    <Form horizontal
+                          onSubmit={(event) => {
+                              event.preventDefault()
+                              this.props.logIn(this.state.username, this.state.password)
+                          }}>
+                        <FormGroup controlId="formHorizontalEmail">
+                            <Col componentClass={ControlLabel} smOffset={2} sm={8}>
+                                Nazwa użytkownika
+                            </Col>
+                            <Col smOffset={2} sm={8}>
+                                <FormControl
+                                    type="text"
+                                    placeholder="username"
+                                    onChange={(event) => this.setState({
+                                        username: event.target.value
+                                    })}
+                                />
+                            </Col>
+                        </FormGroup>
+                        <FormGroup controlId="formHorizontalPassword">
+                            <Col componentClass={ControlLabel} smOffset={2} sm={8}>
+                                Hasło
+                            </Col>
+                            <Col smOffset={2} sm={8}>
+                                <FormControl
+                                    type="password"
+                                    placeholder="password"
+                                    onChange={(event) => this.setState({
+                                        password: event.target.value
+                                    })}
+                                />
+                            </Col >
+                        </FormGroup>
+                        <FormGroup>
+                            <Col smOffset={2} sm={8}>
+                                <Button type="submit">
+                                    Zaloguj się
+                                </Button>
 
-                { this.props.userName === 'Zaloguj się' ?
-                <Form horizontal
-                      onSubmit={(event) => {
-                          event.preventDefault()
-                          this.props.logIn(this.state.username, this.state.password)
-
-                      }}>
-                    <FormGroup controlId="formHorizontalEmail">
-                        <Col componentClass={ControlLabel} smOffset={2} sm={8}>
-                            Nazwa użytkownika
-                        </Col>
-                        <Col smOffset={2} sm={8}>
-                            <FormControl
-                                type="text"
-                                placeholder="username"
-                                onChange={(event) => this.setState({
-                                    username: event.target.value
-                                })}
-                            />
-                        </Col>
-                    </FormGroup>
-
-                    <FormGroup controlId="formHorizontalPassword">
-                        <Col componentClass={ControlLabel} smOffset={2} sm={8}>
-                            Hasło
-                        </Col>
-                        <Col smOffset={2} sm={8}>
-                            <FormControl
-                                type="password"
-                                placeholder="password"
-                                onChange={(event) => this.setState({
-                                    password: event.target.value
-                                })}
-                            />
-                        </Col >
-                    </FormGroup>
-                    <FormGroup>
-                        <Col smOffset={2} sm={8}>
-                            <Button type="submit">
-                                Zaloguj się
-                            </Button>
-
-                        </Col>
-                    </FormGroup>
-                </Form>  :
-
-
+                            </Col>
+                        </FormGroup>
+                    </Form>
+                    :
                     <Col smOffset={2} sm={8}>
                         <Button type="submit"
                                 onClick={(event) => {
@@ -83,10 +80,7 @@ class LoginForm extends React.Component {
                                 }}>
                             Wyloguj się
                         </Button>
-
                     </Col>
-
-
                 }
             </div>
         )

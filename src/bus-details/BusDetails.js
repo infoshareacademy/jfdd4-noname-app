@@ -52,11 +52,9 @@ class BusDetails extends React.Component {
 
         var obecnyNumer = this.props.params.busId;
         var ileMinutWGodzinie =  new Date(hourValue).getMinutes();
-        var ileGodziWDobie = new Date(hourValue).getHours();
-        var liczbaGodzina = ileGodziWDobie.toString() + ":" + ileMinutWGodzinie.toString();
+        var ileGodzinWDobie = new Date(hourValue).getHours();
+        var liczbaGodzina = ileGodzinWDobie.toString() + ":" + ileMinutWGodzinie.toString();
         var przystanekGodzina;
-
-        var jajco;
 
         console.log(liczbaGodzina, "ffffffffffffffffffffffffffffff");
 
@@ -93,7 +91,7 @@ class BusDetails extends React.Component {
                         console.log(xyz, "ooooooooooooo");
                         return obecnyNumer.indexOf(xyz.lineNumber) !== -1;
                     }).filter(function (abc) {
-                        console.log(abc, "chuuuuuuuuuuuuuuuuuuuuuuj");
+                        console.log(abc, "xxxxxxx");
                         var polaczoneTabele = abc.routes[0].concat(abc.routes[1]);
                         console.log(polaczoneTabele.indexOf(liczbaGodzina) !== -1, "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
                         console.log(polaczoneTabele.findIndex(function (warunek) {

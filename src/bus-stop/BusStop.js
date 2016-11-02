@@ -10,7 +10,8 @@ import './Bus.css'
 
 const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
-    stops: state.stopsData.stops
+    stops: state.stopsData.stops,
+    hourValue: state.sliderData.hourValue
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -24,6 +25,7 @@ class BusStop extends React.Component {
             buses,
             stops,
             favouriteStop,
+            hourValue,
             routesItemsArray = []
         } = this.props;
 
@@ -35,6 +37,15 @@ class BusStop extends React.Component {
         var currentCoordinates = currentStop.map((stop) => {
             return [stop.cox, stop.coy]
         });
+
+        var ileMinutWGodzinie =  new Date(hourValue).getMinutes();
+        var ileGodzinWDobie = new Date(hourValue).getHours();
+        var obecnaGodzina = new Date();
+        obecnaGodzina.setHours(ileGodzinWDobie);
+        obecnaGodzina.setMinutes(ileMinutWGodzinie);
+        var liczbaGodzina = ileGodzinWDobie.toString() + ":" + ileMinutWGodzinie.toString();
+        var zmapowaneMinutyRozklad;
+        var zmapowaneGodzinyRozklad;
 
         return (
             <div>
@@ -59,47 +70,44 @@ class BusStop extends React.Component {
                         </Label>
                 })}
 
-                <p>Najbliższe połączenia:</p>
-                {buses.filter(function (bus) {
-                    return bus.stops.indexOf(stopId) !== -1
-                }).map(function(bus) {
-                    return (
-                        <Label style={{'margin': '2px'}}>
-                            <Link to={`/bus-details/${bus.lineNumber}`}>
-                                {bus.lineNumber}
-                            </Link>
-                        </Label>
-                        )
-                })}
 
                 <ul>
-
                     {buses.filter(function (bus) {
                         console.log(bus.stops.indexOf(stopId) !== -1);
                         return bus.stops.indexOf(stopId) !== -1
                     }).map(function(mappedBus) {
                         console.log(mappedBus, "****");
-                        return mappedBus.routes.map(
-                            route =>
-                                <li>
-                                    {mappedBus.lineNumber}
-                                    {route[mappedBus.stops.indexOf(stopId)]}
-                                </li>
-                        );
-                        // var i;
-                        // for (i = 0; i < mappedBus.routes[i].length; i++) {
-                        //     console.log(mappedBus.routes[i], "++++");
-                        //     console.log(mappedBus.lineNumber);
-                        //     console.log(i, "numer petla");
-                        {/*mappedBus.routes[i].forEach(function (course) {*/}
-                        {/*console.log(mappedBus.lineNumber + " " + course);*/}
-                        {/*console.log(<li>{" " + mappedBus.lineNumber + " " + course}</li>);*/}
-                        {/*console.log(i,"push");*/}
-                        {/*routesItemsArray.push(<li>{" " + mappedBus.lineNumber + " " + course}</li>)*/}
-                        {/*});*/}
+                        return mappedBus.routes.map(function (route) {
+                                                                                            {/*console.log(route, "co?");*/}
+                                                                                            {/*console.log(route[mappedBus.stops.indexOf(stopId)].typeof, "xxx");*/}
+                                                                                            {/*console.log(obecnaGodzina, "obecnie ustawiona godzina");*/}
+                            zmapowaneGodzinyRozklad=route[mappedBus.stops.indexOf(stopId)].slice(0,2);
+                            zmapowaneMinutyRozklad=route[mappedBus.stops.indexOf(stopId)].slice(4,5);
+                                                                                            {/*console.log(zmapowaneGodzinyRozklad, "zmapowaneGodzinyRozklad");*/}
+                                                                                            {/*console.log(zmapowaneMinutyRozklad, "zmapowaneMinutyRozklad");*/}
+                            var godzinaMapowanegoKursu = new Date ();
+                            godzinaMapowanegoKursu.setHours(zmapowaneGodzinyRozklad);
+                            godzinaMapowanegoKursu.setMinutes(zmapowaneMinutyRozklad);
+                            console.log(liczbaGodzina);
+                                                                                            {/*console.log(godzinaMapowanegoKursu, "godzinaMapowanegoKursu");*/}
+                            var pozostaloDoNastepnegoKursu = (Math.abs(Math.abs(godzinaMapowanegoKursu.getTime() - obecnaGodzina.getTime()) / 86400));
+                            if (godzinaMapowanegoKursu >= obecnaGodzina){
+                                console.log("true");
+                                return (
+                                    <li>
+                                        <Label style={{'margin': '2px'}}>
+                                            {mappedBus.lineNumber}
+                                        </Label>
+                                        {route[mappedBus.stops.indexOf(stopId)]}
+                                        {" pozostało " + pozostaloDoNastepnegoKursu.toFixed(0) +" min" }
+                                    </li>
+                                )
+                            }else{
+                                return console.log('false')
+                            }
 
-                        {/*}*/}
-                        {/*return routesItemsArray;*/}
+                        }
+                        );
                     })}
                     </ul>
             </div>

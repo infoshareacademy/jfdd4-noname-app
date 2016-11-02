@@ -7,7 +7,7 @@ export default  class Map extends React.Component {
     render() {
 
 
-        var MARKER_SIZE = 40;
+        var MARKER_SIZE = 15;
         const markerStyle = {
             position: 'absolute',
             width: MARKER_SIZE,

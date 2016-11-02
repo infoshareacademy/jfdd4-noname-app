@@ -140,6 +140,7 @@ function deleteFavoriteStopEnd() {
 }
 
 export function deleteFavoriteStop(stopId) {
+    console.log('TEST', stopId);
     return function (dispatch) {
         dispatch(deleteFavoriteStopBegin());
         return fetch(favoriteStopsUrl + stopId, {

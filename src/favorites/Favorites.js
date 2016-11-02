@@ -3,38 +3,30 @@ import {connect} from 'react-redux'
 import {ListGroupItem} from 'react-bootstrap'
 import {Link} from 'react-router'
 import '../bus-stops/BusStops.css'
-
-const mapStateToProps = state => {
-    var props = {
-        fetchingFavoriteStops: state.favorites.fetchingFavoriteStops,
-        fetchingFavoriteBuses: state.favorites.fetchingFavoriteBuses,
-        favoriteStops: state.favorites.favoriteStops,
-        favoriteBuses: state.favorites.favoriteBuses,
-        buses: state.busesData.buses,
-        stops: state.stopsData.stops
-    };
-    return (props);
-};
-
-// const mapDispatchToProps = (dispatch) => ({
-//
-// });
+import {deleteFavoriteStop, deleteFavoriteBus} from './actionCreators'
+import {Glyphicon} from 'react-bootstrap'
 
 
-class Favorites extends React.Component {
-    render() {
-        var {
-            fetchingFavoriteStops,
-            fetchingFavoriteBuses,
-            favoriteStops,
-            favoriteBuses,
-            stops,
-            buses
-        } = this.props;
+const mapStateToProps = state => ({
+    favoriteStops: state.favorites.favoriteStops,
+    favoriteBuses: state.favorites.favoriteBuses,
+    buses: state.busesData.buses,
+    stops: state.stopsData.stops
+});
 
-         console.log('bbb',this.props);
+const mapDispatchToProps = (dispatch) => ({
+    deleteFavoriteStop: (stopId) => dispatch(deleteFavoriteStop(stopId)),
+    deleteFavoriteBus: (lineNumber) => dispatch(deleteFavoriteBus(lineNumber))
+});
 
-        return <div>
+
+const Favorites = ({
+    favoriteStops,
+    favoriteBuses,
+    deleteFavoriteStop,
+    deleteFavoriteBus,
+    stops
+}) => (<div>
             <h1>Ulubione</h1>
             <div>
                 <h3>Przystanki:</h3>
@@ -47,9 +39,9 @@ class Favorites extends React.Component {
                         else if (s1.name > s2.name) return 1;
                         else return 0;
                     }).map(function (stop) {
-                        {console.log('test', stop)}
                         return <ListGroupItem key={stop.id}>
                             <Link className="BusStops-list" to={`/bus-stops/${stop.id}`}>{stop.name}</Link> {''}
+                            <button onClick={() => deleteFavoriteStop(stop.id)}> delete </button>
                         </ListGroupItem>
                     })
                 }
@@ -57,18 +49,22 @@ class Favorites extends React.Component {
             <div>
                 <h3>Autobusy:</h3>
                 {favoriteBuses
-                    .map(function (bus, index) {
-                        return <ListGroupItem key={index}>
+                    .sort((b1,b2) => {
+                        if (b1.lineNumber < b2.lineNumber) return -1;
+                        else if (b1.lineNumber > b2.lineNumber) return 1;
+                        else return 0;
+                    }).map(function (bus) {
+                        return <ListGroupItem key={bus.id}>
                             <Link to={`/bus-details/${bus.lineNumber}`}>
                                 {bus.lineNumber}
-                            </Link>
+                            </Link>{' '}
+                            <button onClick={() => deleteFavoriteBus(bus.id)}> delete </button>
                         </ListGroupItem>
                     })}
             </div>
         </div>
-    }
-}
+);
 
-export default connect(mapStateToProps)(Favorites)
+export default connect(mapStateToProps, mapDispatchToProps)(Favorites)
 
 

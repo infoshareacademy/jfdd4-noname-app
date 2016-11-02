@@ -6,7 +6,7 @@ import {Button, Glyphicon, PageHeader, Row, Col} from 'react-bootstrap'
 import './BusDetails.css';
 import Map from '../map/Map'
 import {markBusAsFavorite} from '../bus-lines/actionCreators'
-import {addFavoriteBus} from '../favorites/actionCreators'
+import {addFavoriteBus, deleteFavoriteBus} from '../favorites/actionCreators'
 
 
 const mapStateToProps = (state) => ({
@@ -16,7 +16,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    addFavoriteBus: (lineNumber) => dispatch(addFavoriteBus(lineNumber))
+    addFavoriteBus: (lineNumber) => dispatch(addFavoriteBus(lineNumber)),
+    deleteFavoriteBus: (busId) => dispatch(deleteFavoriteBus(busId))
 });
 
 class BusDetails extends React.Component {
@@ -28,6 +29,7 @@ class BusDetails extends React.Component {
             buses,
             stops,
             addFavoriteBus,
+            deleteFavoriteBus,
             favoriteLineNumbers
         } = this.props;
 
@@ -70,9 +72,11 @@ class BusDetails extends React.Component {
                             <Button onClick={() => {
                                 favoriteLineNumbers.indexOf(currentBus.lineNumber.toString()) === -1 ?
                                     addFavoriteBus(currentBus.lineNumber) :
-                                    null
+                                    
+                                    deleteFavoriteBus(currentBus.id)
                             }} bsSize="xsmall">
-                                <Glyphicon glyph="star"/>Dodaj do ulubionych
+                                <Glyphicon glyph="star"/>
+                                {favoriteLineNumbers.indexOf(currentBus.lineNumber.toString()) === -1 ? "Dodaj do ulubionych" : "Usuń z ulubionych"}
                             </Button>
 
                             </content>

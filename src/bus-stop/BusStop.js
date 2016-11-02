@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router';
 import {Label} from 'react-bootstrap'
 import Map from '../map/Map'
-import {markStopAsFavorite} from '../bus-stops/actionCreators'
 import {Glyphicon, Button, Col} from 'react-bootstrap'
 import './Bus.css'
 import {addFavoriteStop} from '../favorites/actionCreators'
@@ -42,7 +41,7 @@ class BusStop extends React.Component {
 
                     {currentStop.map(function (stop) {
                         return <p>Przystanek: {stop.name} {""}
-                            <Button onClick={() => addFavouriteStop(stop.id)} bsSize="xsmall">
+                            <Button onClick={() => addFavoriteStop(stop.id)} bsSize="xsmall">
                                 <Glyphicon glyph="star"/> Dodaj do ulubionych</Button>
                         </p>
                     })}

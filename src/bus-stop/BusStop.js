@@ -44,8 +44,6 @@ class BusStop extends React.Component {
         obecnaGodzina.setHours(ileGodzinWDobie);
         obecnaGodzina.setMinutes(ileMinutWGodzinie);
         var liczbaGodzina = ileGodzinWDobie.toString() + ":" + ileMinutWGodzinie.toString();
-        var zmapowaneMinutyRozklad;
-        var zmapowaneGodzinyRozklad;
 
         return (
             <div>
@@ -81,18 +79,18 @@ class BusStop extends React.Component {
                                                                                             {/*console.log(route, "co?");*/}
                                                                                             {/*console.log(route[mappedBus.stops.indexOf(stopId)].typeof, "xxx");*/}
                                                                                             {/*console.log(obecnaGodzina, "obecnie ustawiona godzina");*/}
-                            zmapowaneGodzinyRozklad=route[mappedBus.stops.indexOf(stopId)].slice(0,2);
-                            zmapowaneMinutyRozklad=route[mappedBus.stops.indexOf(stopId)].slice(4,5);
+                            let zmapowaneGodzinyRozklad=route[mappedBus.stops.indexOf(stopId)].slice(0,2);
+                            let zmapowaneMinutyRozklad=route[mappedBus.stops.indexOf(stopId)].slice(4,5);
                                                                                             {/*console.log(zmapowaneGodzinyRozklad, "zmapowaneGodzinyRozklad");*/}
                                                                                             {/*console.log(zmapowaneMinutyRozklad, "zmapowaneMinutyRozklad");*/}
-                            var godzinaMapowanegoKursu = new Date ();
+                            let godzinaMapowanegoKursu = new Date ();
                             godzinaMapowanegoKursu.setHours(zmapowaneGodzinyRozklad);
                             godzinaMapowanegoKursu.setMinutes(zmapowaneMinutyRozklad);
-                            console.log(liczbaGodzina);
+                                                                                            console.log(liczbaGodzina);
                                                                                             {/*console.log(godzinaMapowanegoKursu, "godzinaMapowanegoKursu");*/}
                             var pozostaloDoNastepnegoKursu = (Math.abs(Math.abs(godzinaMapowanegoKursu.getTime() - obecnaGodzina.getTime()) / 86400));
                             if (godzinaMapowanegoKursu >= obecnaGodzina){
-                                console.log("true");
+                                                                                            console.log("true");
                                 return (
                                     <li>
                                         <Label style={{'margin': '2px'}}>

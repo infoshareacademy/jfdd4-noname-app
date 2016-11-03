@@ -50,13 +50,11 @@ class BusDetails extends React.Component {
         }).map(function (stop) {
             return stop.id});
 
-        var obecnyNumer = this.props.params.busId;
         var ileMinutWGodzinie =  new Date(hourValue).getMinutes();
         var ileGodzinWDobie = new Date(hourValue).getHours();
-        var liczbaGodzina = ileGodzinWDobie.toString() + ":" + ileMinutWGodzinie.toString();
-        var przystanekGodzina;
-
-        console.log(liczbaGodzina, "ffffffffffffffffffffffffffffff");
+        var obecnaGodzina = new Date();
+        obecnaGodzina.setHours(ileGodzinWDobie);
+        obecnaGodzina.setMinutes(ileMinutWGodzinie);
 
         return (
             <div>
@@ -83,28 +81,8 @@ class BusDetails extends React.Component {
                     </Col>
                 </Row>
                 <Row>
-                    <p>Mamy godzinę: {new Date(hourValue).getHours() + ':' + new Date(hourValue).getMinutes()} </p>
-                    {console.log(buses, "*************")}
-                    {console.log(obecnyNumer)}
+                    <p>Mamy godzinę: {obecnaGodzina.getHours() + ':' + obecnaGodzina.getMinutes()} </p>
 
-                    {buses.filter(function (xyz){
-                        console.log(xyz, "ooooooooooooo");
-                        return obecnyNumer.indexOf(xyz.lineNumber) !== -1;
-                    }).filter(function (abc) {
-                        console.log(abc, "xxxxxxx");
-                        var polaczoneTabele = abc.routes[0].concat(abc.routes[1]);
-                        console.log(polaczoneTabele.indexOf(liczbaGodzina) !== -1, "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
-                        console.log(polaczoneTabele.findIndex(function (warunek) {
-                        return warunek === liczbaGodzina;
-                        }), "///////////////////////////////////////");
-                        return polaczoneTabele.indexOf(liczbaGodzina) !== -1
-                    }).map(function (qwerty) {
-                        console.log(qwerty, "gggggggggggggggggggggggggggggggggggggggggggg");
-                        return qwerty = przystanekGodzina;
-                    })
-                    }
-
-                    {console.log(busStops, "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")}
                     </Row>
                 <Row>
                     <SliderComponent />

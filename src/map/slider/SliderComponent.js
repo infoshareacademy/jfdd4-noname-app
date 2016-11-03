@@ -62,7 +62,7 @@ class SliderComponent extends React.Component {
                         min={0}
                         max={1440}
                         step={1}
-                        defaultValue={0}
+                        defaultValue={629}
                         handle={<CustomHandle />}
                         onChange={function (value) {
                             currentHourSet = parseInt((value / 60));

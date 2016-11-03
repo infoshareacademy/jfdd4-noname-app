@@ -9,7 +9,7 @@ import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
     favoriteStops: state.favorites.favoriteStops,
-    favoriteBuses: state.favorites.favoriteBuses
+    favoriteBuses: state.favorites.favoriteBuses,
     userName: state.login.username
 });
 
@@ -37,14 +37,12 @@ class Menu extends Component {
                         </LinkContainer>
                     </Nav>
                     <Nav pullRight>
-                        <NavItem><Glyphicon glyph="star" /> Ulubione ({this.props.favoriteStops.length})</NavItem>
-
-                        <NavDropdown eventKey={5} title={this.props.userName} id="basic-nav-dropdown">
-                            <LoginForm />
-                        </NavDropdown>
                         <LinkContainer to={`/favorites`}>
                             <NavItem eventKey={6} href="#">Ulubione ({this.props.favoriteStops.length},{this.props.favoriteBuses.length})</NavItem>
                         </LinkContainer>
+                        <NavDropdown eventKey={5} title={this.props.userName} id="basic-nav-dropdown">
+                            <LoginForm />
+                        </NavDropdown>
                       </Nav>
                 </Navbar.Collapse>
             </Navbar>

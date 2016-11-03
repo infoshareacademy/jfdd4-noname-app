@@ -50,11 +50,14 @@ export function fetchUser(token, userId) {
     }
 }
 
-
 export function logOut(token) {
     return function (dispatch) {
         return fetch(url + 'api/Users/logout?access_token=' + token, {
-            method: 'DELETE'
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
         }).then(
             response => {
                 dispatch({

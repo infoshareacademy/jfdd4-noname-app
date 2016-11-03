@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     logIn: (username, password) => dispatch(logIn(username, password)),
-    logOut: (token) => dispatch(logOut(token)),
+    logOut: (token) => dispatch(logOut(token))
 })
 
 
@@ -41,7 +41,7 @@ class LoginForm extends React.Component {
                             <Col smOffset={2} sm={8}>
                                 <FormControl
                                     type="text"
-                                    placeholder="username"
+                                    placeholder="nazwa"
                                     onChange={(event) => this.setState({
                                         username: event.target.value
                                     })}
@@ -55,7 +55,7 @@ class LoginForm extends React.Component {
                             <Col smOffset={2} sm={8}>
                                 <FormControl
                                     type="password"
-                                    placeholder="password"
+                                    placeholder="hasło"
                                     onChange={(event) => this.setState({
                                         password: event.target.value
                                     })}

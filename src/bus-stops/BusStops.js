@@ -22,7 +22,6 @@ class BusStops extends React.Component {
     render() {
         var {
             stops,
-            fechingStops,
             setFilterValue,
             currentFilterValue
         } = this.props;

@@ -4,11 +4,14 @@ import createLogger from 'redux-logger'
 import stopsReducer from './bus-stops/reducer'
 import busesReducer from './bus-lines/reducer'
 import favoritesReducer from './favorites/reducer'
+import loginReducer from './log-in/reducer'
+import persistState from 'redux-localstorage'
 
 let reducer = combineReducers({
     busesData: busesReducer,
     stopsData: stopsReducer,
-    favorites: favoritesReducer
+    favorites: favoritesReducer,
+    login: loginReducer
 
 });
 
@@ -23,7 +26,8 @@ let store = createStore(
         applyMiddleware(
             thunkMiddleware, // lets us dispatch() functions
             loggerMiddleware
-        )
+        ),
+        persistState (['login'])
     )
 );
 

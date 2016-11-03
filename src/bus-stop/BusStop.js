@@ -41,8 +41,6 @@ class BusStop extends React.Component {
         return (
             <div>
                 <Col sm={12} className="Intro-col ">
-
-
                     {currentStop.map(function (stop) {
                         return <p>Przystanek: {stop.name} {""}
                             <Button onClick={() => favouriteStop(stop.id)} bsSize="xsmall">
@@ -76,7 +74,6 @@ class BusStop extends React.Component {
                                             <p>Przystanek: {currentStop.map(function (stop) {
                                                 return <span> {stop.name} </span>
                                             })}</p>
-                                            <p>Kierunek: </p>
                                         </div>
                                         }>
                                             <p>{bus.routes.map(function (route) {
@@ -85,18 +82,14 @@ class BusStop extends React.Component {
                                         </Panel>
                                     </div>
                                 </Col>
-
                             )
                         }
                     )}
-
                 </Col>
                 <Col sm={6} className="Map-col">
                     <div style={{width: '100%', height: '450'}}>
                         <Map center={currentCoordinates[0]} points={currentStop}/>
                     </div>
-
-
                 </Col>
             </div>
         );

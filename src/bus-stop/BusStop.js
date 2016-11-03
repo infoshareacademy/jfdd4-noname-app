@@ -25,8 +25,8 @@ class BusStop extends React.Component {
             buses,
             stops,
             favouriteStop,
-            hourValue,
-            routesItemsArray = []
+            provideMappedBus,
+            hourValue
         } = this.props;
 
         var stopId = parseInt(this.props.params.busStopId);
@@ -43,7 +43,6 @@ class BusStop extends React.Component {
         var obecnaGodzina = new Date();
         obecnaGodzina.setHours(ileGodzinWDobie);
         obecnaGodzina.setMinutes(ileMinutWGodzinie);
-        var liczbaGodzina = ileGodzinWDobie.toString() + ":" + ileMinutWGodzinie.toString();
 
         return (
             <div>
@@ -71,41 +70,42 @@ class BusStop extends React.Component {
 
                 <ul>
                     {buses.filter(function (bus) {
-                        console.log(bus.stops.indexOf(stopId) !== -1);
+                        {/*console.log(bus.stops.indexOf(stopId) !== -1);*/}
                         return bus.stops.indexOf(stopId) !== -1
                     }).map(function(mappedBus) {
-                        console.log(mappedBus, "****");
-                        return mappedBus.routes.map(function (route) {
-                                                                                            {/*console.log(route, "co?");*/}
-                                                                                            {/*console.log(route[mappedBus.stops.indexOf(stopId)].typeof, "xxx");*/}
-                                                                                            {/*console.log(obecnaGodzina, "obecnie ustawiona godzina");*/}
-                            let zmapowaneGodzinyRozklad=route[mappedBus.stops.indexOf(stopId)].slice(0,2);
-                            let zmapowaneMinutyRozklad=route[mappedBus.stops.indexOf(stopId)].slice(4,5);
-                                                                                            {/*console.log(zmapowaneGodzinyRozklad, "zmapowaneGodzinyRozklad");*/}
-                                                                                            {/*console.log(zmapowaneMinutyRozklad, "zmapowaneMinutyRozklad");*/}
-                            let godzinaMapowanegoKursu = new Date ();
-                            godzinaMapowanegoKursu.setHours(zmapowaneGodzinyRozklad);
-                            godzinaMapowanegoKursu.setMinutes(zmapowaneMinutyRozklad);
-                                                                                            console.log(liczbaGodzina);
-                                                                                            {/*console.log(godzinaMapowanegoKursu, "godzinaMapowanegoKursu");*/}
-                            var pozostaloDoNastepnegoKursu = (Math.abs(Math.abs(godzinaMapowanegoKursu.getTime() - obecnaGodzina.getTime()) / 86400));
-                            if (godzinaMapowanegoKursu >= obecnaGodzina){
-                                                                                            console.log("true");
-                                return (
-                                    <li>
-                                        <Label style={{'margin': '2px'}}>
-                                            {mappedBus.lineNumber}
-                                        </Label>
-                                        {route[mappedBus.stops.indexOf(stopId)]}
-                                        {" pozostało " + pozostaloDoNastepnegoKursu.toFixed(0) +" min" }
-                                    </li>
-                                )
-                            }else{
-                                return console.log('false')
-                            }
+                        return mappedBus.routes.filter(function (route) {
+                            provideMappedBus = mappedBus;
+                            let currentRouteHourString = route[mappedBus.stops.indexOf(stopId)];
+                            let currentRouteHour = parseInt(currentRouteHourString.slice(0,2))*60 + parseInt(currentRouteHourString.slice(3,5));
+                            console.debug(currentRouteHour, "currentRouteHour" );
+                            console.debug(hourValue > currentRouteHour);
+                            return hourValue < currentRouteHour  ;
 
-                        }
-                        );
+                            {/*let zmapowaneGodzinyRozklad=route[mappedBus.stops.indexOf(stopId)].slice(0,2);*/}
+                            {/*let zmapowaneMinutyRozklad=route[mappedBus.stops.indexOf(stopId)].slice(4,5);*/}
+
+                            {/*let godzinaMapowanegoKursu = new Date ();*/}
+                            {/*godzinaMapowanegoKursu.setHours(zmapowaneGodzinyRozklad);*/}
+                            {/*godzinaMapowanegoKursu.setMinutes(zmapowaneMinutyRozklad);*/}
+
+                            {/*var pozostaloDoNastepnegoKursu = (godzinaMapowanegoKursu.getTime() - obecnaGodzina.getTime()) / 86400;*/}
+                            {/*console.log(pozostaloDoNastepnegoKursu);*/}
+                            {/*if (godzinaMapowanegoKursu >= obecnaGodzina){*/}
+                               {/*return true*/}
+                            {/*}else{*/}
+                               {/*return false*/}
+                            {/*}*/}
+
+                        }).map( mappedBus => (
+                            <li>
+                                <Label style={{'margin': '2px'}}>
+                                    {provideMappedBus.lineNumber + " "}
+                                </Label>
+
+                                {mappedBus[provideMappedBus.stops.indexOf(stopId)]}
+                                {/*{" pozostało " + pozostaloDoNastepnegoKursu.toFixed(0) +" min" }*/}
+                            </li>
+                        ));
                     })}
                     </ul>
             </div>

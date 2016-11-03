@@ -81,7 +81,7 @@ class BusDetails extends React.Component {
                     </Col>
                 </Row>
                 <Row>
-                    <p>Mamy godzinę: {obecnaGodzina.getHours() + ':' + obecnaGodzina.getMinutes()} </p>
+                    <p>Mamy godzinę: {(hourValue / 60).toFixed(0)  + ':' + hourValue % 60} </p>
 
                     </Row>
                 <Row>

@@ -4,8 +4,9 @@ import {Link} from 'react-router';
 import {Label} from 'react-bootstrap'
 import Map from '../map/Map'
 import {markStopAsFavorite} from '../bus-stops/actionCreators'
-import {Glyphicon, Button, Col} from 'react-bootstrap'
+import {Glyphicon, Button, Col, Panel} from 'react-bootstrap'
 import './Bus.css'
+import busstopicon from './busstopicon.gif';
 
 const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
@@ -15,6 +16,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     favouriteStop: (stopId) => dispatch(markStopAsFavorite(stopId))
 });
+
+
 
 class BusStop extends React.Component {
 
@@ -58,26 +61,31 @@ class BusStop extends React.Component {
                     })}
                 </Col>
                 <Col sm={6} className="BusStops-col">
-                    <p>Rozkłady jazdy:
-                        {currentStop.map(function (stop) {
-                            return <span> {stop.name} </span>
-                        })}
-
-                    </p>
-
                     {buses.filter(function (bus) {
                         return bus.stops.indexOf(stopId) !== -1
                     }).map(function (bus) {
-                        let busStopIndex = bus.stops.indexOf(stopId);
+                            let busStopIndex = bus.stops.indexOf(stopId);
                             return (
                                 <Col sm={6} className="BusStop-col">
-                                    <Link to={`/bus-details/${bus.lineNumber}`}>
-                                        Linia autobusowa numer: {bus.lineNumber}
-                                    </Link>
-                                    <p>{bus.routes.map(function (route){
-                                        return <b>{route[busStopIndex] + ' '}</b>
-                                    })}</p>
+
+                                    <div>
+                                        <Panel header={<div><Link to={`/bus-details/${bus.lineNumber}`}>
+                                            <img src={busstopicon} alt="busstopicon"/>
+                                            <Label style={{'margin': '2px'}}>{bus.lineNumber}</Label>
+                                        </Link>
+                                            <p>Przystanek: {currentStop.map(function (stop) {
+                                                return <span> {stop.name} </span>
+                                            })}</p>
+                                            <p>Kierunek: </p>
+                                        </div>
+                                        }>
+                                            <p>{bus.routes.map(function (route) {
+                                                return <b>{route[busStopIndex] + ' '}</b>
+                                            })}</p>
+                                        </Panel>
+                                    </div>
                                 </Col>
+
                             )
                         }
                     )}

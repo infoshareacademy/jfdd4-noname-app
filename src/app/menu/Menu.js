@@ -4,7 +4,7 @@ import logo from './logo.png';
 import './Menu.css';
 import LoginForm from '../../log-in/LoginForm'
 import {IndexLinkContainer, LinkContainer} from 'react-router-bootstrap'
-import {Navbar, Nav, NavItem, Glyphicon, NavDropdown , MenuItem} from 'react-bootstrap'
+import {Navbar, Nav, NavItem, Glyphicon, NavDropdown} from 'react-bootstrap'
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({

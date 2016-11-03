@@ -22,7 +22,7 @@ class BusLines extends React.Component {
             lineNumber,
             setFilterValue,
             currentFilterValue,
-        } = this.props
+        } = this.props;
 
 
         return (

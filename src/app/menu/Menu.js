@@ -8,9 +8,10 @@ import {Navbar, Nav, NavItem, Glyphicon, NavDropdown} from 'react-bootstrap'
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
-    favoriteStops: state.stopsData.favoriteStopsIds,
+    favoriteStops: state.favorites.favoriteStops,
+    favoriteBuses: state.favorites.favoriteBuses
     userName: state.login.username
-})
+});
 
 
 class Menu extends Component {
@@ -41,7 +42,10 @@ class Menu extends Component {
                         <NavDropdown eventKey={5} title={this.props.userName} id="basic-nav-dropdown">
                             <LoginForm />
                         </NavDropdown>
-                    </Nav>
+                        <LinkContainer to={`/favorites`}>
+                            <NavItem eventKey={6} href="#">Ulubione ({this.props.favoriteStops.length},{this.props.favoriteBuses.length})</NavItem>
+                        </LinkContainer>
+                      </Nav>
                 </Navbar.Collapse>
             </Navbar>
         )

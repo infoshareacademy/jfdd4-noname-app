@@ -14,7 +14,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    setFilterValue: (newFilterValue) => dispatch(setFilterValue(newFilterValue)),
+    setFilterValue: (newFilterValue) => dispatch(setFilterValue(newFilterValue))
 });
 
 class BusStops extends React.Component {
@@ -44,11 +44,6 @@ class BusStops extends React.Component {
                         .filter(function (stop) {
                             return stop.name.toLowerCase().indexOf(currentFilterValue.toLowerCase()) !== -1;
                         }).sort((s1,s2) => {
-                            if (s1.name < s2.name) return -1;
-                            else if (s1.name > s2.name) return 1;
-                            else return 0;
-                        })
-                        .sort((s1, s2) => {
                             if (s1.name < s2.name) return -1;
                             else if (s1.name > s2.name) return 1;
                             else return 0;

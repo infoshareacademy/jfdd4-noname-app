@@ -17,10 +17,8 @@ class LineStops extends React.Component {
             buses,
         } = this.props;
 
-
         return (
 
-            <div>
 
             <ListGroup className="LineStops-ListChild" >
                 {this.props.stops.map(stop =>
@@ -36,15 +34,12 @@ class LineStops extends React.Component {
                                             .map(function (filteredLineNumber, index) {
                                                 return (
                                                     <content key={index}>
-                                                        {/*<BusLink bus={filteredLineNumber}/>*/}
-                                                        <content key={index}>
-                                                            <content>{" "}</content>
-                                                            <Label>
-                                                                <Link to={`/bus-details/${filteredLineNumber.lineNumber}`}>
-                                                                    {filteredLineNumber.lineNumber}
-                                                                </Link>
-                                                            </Label>
-                                                        </content>
+                                                        <content>{" "}</content>
+                                                        <Label>
+                                                            <Link to={`/bus-details/${filteredLineNumber.lineNumber}`}>
+                                                                {filteredLineNumber.lineNumber}
+                                                            </Link>
+                                                        </Label>
                                                     </content>
                                                 )
                                             })
@@ -56,7 +51,6 @@ class LineStops extends React.Component {
 
                 )}
             </ListGroup>
-                </div>
         )
 
     }

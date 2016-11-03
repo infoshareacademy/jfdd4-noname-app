@@ -11,7 +11,7 @@ const markerStyle = {
     left: -MARKER_SIZE / 2,
     top: -MARKER_SIZE,
     transition: 'all .2s ease-in-out',
-    'transform-origin': 'center bottom'
+    transformOrigin: 'center bottom'
 };
 // const labelStyle = {
 //     display: 'none'

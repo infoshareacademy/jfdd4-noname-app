@@ -6,18 +6,19 @@ import Map from '../map/Map'
 import {markStopAsFavorite} from '../bus-stops/actionCreators'
 import {Glyphicon, Button, Col, Panel} from 'react-bootstrap'
 import './Bus.css'
+import {addFavoriteStop, deleteFavoriteStop} from '../favorites/actionCreators'
 import busstopicon from './busstopicon.gif';
 
 const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
-    stops: state.stopsData.stops
+    stops: state.stopsData.stops,
+    favoriteStops: state.favorites.favoriteStops
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    favouriteStop: (stopId) => dispatch(markStopAsFavorite(stopId))
+    addFavoriteStop: (stopId) => dispatch(addFavoriteStop(stopId)),
+    deleteFavoriteStop: (stopId) => dispatch(deleteFavoriteStop(stopId))
 });
-
-
 
 class BusStop extends React.Component {
 
@@ -25,14 +26,13 @@ class BusStop extends React.Component {
         var {
             buses,
             stops,
-            favouriteStop
+            addFavoriteStop,
+            deleteFavoriteStop,
+            favoriteStops
         } = this.props;
 
         var stopId = parseInt(this.props.params.busStopId);
-        var currentStop = stops.filter(function (stop) {
-            return stop.id === stopId
-
-        });
+        var currentStop = stops.filter(stop => stop.id === stopId);
         var currentCoordinates = currentStop.map((stop) => {
             return [stop.cox, stop.coy]
         });
@@ -41,10 +41,19 @@ class BusStop extends React.Component {
         return (
             <div>
                 <Col sm={12} className="Intro-col ">
+
+
                     {currentStop.map(function (stop) {
+                        console.log('TEST 2',favoriteStops, favoriteStops.indexOf(stopId), stopId)
                         return <p>Przystanek: {stop.name} {""}
-                            <Button onClick={() => favouriteStop(stop.id)} bsSize="xsmall">
-                                <Glyphicon glyph="star"/> Dodaj do ulubionych</Button>
+                            <Button onClick={() => {
+                            favoriteStops.map(a=>a.id).indexOf(stopId) === -1 ?
+                            addFavoriteStop(stopId) :
+                            deleteFavoriteStop(stopId)
+                            }} bsSize="xsmall">
+                                <Glyphicon glyph="star"/>
+                                {favoriteStops.map(a=>a.id).indexOf(stopId) === -1 ? "Dodaj do ulubionych" : "Usuń z ulubionych"}
+                            </Button>
                         </p>
                     })}
                     Linie autobusowe przejeżdające przez dany przystanek:
@@ -85,11 +94,14 @@ class BusStop extends React.Component {
                             )
                         }
                     )}
+
                 </Col>
                 <Col sm={6} className="Map-col">
-                    <div style={{width: '100%', height: '450'}}>
+                    <div style={{width: '100%', height: '450px'}}>
                         <Map center={currentCoordinates[0]} points={currentStop}/>
                     </div>
+
+
                 </Col>
             </div>
         );

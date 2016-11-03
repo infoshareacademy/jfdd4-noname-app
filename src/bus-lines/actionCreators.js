@@ -1,11 +1,18 @@
 import {
     REQUEST_BUSES,
     RECEIVE_BUSES,
-    SET_FILTER_VALUE
-
+    SET_FILTER_VALUE,
+    MARK_BUS_AS_FAVORITE
 } from './actionTypes'
 
 import fetch from 'isomorphic-fetch'
+
+export function markBusAsFavorite(busId) {
+    return {
+        type: MARK_BUS_AS_FAVORITE,
+        busId: busId
+    }
+}
 
 function requestBuses() {
     return {
@@ -22,15 +29,15 @@ function receiveBuses(buses) {
 }
 
 export const fetchBuses = () => dispatch => {
-    dispatch(requestBuses())
+    dispatch(requestBuses());
     return fetch(`${process.env.PUBLIC_URL}/data/data-buses.json`)
-        .then(response => { console.log(response); return response.json()})
-        .then(json => { console.log(json); return dispatch(receiveBuses(json))})
-}
+        .then(response => { return response.json()})
+        .then(json => { return dispatch(receiveBuses(json))})
+};
 
 export function setFilterValue(newFilterValue) {
     return {
         type: SET_FILTER_VALUE,
         filterValue: newFilterValue
     }
-}
+};

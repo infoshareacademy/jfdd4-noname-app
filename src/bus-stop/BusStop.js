@@ -21,6 +21,7 @@ const mapDispatchToProps = (dispatch) => ({
 const mapHourStringToMinutes = (hourString) =>
     parseInt(hourString.slice(0,2))*60 + parseInt(hourString.slice(3,5));
 
+
 class BusStop extends React.Component {
 
     render() {
@@ -78,15 +79,16 @@ class BusStop extends React.Component {
                     {buses.filter(function (bus) {
                         return bus.stops.indexOf(stopId) !== -1
                     }).map(function(mappedBus) {
-                        return mappedBus.routes.filter(
-                            route =>
-                                hourValue < mapHourStringToMinutes(route[mappedBus.stops.indexOf(stopId)])
-                        ).map( route => (
+                        return mappedBus.routes.map(
+                            route => mapHourStringToMinutes(route[mappedBus.stops.indexOf(stopId)])
+                        ).filter(
+                            stopTime => hourValue < stopTime
+                        ).map( stopTime => (
                             <li>
                                 <Label style={{'margin': '2px'}}>
                                     {mappedBus.lineNumber + " "}
                                 </Label>
-                                {" Pozostało " + (mapHourStringToMinutes(route[mappedBus.stops.indexOf(stopId)]) - hourValue)}
+                                {" Pozostało " + (stopTime - hourValue) + " min"}
                             </li>
                         ));
                     })}

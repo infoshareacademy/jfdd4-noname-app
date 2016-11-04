@@ -1,7 +1,8 @@
 import {
     LOGIN_SUCCESS,
     RECEIVE_USER,
-    LOGOUT_SUCCESS
+    LOGOUT_SUCCESS,
+    LOGIN_FAILURE,
 } from './actionTypes'
 
 import fetch from 'isomorphic-fetch'
@@ -22,7 +23,18 @@ export function logIn(username, password) {
                 password
             })
         }).then(
-            response => response.json()
+            response => {
+                if (response.status == '401') {
+                    dispatch({
+                        type: LOGIN_FAILURE,
+                    })
+                }
+                else {
+                    return response.json();
+
+                }
+            }
+
         ).then(
             authData => {
                 dispatch({
@@ -34,7 +46,6 @@ export function logIn(username, password) {
                 dispatch(fetchUser(authData.id, authData.userId))
             }
         )
-
     }
 }
 

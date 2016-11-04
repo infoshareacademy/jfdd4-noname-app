@@ -1,7 +1,8 @@
 import {
     LOGIN_SUCCESS,
     RECEIVE_USER,
-    LOGOUT_SUCCESS
+    LOGOUT_SUCCESS,
+    LOGIN_FAILURE
 } from './actionTypes'
 
 const initialState = {
@@ -26,7 +27,12 @@ export default (state = initialState, action) => {
             return Object.assign({}, state, {
                 username: 'Zaloguj się',
                 userId: null
-            })
+            });
+        case LOGIN_FAILURE:
+            return Object.assign({}, state, {
+                username: 'Zaloguj się',
+                key: 'none'
+            });
         default:
             return state
     }

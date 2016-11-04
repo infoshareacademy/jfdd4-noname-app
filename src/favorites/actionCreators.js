@@ -14,6 +14,7 @@ import {
 } from './actionTypes'
 
 import fetch from 'isomorphic-fetch'
+import store from '../store'
 
 var favoriteStopsUrl = 'https://stark-peak-50225.herokuapp.com/api/favoriteStops/';
 var favoriteBusesUrl = 'https://stark-peak-50225.herokuapp.com/api/favoriteBuses/';
@@ -34,7 +35,7 @@ function receiveFavoriteStops(stops) {
 export function fetchFavoriteStops() {
     return function (dispatch) {
         dispatch(requestFavoriteStops());
-        return fetch(favoriteStopsUrl)
+        return fetch(favoriteStopsUrl + '?filter[where][userId]=' + store.getState().login.userId )
             .then(response => response.json())
             .then(favoriteStops => dispatch(receiveFavoriteStops(favoriteStops)))
     }
@@ -84,7 +85,8 @@ export function addFavoriteStop(stopId) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                id: stopId
+                id: stopId,
+                userId: store.getState().login.userId
             })
         })
             .then(response => response.json())

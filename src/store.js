@@ -27,7 +27,7 @@ let store = createStore(
             thunkMiddleware, // lets us dispatch() functions
             loggerMiddleware
         ),
-        persistState (['login'])
+        persistState ([])
     )
 );
 

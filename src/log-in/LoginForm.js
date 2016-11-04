@@ -64,10 +64,12 @@ class LoginForm extends React.Component {
                         </FormGroup>
                         <FormGroup>
                             <Col smOffset={2} sm={8}>
+                                {this.props.token === 'none' ? 'Podaj poprawne dane' :
+                                    ''
+                                }
                                 <Button type="submit">
                                     Zaloguj się
                                 </Button>
-
                             </Col>
                         </FormGroup>
                     </Form>

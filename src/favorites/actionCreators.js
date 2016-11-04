@@ -10,7 +10,8 @@ import {
     DELETE_FAVORITE_STOP_BEGIN,
     DELETE_FAVORITE_STOP_END,
     DELETE_FAVORITE_BUS_BEGIN,
-    DELETE_FAVORITE_BUS_END
+    DELETE_FAVORITE_BUS_END,
+    PREVENT_ADDING_FAVORITES
 } from './actionTypes'
 
 import fetch from 'isomorphic-fetch'
@@ -57,7 +58,7 @@ function receiveFavoriteBuses(buses) {
 export function fetchFavoriteBuses() {
     return function (dispatch) {
         dispatch(requestFavoriteBuses());
-        return fetch(favoriteBusesUrl)
+        return fetch(favoriteBusesUrl + '?filter[where][userId]=' + store.getState().login.userId)
             .then(response => response.json())
             .then(favoriteBuses => dispatch(receiveFavoriteBuses(favoriteBuses)))
     }
@@ -111,6 +112,11 @@ function addFavoriteBusEnd() {
 
 export function addFavoriteBus(lineNumber) {
     return function (dispatch) {
+        console.debug(store.getState().login.userId)
+        if (store.getState().login.userId === null) {
+            dispatch({ type: PREVENT_ADDING_FAVORITES })
+            return;
+        }
         dispatch(addFavoriteBusBegin());
         return fetch(favoriteBusesUrl, {
             method: 'POST',
@@ -119,7 +125,8 @@ export function addFavoriteBus(lineNumber) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                lineNumber: lineNumber
+                lineNumber: lineNumber,
+                userId: store.getState().login.userId
             })
         })
             .then(response => response.json())
@@ -179,5 +186,11 @@ export function deleteFavoriteBus(lineNumber) {
                 dispatch(deleteFavoriteBusEnd());
                 dispatch(fetchFavoriteBuses())
             })
+    }
+}
+
+export function preventAddingFavorites() {
+    return {
+        type: PREVENT_ADDING_FAVORITES
     }
 }

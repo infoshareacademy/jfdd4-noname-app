@@ -5,7 +5,7 @@ import {
 } from './actionTypes'
 
 import fetch from 'isomorphic-fetch'
-import { fetchFavoriteStops } from '../favorites/actionCreators'
+import { fetchFavoriteStops, fetchFavoriteBuses } from '../favorites/actionCreators'
 
 var url = 'https://stark-peak-50225.herokuapp.com/';
 
@@ -29,7 +29,7 @@ export function logIn(username, password) {
                     type: LOGIN_SUCCESS,
                     key: authData.id,
                     userId: authData.userId
-                })
+                });
 
                 dispatch(fetchUser(authData.id, authData.userId))
             }
@@ -46,7 +46,9 @@ export function fetchUser(token, userId) {
                 type: RECEIVE_USER,
                 username: user.username,
                 userId: user.id
-            })).then(() => dispatch(fetchFavoriteStops()))
+            }))
+            .then(() => dispatch(fetchFavoriteStops()))
+            .then(() => dispatch(fetchFavoriteBuses()))
     }
 }
 
@@ -63,6 +65,8 @@ export function logOut(token) {
                 dispatch({
                     type: LOGOUT_SUCCESS
                 })
-            }).then(() => dispatch(fetchFavoriteStops()))
+            })
+            .then(() => dispatch(fetchFavoriteStops()))
+            .then(() => dispatch(fetchFavoriteBuses()))
     }
 }

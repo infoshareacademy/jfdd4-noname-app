@@ -7,7 +7,7 @@ import {
 const initialState = {
     key: null,
     username: 'Zaloguj się',
-    userId: ''
+    userId: null
 }
 
 export default (state = initialState, action) => {
@@ -25,7 +25,7 @@ export default (state = initialState, action) => {
         case LOGOUT_SUCCESS:
             return Object.assign({}, state, {
                 username: 'Zaloguj się',
-                userId: ''
+                userId: null
             })
         default:
             return state

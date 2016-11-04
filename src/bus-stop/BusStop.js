@@ -29,11 +29,8 @@ class BusStop extends React.Component {
             buses,
             stops,
             favouriteStop,
-            provideMappedBus,
-            currentRouteHourString,
-            currentRouteHour,
             hourValue,
-            minutesLeft = []
+            tabela= []
         } = this.props;
 
         var stopId = parseInt(this.props.params.busStopId);
@@ -50,6 +47,8 @@ class BusStop extends React.Component {
         var obecnaGodzina = new Date();
         obecnaGodzina.setHours(ileGodzinWDobie);
         obecnaGodzina.setMinutes(ileMinutWGodzinie);
+
+
 
         return (
             <div>
@@ -76,22 +75,30 @@ class BusStop extends React.Component {
 
 
                 <ul>
-                    {buses.filter(function (bus) {
+                    {[].concat.apply([], buses.filter(function (bus) {
                         return bus.stops.indexOf(stopId) !== -1
-                    }).map(function(mappedBus) {
-                        return mappedBus.routes.map(
-                            route => mapHourStringToMinutes(route[mappedBus.stops.indexOf(stopId)])
+                    }).map(function(filteredBus) {
+                        return filteredBus.routes.map(
+                            route => mapHourStringToMinutes(route[filteredBus.stops.indexOf(stopId)])
                         ).filter(
                             stopTime => hourValue < stopTime
-                        ).map( stopTime => (
-                            <li>
-                                <Label style={{'margin': '2px'}}>
-                                    {mappedBus.lineNumber + " "}
-                                </Label>
-                                {" Pozostało " + (stopTime - hourValue) + " min"}
-                            </li>
-                        ));
-                    })}
+                        ).map(
+                            stopTime => ({
+                                lineNumber: filteredBus.lineNumber,
+                                timeLeft: stopTime - hourValue
+                            })
+                        )
+                    })).sort(function (a,b) {
+                        return a.timeLeft - b.timeLeft
+                    }).slice(0, 5).map( ({ lineNumber, timeLeft }) => (
+                        <li >
+                            <Label style={{'margin': '2px'}}>
+                                {lineNumber + " "}
+                            </Label>
+                            {" Pozostało " + (timeLeft) + " min"}
+
+                        </li>
+                    ))}
                     </ul>
             </div>
         );

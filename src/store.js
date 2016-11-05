@@ -7,6 +7,7 @@ import favoritesReducer from './favorites/reducer'
 import loginReducer from './log-in/reducer'
 import persistState from 'redux-localstorage'
 
+
 let reducer = combineReducers({
     busesData: busesReducer,
     stopsData: stopsReducer,

@@ -3,18 +3,17 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router';
 import {Label} from 'react-bootstrap'
 import Map from '../map/Map'
-import $ from 'jquery';
 import {markStopAsFavorite} from '../bus-stops/actionCreators'
-import {Glyphicon, Button, Col, Panel} from 'react-bootstrap'
+import {Glyphicon, Button, Col, Row, Panel} from 'react-bootstrap'
 import './Bus.css'
 import {addFavoriteStop, deleteFavoriteStop} from '../favorites/actionCreators'
+import IncomingBuses from './incoming-buses/IncomingBuses'
 import busstopicon from './busstopicon.gif';
 
 const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
     stops: state.stopsData.stops,
     hourValue: state.sliderData.hourValue,
-    stops: state.stopsData.stops,
     favoriteStops: state.favorites.favoriteStops
 });
 
@@ -40,7 +39,9 @@ class BusStop extends React.Component {
             favoriteStops
         } = this.props;
 
+
         var stopId = parseInt(this.props.params.busStopId);
+        var busId = buses;
         var currentStop = stops.filter(stop => stop.id === stopId);
         var currentCoordinates = currentStop.map((stop) => {
             return [stop.cox, stop.coy]
@@ -50,8 +51,9 @@ class BusStop extends React.Component {
         return (
             <div>
                 <Col sm={12} className="Intro-col ">
-
-
+                    {console.debug(buses.filter(function (xyz) {
+                        console.log(xyz)
+                    }), "original")}
                     {currentStop.map(function (stop) {
                         console.log('TEST 2',favoriteStops, favoriteStops.indexOf(stopId), stopId)
                         return <p>Przystanek: {stop.name} {""}
@@ -108,33 +110,6 @@ class BusStop extends React.Component {
                         )}
 
                     </Col>
-
-                <ul>
-                    {[].concat.apply([], buses.filter(function (bus) {
-                        return bus.stops.indexOf(stopId) !== -1
-                    }).map(function(filteredBus) {
-                        return filteredBus.routes.map(
-                            route => mapHourStringToMinutes(route[filteredBus.stops.indexOf(stopId)])
-                        ).filter(
-                            stopTime => hourValue < stopTime
-                        ).map(
-                            stopTime => ({
-                                lineNumber: filteredBus.lineNumber,
-                                timeLeft: stopTime - hourValue
-                            })
-                        )
-                    })).sort(function (a,b) {
-                        return a.timeLeft - b.timeLeft
-                    }).slice(0, 5).map( ({ lineNumber, timeLeft }) => (
-                        <li >
-                            <Label style={{'margin': '2px'}}>
-                                {lineNumber + " "}
-                            </Label>
-                            {" Pozostało " + (timeLeft) + " min"}
-
-                        </li>
-                    ))}
-                    </ul>
                 </Col>
                 <Col sm={6} className="Map-col">
                     <div style={{width: '100%', height: '450px'}}>
@@ -143,6 +118,36 @@ class BusStop extends React.Component {
 
 
                 </Col>
+
+                <div>
+                    <ul>
+                        {[].concat.apply([], buses.filter(function (bus) {
+                            return bus.stops.indexOf(stopId) !== -1
+                        }).map(function(filteredBus) {
+                            return filteredBus.routes.map(
+                                route => mapHourStringToMinutes(route[filteredBus.stops.indexOf(stopId)])
+                            ).filter(
+                                stopTime => hourValue < stopTime
+                            ).map(
+                                stopTime => ({
+                                    lineNumber: filteredBus.lineNumber,
+                                    timeLeft: stopTime - hourValue
+                                })
+                            )
+                        })).sort(function (a,b) {
+                            return a.timeLeft - b.timeLeft
+                        }).slice(0, 5).map( ({ lineNumber, timeLeft }) => (
+                            <li >
+                                <Label style={{'margin': '2px'}}>
+                                    {lineNumber + " "}
+                                </Label>
+                                {" Pozostało " + (timeLeft) + " min"}
+
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <IncomingBuses stopId={stopId} busList={buses} />
             </div>
         );
     }

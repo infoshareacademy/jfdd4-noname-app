@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Map from '../map/Map'
+import IncomingBuses from '../bus-stop/incoming-buses/IncomingBuses'
 
 const mapStateToProps = state => ({
     stops: state.stopsData.stops,
@@ -10,8 +11,6 @@ const mapStateToProps = state => ({
 
 
 const StopsMap = ({
-
-
     stops,
     buses,
     activeStops = stops.map(s => s.id === 1)

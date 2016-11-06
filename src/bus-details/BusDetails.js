@@ -14,7 +14,6 @@ const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
     stops: state.stopsData.stops,
     hourValue: state.sliderData.hourValue,
-    stops: state.stopsData.stops,
     favoriteBuses: state.favorites.favoriteBuses
 });
 

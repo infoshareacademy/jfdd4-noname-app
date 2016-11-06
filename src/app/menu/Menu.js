@@ -35,12 +35,15 @@ class Menu extends Component {
                         <LinkContainer to={`/bus-lines`}>
                             <NavItem eventKey={3} href="#">Lista autobusów</NavItem>
                         </LinkContainer>
+                        <LinkContainer to={`/route-finder`}>
+                            <NavItem eventKey={4} href="#">Znajdź trasę</NavItem>
+                        </LinkContainer>
                     </Nav>
                     <Nav pullRight>
                         <LinkContainer to={`/favorites`}>
-                            <NavItem eventKey={6} href="#">Ulubione ({this.props.favoriteStops.length},{this.props.favoriteBuses.length})</NavItem>
+                            <NavItem eventKey={5} href="#">Ulubione ({this.props.favoriteStops.length},{this.props.favoriteBuses.length})</NavItem>
                         </LinkContainer>
-                        <NavDropdown eventKey={5} title={this.props.userName} id="basic-nav-dropdown">
+                        <NavDropdown eventKey={6} title={this.props.userName} id="basic-nav-dropdown">
                             <LoginForm />
                         </NavDropdown>
                       </Nav>

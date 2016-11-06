@@ -34,7 +34,6 @@ export default  class Map extends React.Component {
                     </Stop>
                 })}
             </GoogleMap>
-
         </div>
     }
 }

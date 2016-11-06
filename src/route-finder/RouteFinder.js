@@ -20,7 +20,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     saveDestinations: (departValue, arriveValue) => {
         dispatch(saveDestinations(departValue, arriveValue));
-        console.log(departValue,arriveValue)
     }
 });
 
@@ -45,10 +44,21 @@ class RouteFinder extends React.Component {
                 else return 0;}
             ).map(stop=>stop.name);
 
-        var isSearchFormEmpty = departValue.length === 0 && arriveValue.length === 0;
+        var isSearchFormEmpty = departValue.length === 0 || arriveValue.length === 0;
 
-        console.log(isSearchFormEmpty);
-        console.log(sortedStopsNames);
+
+        var departStop = stops.filter(stop => stop.name === departValue[0]);
+        var arriveStop = stops.filter(stop => stop.name === arriveValue[0]);
+
+        var destinations = function() {
+            if (departStop.length === 0 || arriveStop.length === 0) {
+                return [{name: 'Tu jesteś',cox: 54.368420, coy: 18.644188}]
+            } else {
+                return departStop.concat(arriveStop)
+            }
+        };
+
+        console.log(destinations());
 
         return (
             <div>
@@ -61,7 +71,7 @@ class RouteFinder extends React.Component {
                 </Col>
                 <Col sm={6} className="Map-col">
                     <div style={{width: '100%', height: '450px'}}>
-                        <Map zoom={13} center={stops} points={stops}/>
+                        <Map zoom={12} center={destinations()} points={destinations()}/>
                     </div>
 
 

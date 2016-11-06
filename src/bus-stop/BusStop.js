@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router';
 import {Label} from 'react-bootstrap'
 import Map from '../map/Map'
-import {markStopAsFavorite} from '../bus-stops/actionCreators'
 import {Glyphicon, Button, Col, Panel} from 'react-bootstrap'
 import './Bus.css'
 import {addFavoriteStop, deleteFavoriteStop} from '../favorites/actionCreators'
@@ -81,7 +80,7 @@ class BusStop extends React.Component {
                                             <img src={busstopicon} alt="busstopicon"/>
                                             <Label style={{'margin': '2px'}}>{bus.lineNumber}</Label>
                                         </Link>
-                                            <p>Przystanek: {currentStop.map(function (stop) {
+                                            <p>{currentStop.map(function (stop) {
                                                 return <span> {stop.name} </span>
                                             })}</p>
                                         </div>

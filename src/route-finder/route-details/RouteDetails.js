@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Col, Button, Panel, Glyphicon, Label, ListGroupItem} from 'react-bootstrap'
 import {Link} from 'react-router'
 import {addFavoriteBus, deleteFavoriteBus} from '../../favorites/actionCreators'
+import busstopicon from '../../bus-stop/busstopicon.gif';
 
 
 const mapStateToProps = (state) => ({
@@ -36,8 +37,11 @@ class RouteDetails extends React.Component {
 
         var departStop = stops.filter(stop => stop.name === departValue[0]);
         var arriveStop = stops.filter(stop => stop.name === arriveValue[0]);
+        var departStopId = departStop.map(s=>s.id);
 
-        var availableBuses = buses.map(bus => bus.lineNumber);
+        var availableBuses = buses
+            .filter(bus => bus.stops.indexOf(departStop[0].id) !== -1)
+            .filter(bus => bus.stops.indexOf(arriveStop[0].id) !== -1);
 
 
         return (
@@ -52,14 +56,42 @@ class RouteDetails extends React.Component {
                     </Link>
                 </h4>
                 <p>Dostępne autobusy:</p>
-                <ul>
-                    {availableBuses.map(bus => {
-                        return <li key={bus}>{bus}</li>
-                    })}
-                </ul>
+
+                {availableBuses
+                    .map((bus) => {
+                        return (
+                            <Col sm={6} className="BusStop-col">
+                                <div>
+                                    <Panel header={<div><Link to={`/bus-details/${bus.lineNumber}`}>
+                                        <img src={busstopicon} alt="busstopicon"/>
+                                        <Label style={{'margin': '2px'}}>{bus.lineNumber}</Label>
+                                    </Link>
+                                        <p>{departStop.map(function (stop) {
+                                            return <span> {stop.name} </span>
+                                        })}</p>
+                                    </div>
+                                    }>
+                                        <p>{bus.routes.map(function (route) {
+                                            return <b>{route[departStopId] + ' '}</b>
+                                        })}</p>
+                                    </Panel>
+                                </div>
+                            </Col>
+                        )
+                    }
+                )}
             </div>
         )
     }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RouteDetails)
+                // <ul>
+                //     {availableBuses.map(bus => {
+                //         return <li key={bus.lineNumber}>
+                //             <Link to={`/bus-details/${bus.lineNumber}`}>
+                //                 {bus.lineNumber}
+                //             </Link>
+                //         </li>
+                //     })}
+                // </ul>

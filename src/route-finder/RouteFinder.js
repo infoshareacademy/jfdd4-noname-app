@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {ListGroupItem, Button, Col} from 'react-bootstrap'
 import {Link} from 'react-router'
-import {saveDestinations} from './actionCreators'
+import {saveDestinations, switchDestinations} from './actionCreators'
 import Map from '../map/Map'
 import SearchForm from './search-form/SearchForm'
 import RouteDetails from './route-details/RouteDetails'
@@ -28,7 +28,8 @@ class RouteFinder extends React.Component {
             stops,
             departValue,
             arriveValue,
-            saveDestinations
+            saveDestinations,
+            switchDestinations
         } = this.props;
 
         if (stops.length === 0) {
@@ -63,6 +64,7 @@ class RouteFinder extends React.Component {
                 <Col sm={6} className="BusStops-col">
                     <SearchForm
                         handleSubmit={saveDestinations}
+                        handleClick={switchDestinations}
                         options={sortedStopsNames}
                     />
                     {isSearchFormEmpty ? null : <RouteDetails/>}

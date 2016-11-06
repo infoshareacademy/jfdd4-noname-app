@@ -93,7 +93,6 @@ class BusStop extends React.Component {
                             )
                         }
                     )}
-
                 </Col>
                 <Col sm={6} className="Map-col">
                     <div style={{width: '100%', height: '450px'}}>

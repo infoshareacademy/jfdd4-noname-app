@@ -9,3 +9,4 @@ export function saveDestinations(departValue, arriveValue) {
         arriveValue: arriveValue
     }
 }
+

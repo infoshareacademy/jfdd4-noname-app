@@ -62,6 +62,17 @@ class BusDetails extends React.Component {
         }).map(function (stop) {
             return stop.id});
 
+        // var centerMap = ()=>{
+        //     let xArray = busStops.map(x=>x.cox);
+        //     let yArray = busStops.map(y=>y.coy);
+        //     function average(array) {
+        //         return array.reduce((prev, curr)=>(prev + curr))/array.length
+        //     }
+        //     return [average(xArray), average(yArray)]
+        // };
+
+        // console.log('TEST', centerMap());
+
         return (
             <div>
                 <Row>
@@ -95,7 +106,7 @@ class BusDetails extends React.Component {
                     </Col>
                     <Col md={6}>
                         <div style={{width: '100%', height: '500px'}}>
-                            <Map center={[54.350610, 18.663068]} points={busStops} />
+                            <Map zoom={13} points={busStops} />
                         </div>
                     </Col>
                 </Row>

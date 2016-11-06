@@ -11,7 +11,7 @@ const StopsMap = ({
 }) => (
     <div>
         <div style={{width: '100%', height: '500px'}}>
-            <Map center={[54.352325, 18.671786]} points={stops} />
+            <Map zoom={14} center={[54.352325, 18.671786]} points={stops} />
         </div>
     </div>
 );

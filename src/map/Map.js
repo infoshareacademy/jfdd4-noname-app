@@ -14,7 +14,17 @@ export default  class Map extends React.Component {
             height: MARKER_SIZE,
             left: -MARKER_SIZE / 2,
             top: -MARKER_SIZE
-        }
+        };
+
+        var centerMap = (stops)=>{
+            let xArray = stops.map(x=>x.cox);
+            let yArray = stops.map(y=>y.coy);
+            function average(array) {
+                return array.reduce((prev, curr)=>(prev + curr))/array.length
+            }
+            return [average(xArray), average(yArray)]
+        };
+
         const getStyle=(props)=>({...markerStyle, transform: `scale(2)`});
 
 
@@ -24,8 +34,8 @@ export default  class Map extends React.Component {
                 bootstrapURLKeys={{
                     key: 'AIzaSyCkDbleAYeCPGyTEDJ8Jk94gwXDxombvRE'
                 }}
-                center={this.props.center}
-                zoom={14}>
+                center={centerMap(this.props.points)}
+                zoom={this.props.zoom}>
                 {this.props.points.map(function (point) {
                     return <Stop key={point.id} to={`/bus-stops/${point.id}`} lat={point.cox} lng={point.coy}>
                         {point.name}

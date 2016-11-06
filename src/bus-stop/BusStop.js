@@ -98,7 +98,7 @@ class BusStop extends React.Component {
                 </Col>
                 <Col sm={6} className="Map-col">
                     <div style={{width: '100%', height: '450px'}}>
-                        <Map center={currentCoordinates[0]} points={currentStop}/>
+                        <Map zoom={16} center={currentCoordinates[0]} points={currentStop}/>
                     </div>
 
 

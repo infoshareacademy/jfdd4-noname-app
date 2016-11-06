@@ -1,8 +1,6 @@
 import React from 'react'
 import stopMarker from './bus-stop-marker.svg'
 import { Link } from 'react-router'
-import IncomingBuses from '../../incoming-buses/IncomingBuses'
-import {connect} from 'react-redux'
 
 
 var MARKER_SIZE = 40;
@@ -19,11 +17,6 @@ const markerStyle = {
 //     display: 'none'
 // };
 
-const mapStateToProps = state => ({
-    stops: state.stopsData.stops,
-    buses: state.busesData.buses,
-    hourValue: state.sliderData.hourValue
-});
 
 const getMarkerStyle=(props)=>({
     ...markerStyle,
@@ -33,7 +26,7 @@ const getMarkerStyle=(props)=>({
 const getLabelStyle=(props)=>({
     display: props.$hover ? 'block' : 'none',
     position: 'absolute',
-    width: 300,
+    width: 200,
     marginLeft: -100,
     color: 'darkred',
     textAlign: 'center',
@@ -44,15 +37,11 @@ const getLabelStyle=(props)=>({
     zIndex: 99
 })
 
+
 export default (props) =>
-<div>
     <Link to={props.to}>
         <div style={getMarkerStyle(props)}>
-            <img src={stopMarker} alt="bus-stop-selected"/>
+            <img src={stopMarker} alt="bus-stop"/>
         </div>
-        <a style={getLabelStyle(props)} className="stopLabel">{props.children}
-        </a>
+        <a style={getLabelStyle(props)} className="stopLabel">{props.children}</a>
     </Link>
-</div>
-
-

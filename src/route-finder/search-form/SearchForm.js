@@ -16,7 +16,10 @@ export default class SearchForm extends React.Component {
     render() {
         console.log(this.state.departValue, this.state.arriveValue)
         return (
-            <form>
+            <form onSubmit={(event) => {
+                event.preventDefault();
+                this.props.handleSubmit(this.state.departValue, this.state.arriveValue)
+            }}>
 
                 <Typeahead
                     placeholder="Wpisz przystanek początkowy"

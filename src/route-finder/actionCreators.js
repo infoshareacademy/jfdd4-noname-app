@@ -1,18 +1,11 @@
 import {
-    SAVE_DEPART_STOP,
-    SAVE_ARRIVE_STOP
+    SAVE_DESTINATIONS
 } from './actionTypes'
 
-export function saveDepartStop(departValue) {
+export function saveDestinations(departValue, arriveValue) {
     return {
-        type: SAVE_DEPART_STOP,
-        departValue: departValue
-    }
-}
-
-export function saveArriveStop(arriveValue) {
-    return {
-        type: SAVE_ARRIVE_STOP,
+        type: SAVE_DESTINATIONS,
+        departValue: departValue,
         arriveValue: arriveValue
     }
 }

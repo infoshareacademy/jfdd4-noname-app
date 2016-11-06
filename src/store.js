@@ -5,14 +5,15 @@ import stopsReducer from './bus-stops/reducer'
 import busesReducer from './bus-lines/reducer'
 import favoritesReducer from './favorites/reducer'
 import loginReducer from './log-in/reducer'
-import routeFinderReeducer from './route-finder/reducer'
+import routeFinderReducer from './route-finder/reducer'
 import persistState from 'redux-localstorage'
 
 let reducer = combineReducers({
     busesData: busesReducer,
     stopsData: stopsReducer,
     favorites: favoritesReducer,
-    login: loginReducer
+    login: loginReducer,
+    findRoute: routeFinderReducer
 
 });
 

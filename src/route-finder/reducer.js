@@ -1,6 +1,5 @@
 import {
-    SAVE_DEPART_STOP,
-    SAVE_ARRIVE_STOP
+    SAVE_DESTINATIONS
 } from './actionTypes'
 
 
@@ -11,12 +10,9 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case SAVE_DEPART_STOP:
+        case SAVE_DESTINATIONS:
             return Object.assign({}, state, {
-                departValue: action.departValue
-            });
-        case SAVE_ARRIVE_STOP:
-            return Object.assign({}, state, {
+                departValue: action.departValue,
                 arriveValue: action.arriveValue
             });
         default:

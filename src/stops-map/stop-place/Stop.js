@@ -33,7 +33,7 @@ const getMarkerStyle=(props)=>({
 const getLabelStyle=(props)=>({
     display: props.$hover ? 'block' : 'none',
     position: 'absolute',
-    width: 200,
+    width: 300,
     marginLeft: -100,
     color: 'darkred',
     textAlign: 'center',
@@ -51,7 +51,6 @@ export default (props) =>
             <img src={stopMarker} alt="bus-stop-selected"/>
         </div>
         <a style={getLabelStyle(props)} className="stopLabel">{props.children}
-            {/*<IncomingBuses stopId={"11"}/>*/}
         </a>
     </Link>
 </div>

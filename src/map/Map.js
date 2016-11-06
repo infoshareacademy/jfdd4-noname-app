@@ -32,7 +32,6 @@ export default  class Map extends React.Component {
                         {point.name}
                         <IncomingBuses stopId={point.id}/>
                     </Stop>
-
                 })}
             </GoogleMap>
 

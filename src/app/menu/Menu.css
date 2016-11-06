@@ -15,3 +15,9 @@
 .NavDropdown {
     width: 300px;
 }
+
+img.menu-icon {
+    height: 16px;
+    width: 16px;
+    vertical-align: text-bottom;
+}

@@ -8,6 +8,7 @@ import loginReducer from './log-in/reducer'
 import routeFinderReducer from './route-finder/reducer'
 import persistState from 'redux-localstorage'
 
+
 let reducer = combineReducers({
     busesData: busesReducer,
     stopsData: stopsReducer,
@@ -29,7 +30,7 @@ let store = createStore(
             thunkMiddleware, // lets us dispatch() functions
             loggerMiddleware
         ),
-
+        persistState ([])
     )
 );
 

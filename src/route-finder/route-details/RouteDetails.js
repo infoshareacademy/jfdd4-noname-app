@@ -7,7 +7,7 @@ import {addFavoriteBus, deleteFavoriteBus} from '../../favorites/actionCreators'
 
 const mapStateToProps = (state) => ({
     stops: state.stopsData.stops,
-    buses: state.busesData.lineNumber,
+    buses: state.busesData.buses,
     departValue: state.findRoute.departValue,
     arriveValue: state.findRoute.arriveValue
 });
@@ -30,14 +30,14 @@ class RouteDetails extends React.Component {
             deleteFavoriteBus
         } = this.props;
 
-        // if (stops === undefined) {
-        //     return <div>Trwa ładowanie danych...</div>
-        // }
+        if (stops === undefined) {
+            return <div>Trwa ładowanie danych...</div>
+        }
 
         var departStop = stops.filter(stop => stop.name === departValue[0]);
         var arriveStop = stops.filter(stop => stop.name === arriveValue[0]);
-        var availableBuses = buses.map(bus => bus.lineNumber);
 
+        var availableBuses = buses.map(bus => bus.lineNumber);
 
 
         return (
@@ -45,13 +45,12 @@ class RouteDetails extends React.Component {
                 <h4>Szczegóły trasy:{' '}
                     <Link to={`/bus-stops/${departStop[0].id}`}>
                         {departValue}
-                    </Link>
-                    <Glyphicon glyph="arrow-right"/>
+                    </Link>{' '}
+                    <Glyphicon glyph="arrow-right"/>{' '}
                     <Link to={`/bus-stops/${arriveStop[0].id}`}>
                         {arriveValue}
                     </Link>
                 </h4>
-                <p> </p>
                 <p>Dostępne autobusy:</p>
                 <ul>
                     {availableBuses.map(bus => {

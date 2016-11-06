@@ -8,11 +8,9 @@ import SearchForm from './search-form/SearchForm'
 import RouteDetails from './route-details/RouteDetails'
 
 
-
-
 const mapStateToProps = (state) => ({
     stops: state.stopsData.stops,
-    buses: state.busesData.lineNumber,
+    buses: state.busesData.buses,
     departValue: state.findRoute.departValue,
     arriveValue: state.findRoute.arriveValue
 });
@@ -38,10 +36,11 @@ class RouteFinder extends React.Component {
         }
 
         var sortedStopsNames = stops
-            .sort((s1,s2) => {
-                if (s1.name < s2.name) return -1;
-                else if (s1.name > s2.name) return 1;
-                else return 0;}
+            .sort((s1, s2) => {
+                    if (s1.name < s2.name) return -1;
+                    else if (s1.name > s2.name) return 1;
+                    else return 0;
+                }
             ).map(stop=>stop.name);
 
         var isSearchFormEmpty = departValue.length === 0 || arriveValue.length === 0;
@@ -50,15 +49,14 @@ class RouteFinder extends React.Component {
         var departStop = stops.filter(stop => stop.name === departValue[0]);
         var arriveStop = stops.filter(stop => stop.name === arriveValue[0]);
 
-        var destinations = function() {
+        var destinations = function () {
             if (departStop.length === 0 || arriveStop.length === 0) {
-                return [{name: 'Tu jesteś',cox: 54.368420, coy: 18.644188}]
+                return [{name: 'Tu jesteś', cox: 54.368420, coy: 18.644188}]
             } else {
                 return departStop.concat(arriveStop)
             }
         };
 
-        console.log(destinations());
 
         return (
             <div>

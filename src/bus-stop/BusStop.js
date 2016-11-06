@@ -30,7 +30,6 @@ class BusStop extends React.Component {
             stops,
             favouriteStop,
             hourValue,
-            tabela= []
         } = this.props;
 
         var stopId = parseInt(this.props.params.busStopId);
@@ -41,14 +40,6 @@ class BusStop extends React.Component {
         var currentCoordinates = currentStop.map((stop) => {
             return [stop.cox, stop.coy]
         });
-
-        var ileMinutWGodzinie =  new Date(hourValue).getMinutes();
-        var ileGodzinWDobie = new Date(hourValue).getHours();
-        var obecnaGodzina = new Date();
-        obecnaGodzina.setHours(ileGodzinWDobie);
-        obecnaGodzina.setMinutes(ileMinutWGodzinie);
-
-
 
         return (
             <div>

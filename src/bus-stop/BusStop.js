@@ -34,11 +34,12 @@ class BusStop extends React.Component {
         var stopId = parseInt(this.props.params.busStopId);
         var currentStop = stops.filter(stop => stop.id === stopId);
 
-        var isFavorite = favoriteStops.map(a=>a.id).indexOf(stopId) === -1;
-
         if (currentStop.length === 0) {
             return <div>Trwa ładowanie danych...</div>
         }
+
+        var isFavorite = favoriteStops.map(a=>a.id).indexOf(stopId) === -1;
+
 
 
         return (

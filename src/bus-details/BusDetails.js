@@ -7,6 +7,7 @@ import './BusDetails.css';
 import Map from '../map/Map'
 import {addFavoriteBus, deleteFavoriteBus} from '../favorites/actionCreators'
 
+
 const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
     stops: state.stopsData.stops,
@@ -106,6 +107,7 @@ class BusDetails extends React.Component {
                 </Row>
             </div>
         )
+
     }
 }
 

@@ -37,8 +37,6 @@ class RouteFinder extends React.Component {
             return <div>Trwa ładowanie danych...</div>
         }
 
-        console.log(departValue, arriveValue)
-
         return (
             <div>
                 <Col sm={6} className="BusStops-col">
@@ -53,9 +51,7 @@ class RouteFinder extends React.Component {
                     />
                     <div>
                         <h4>Szczegóły trasy:</h4>
-                        <h5>{departValue.length == [] && arriveValue.length == 0 ?
-                                departValue + ' => ' + arriveValue : null
-                        }</h5>
+                        <h5>{departValue}{arriveValue}</h5>
                     </div>
                 </Col>
                 <Col sm={6} className="Map-col">

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import {Label} from 'react-bootstrap'
-import {Glyphicon, Button, Col, Row, Panel} from 'react-bootstrap'
+import {ListGroup, ListGroupItem, Col, Table} from 'react-bootstrap'
 import './Bus.css'
 
 const mapStateToProps = (state) => ({
@@ -34,7 +34,7 @@ class IncomingBuses extends React.Component {
             <div>
                 {/*{console.debug(buses, "bus")}*/}
                 {/*{console.debug(busList, "buslist")}*/}
-                    <ul>
+
                         {[].concat.apply([], buses.filter(function (bus) {
                             return bus.stops.indexOf(stopId) !== -1
                         }).map(function(filteredBus) {
@@ -51,14 +51,18 @@ class IncomingBuses extends React.Component {
                         })).sort(function (a,b) {
                             return a.timeLeft - b.timeLeft
                         }).slice(0, 5).map( ({ lineNumber, timeLeft }) => (
-                            <li >
-                                <Label style={{'margin': '2px'}}>
-                                    {lineNumber + " "}
-                                </Label>
-                                {" Pozostało " + (timeLeft) + " min"}
-                            </li>
+                            <Col md={12}>
+                                <ListGroup>
+                                    <ListGroupItem>
+                                        <Label style={{'margin': '2px'}}>
+                                            {lineNumber}
+                                        </Label>
+                                        {" Pozostało " + (timeLeft) + " min"}
+                                    </ListGroupItem>
+                                </ListGroup>
+                            </Col>
                         ))}
-                    </ul>
+
                 </div>
 
         );

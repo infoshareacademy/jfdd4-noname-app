@@ -1,7 +1,22 @@
+ul {
+    margin-bottom: 0;
+}
+
+.list-group {
+    margin-bottom: 0 !important;
+}
+
+span.list-group-item {
+    font-size: 10px;
+}
+
+.list-group-item {
+    padding: 2px !important;
+}
+
 .bus-icon {
     border: solid 2px red;
     display: inline-block;
-    margin: 0 2px;
 }
 
 .BusStop-col {

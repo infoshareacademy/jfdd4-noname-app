@@ -1,0 +1,13 @@
+.bus-icon {
+    border: solid 2px red;
+    display: inline-block;
+    margin: 0 2px;
+}
+
+.BusStop-col {
+    font-size: 13px;
+}
+
+.BusStop-col p {
+    margin: 0.5px auto;
+}

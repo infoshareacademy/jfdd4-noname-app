@@ -1,6 +1,7 @@
 import React from 'react'
 import GoogleMap from 'google-map-react'
 import Stop from '../stops-map/stop-place/Stop'
+import IncomingBuses from '../incoming-buses/IncomingBuses'
 
 
 export default  class Map extends React.Component {
@@ -29,9 +30,12 @@ export default  class Map extends React.Component {
                 {this.props.points.map(function (point) {
                     return <Stop key={point.id} to={`/bus-stops/${point.id}`} lat={point.cox} lng={point.coy}>
                         {point.name}
+                        <IncomingBuses stopId={point.id}/>
                     </Stop>
+
                 })}
             </GoogleMap>
+
         </div>
     }
 }

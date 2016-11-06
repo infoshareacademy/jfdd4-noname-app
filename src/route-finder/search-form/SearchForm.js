@@ -7,38 +7,27 @@ export default class SearchForm extends React.Component {
     constructor() {
         super();
         this.state = {
-            departValue: 'Wpisz przystanek początkowy',
-            arriveValue: 'Wpisz przystanek końcowy'
+            departValue: [],
+            arriveValue: []
         }
     }
 
+
     render() {
+        console.log(this.state.departValue, this.state.arriveValue)
         return (
-            <form onSubmit={(event) => {
-                event.preventDefault();
-                this.props.handleSubmit(this.props.studentId, this.state.value)
-            }}>
-                <input
-                    type="text"
-                    defaultValue={this.state.value}
-                    onChange={(event) => this.setState({
-                        value: event.target.value
-                    })} />
+            <form>
 
                 <Typeahead
-                    defaultValue={this.state.departValue}
-                    point="depart"
-                    onChange={event => this.setState({
-                        departValue: event.target.value
-                    })}
+                    placeholder="Wpisz przystanek początkowy"
+                    labelkey="depart"
+                    onChange={selected => this.setState({departValue: selected})}
                     options={this.props.options}
                 />
                 <Typeahead
-                    defaultValue={this.state.arriveValue}
-                    point="arrive"
-                    onChange={event => this.setState({
-                        arriveValue: event.target.value
-                    })}
+                    placeholder="Wpisz przystanek końcowy"
+                    labelKey="arrive"
+                    onChange={selected => this.setState({arriveValue: selected})}
                     options={this.props.options}
                 />
                 <Button>Wyszukaj trasę</Button>

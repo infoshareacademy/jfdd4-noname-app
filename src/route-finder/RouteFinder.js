@@ -2,8 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {ListGroupItem, Button, Col} from 'react-bootstrap'
 import {Link} from 'react-router'
-import {setFilterValue} from '../bus-stops/actionCreators'
-import Typeahead from 'react-bootstrap-typeahead';
 import Map from '../map/Map'
 import SearchForm from './search-form/SearchForm'
 
@@ -34,7 +32,6 @@ class RouteFinder extends React.Component {
         var beginStop;
         var arriveStop;
 
-        console.log('TEST', stops.map(stop=>stop.name));
 
         return (
             <div>
@@ -44,10 +41,11 @@ class RouteFinder extends React.Component {
                             if (s1.name < s2.name) return -1;
                             else if (s1.name > s2.name) return 1;
                             else return 0;}
-                        )
-                        .map(stop=>stop.name)
-                    }
+                        ).map(stop=>stop.name)}
                     />
+                    <div>
+                        <h4>Szczegóły trasy:</h4>
+                    </div>
                 </Col>
                 <Col sm={6} className="Map-col">
                     <div style={{width: '100%', height: '450px'}}>

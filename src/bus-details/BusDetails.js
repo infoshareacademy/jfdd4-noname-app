@@ -41,8 +41,6 @@ class BusDetails extends React.Component {
             return <div>Trwa ładowanie danych...</div>
         }
 
-
-
         if (favoriteBuses === undefined) {
             return <div>Trwa ładowanie danych...</div>
         }

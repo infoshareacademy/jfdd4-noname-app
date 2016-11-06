@@ -19,22 +19,25 @@ class IncomingBuses extends React.Component {
     render() {
         var {
             hourValue,
+            stops,
             buses
         } = this.props;
 
-
         var stopId = parseInt(this.props.stopId);
+
         if (buses === undefined) {
             return <div>Trwa ładowanie danych...</div>
         } else {
 
         }
 
+        if (typeof stops === undefined ) {
+            return <div>Trwa ładowanie danych...</div>
+            }
+
+
         return (
             <div>
-                {/*{console.debug(buses, "bus")}*/}
-                {/*{console.debug(busList, "buslist")}*/}
-
                         {[].concat.apply([], buses.filter(function (bus) {
                             return bus.stops.indexOf(stopId) !== -1
                         }).map(function(filteredBus) {
@@ -45,24 +48,24 @@ class IncomingBuses extends React.Component {
                             ).map(
                                 stopTime => ({
                                     lineNumber: filteredBus.lineNumber,
-                                    timeLeft: stopTime - hourValue
+                                    timeLeft: stopTime - hourValue,
                                 })
                             )
-                        })).sort(function (a,b) {
+                        }
+                        )).sort(function (a,b) {
                             return a.timeLeft - b.timeLeft
                         }).slice(0, 5).map( ({ lineNumber, timeLeft }) => (
                             <Col md={12}>
                                 <ListGroup>
                                     <ListGroupItem>
                                         <Label style={{'margin': '2px'}}>
-                                            {lineNumber}
+                                            {lineNumber }
                                         </Label>
-                                        {" Pozostało " + (timeLeft) + " min"}
+                                        {" Za: " + timeLeft + " min"}
                                     </ListGroupItem>
                                 </ListGroup>
                             </Col>
                         ))}
-
                 </div>
 
         );

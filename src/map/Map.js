@@ -25,7 +25,7 @@ export default  class Map extends React.Component {
             return [average(xArray), average(yArray)]
         };
 
-        const getStyle=(props)=>({...markerStyle, transform: `scale(2)`});
+        // const getStyle=(props)=>({...markerStyle, transform: `scale(2)`});
 
 
         return <div style={{width: '100%', height: '100%'}}>

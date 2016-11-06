@@ -41,10 +41,11 @@ class BusDetails extends React.Component {
             return <div>Trwa ładowanie danych...</div>
         }
 
+
+
         if (favoriteBuses === undefined) {
             return <div>Trwa ładowanie danych... xxx</div>
         }
-
         var currentFavorite = favoriteBuses.find(bus => bus.lineNumber.toString() === currentBus.lineNumber.toString());
 
         var busStops = currentBus.stops.map(lineStop =>
@@ -62,16 +63,7 @@ class BusDetails extends React.Component {
         }).map(function (stop) {
             return stop.id});
 
-        // var centerMap = ()=>{
-        //     let xArray = busStops.map(x=>x.cox);
-        //     let yArray = busStops.map(y=>y.coy);
-        //     function average(array) {
-        //         return array.reduce((prev, curr)=>(prev + curr))/array.length
-        //     }
-        //     return [average(xArray), average(yArray)]
-        // };
-
-        // console.log('TEST', centerMap());
+        console.log('TEST', busStops);
 
         return (
             <div>
@@ -112,6 +104,7 @@ class BusDetails extends React.Component {
                 </Row>
             </div>
         )
+
     }
 }
 

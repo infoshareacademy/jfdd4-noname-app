@@ -32,10 +32,12 @@ class BusStop extends React.Component {
         } = this.props;
 
         var stopId = parseInt(this.props.params.busStopId);
+
         var currentStop = stops.filter(stop => stop.id === stopId);
-        var currentCoordinates = currentStop.map((stop) => {
-            return [stop.cox, stop.coy]
-        });
+
+        if (currentStop.length === 0) {
+            return <div>Trwa ładowanie danych... xxx</div>
+        }
 
 
         return (
@@ -44,7 +46,6 @@ class BusStop extends React.Component {
 
 
                     {currentStop.map(function (stop) {
-                        console.log('TEST 2',favoriteStops, favoriteStops.indexOf(stopId), stopId)
                         return <p>Przystanek: {stop.name} {""}
                             <Button onClick={() => {
                             favoriteStops.map(a=>a.id).indexOf(stopId) === -1 ?
@@ -98,7 +99,7 @@ class BusStop extends React.Component {
                 </Col>
                 <Col sm={6} className="Map-col">
                     <div style={{width: '100%', height: '450px'}}>
-                        <Map zoom={16} center={currentCoordinates[0]} points={currentStop}/>
+                        <Map zoom={16} points={currentStop}/>
                     </div>
 
 

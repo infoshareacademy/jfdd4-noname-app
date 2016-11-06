@@ -60,6 +60,20 @@ class IncomingBuses extends React.Component {
                                     <ListGroupItem>
                                         <Label style={{'margin': '2px'}}>
                                             {lineNumber }
+                                            {/*{buses.filter(function(abc){*/}
+                                                {/*/!*console.debug(lineNumber);*!/*/}
+                                                {/*return lineNumber == abc.lineNumber*/}
+                                            {/*}).map(function (xyz) {*/}
+                                                {/*return xyz.stops*/}
+                                            {/*}).map(function (abc) {*/}
+                                                {/*return [abc[abc.length-1]]*/}
+                                            {/*}).map(function (qwerty) {*/}
+                                                {/*return stops.filter(function (a) {*/}
+                                                    {/*return qwerty == a.id*/}
+                                                {/*}).map(function (dupa) {*/}
+                                                    {/*console.log(dupa)*/}
+                                                {/*})*/}
+                                            {/*})}*/}
                                         </Label>
                                         {" Za: " + timeLeft + " min"}
                                     </ListGroupItem>

@@ -5,6 +5,7 @@ import {Link} from 'react-router'
 import {saveDestinations} from './actionCreators'
 import Map from '../map/Map'
 import SearchForm from './search-form/SearchForm'
+import RouteDetails from './route-details/RouteDetails'
 
 
 
@@ -37,22 +38,26 @@ class RouteFinder extends React.Component {
             return <div>Trwa ładowanie danych...</div>
         }
 
+        var sortedStopsNames = stops
+            .sort((s1,s2) => {
+                if (s1.name < s2.name) return -1;
+                else if (s1.name > s2.name) return 1;
+                else return 0;}
+            ).map(stop=>stop.name);
+
+        var isSearchFormEmpty = departValue.length === 0 && arriveValue.length === 0;
+
+        console.log(isSearchFormEmpty);
+        console.log(sortedStopsNames);
+
         return (
             <div>
                 <Col sm={6} className="BusStops-col">
                     <SearchForm
                         handleSubmit={saveDestinations}
-                        options={stops
-                        .sort((s1,s2) => {
-                            if (s1.name < s2.name) return -1;
-                            else if (s1.name > s2.name) return 1;
-                            else return 0;}
-                        ).map(stop=>stop.name)}
+                        options={sortedStopsNames}
                     />
-                    <div>
-                        <h4>Szczegóły trasy:</h4>
-                        <h5>{departValue}{arriveValue}</h5>
-                    </div>
+                    {isSearchFormEmpty ? null : <RouteDetails/>}
                 </Col>
                 <Col sm={6} className="Map-col">
                     <div style={{width: '100%', height: '450px'}}>

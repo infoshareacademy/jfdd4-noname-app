@@ -31,7 +31,6 @@ const CustomHandle = props => {
     return (
         <div style={style}>
             {props.value.toFixed(2)}
-            {/*{((props.value/60).toFixed(0))}{":"}{( (props.value) % 60 )}*/}
             </div>
     );
 };
@@ -46,18 +45,14 @@ class SliderComponent extends React.Component {
     render() {
 
         var {
-            hourValue,
             onChangeValue,
-            currentHourSet,
-            currentMinuteSet,
+            hourValue
         } = this.props
 
 
         return(
             <div>
                 <div style={wrapperStyle}>
-                    {/*<h1>Mamy godzinę: {((hourValue/60).toFixed(0))}{":"}{( (hourValue) % 60 )}</h1>*/}
-                    <p>Aktualna godzina</p>
                     <Slider
                         min={0}
                         max={1440}

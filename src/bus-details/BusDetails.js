@@ -81,11 +81,15 @@ class BusDetails extends React.Component {
                     </Col>
                 </Row>
                 <Row>
+                    <Col md={6}>
                     <p>Mamy godzinę: {(hourValue / 60).toFixed(0)  + ':' + hourValue % 60} </p>
 
+                        </Col>
                     </Row>
                 <Row>
-                    <SliderComponent />
+                    <Col md={6}>
+                        <SliderComponent />
+                    </Col>
                 </Row>
             </div>
         )

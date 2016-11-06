@@ -51,9 +51,6 @@ class BusStop extends React.Component {
         return (
             <div>
                 <Col sm={12} className="Intro-col ">
-                    {console.debug(buses.filter(function (xyz) {
-                        console.log(xyz)
-                    }), "original")}
                     {currentStop.map(function (stop) {
                         console.log('TEST 2',favoriteStops, favoriteStops.indexOf(stopId), stopId)
                         return <p>Przystanek: {stop.name} {""}
@@ -115,11 +112,8 @@ class BusStop extends React.Component {
                     <div style={{width: '100%', height: '450px'}}>
                         <Map center={currentCoordinates[0]} points={currentStop}/>
                     </div>
-
-
                 </Col>
 
-                <IncomingBuses stopId={stopId} busList={buses} />
             </div>
         );
     }

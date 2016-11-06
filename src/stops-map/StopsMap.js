@@ -14,7 +14,6 @@ const StopsMap = ({
 
     stops,
     buses,
-    hourValue,
     activeStops = stops.map(s => s.id === 1)
 }) => (
 
@@ -22,13 +21,6 @@ const StopsMap = ({
         <div style={{width: '100%', height: '500px'}}>
             <Map center={[54.352325, 18.671786]} points={activeStops}/>
         </div>
-        <p>Mamy godzinę: {new Date(hourValue).getHours() + ':' + new Date(hourValue).getMinutes()} </p>
-        <p>
-
-            {new Date(hourValue).toUTCString()}
-
-            {console.log(activeStops, "********************************aktywne stopy")}
-        </p>
     </div>
 );
 

@@ -15,7 +15,6 @@ export default  class Map extends React.Component {
             left: -MARKER_SIZE / 2,
             top: -MARKER_SIZE
         }
-
         const getStyle=(props)=>({...markerStyle, transform: `scale(2)`});
 
 
@@ -28,8 +27,7 @@ export default  class Map extends React.Component {
                 center={this.props.center}
                 zoom={14}>
                 {this.props.points.map(function (point) {
-                    console.log(point.id);
-                    return <Stop to={`/bus-stops/${point.id}`} lat={point.cox} lng={point.coy}>
+                    return <Stop key={point.id} to={`/bus-stops/${point.id}`} lat={point.cox} lng={point.coy}>
                         {point.name}
                     </Stop>
                 })}

@@ -5,11 +5,18 @@ import persistState from 'redux-localstorage'
 import sliderReducer from './map/slider/reducer'
 import stopsReducer from './bus-stops/reducer'
 import busesReducer from './bus-lines/reducer'
+import favoritesReducer from './favorites/reducer'
+import loginReducer from './log-in/reducer'
+import persistState from 'redux-localstorage'
 
 let reducer = combineReducers({
     busesData: busesReducer,
     stopsData: stopsReducer,
     sliderData: sliderReducer
+    stopsData: stopsReducer,
+    favorites: favoritesReducer,
+    login: loginReducer
+
 });
 
 // Create a Redux store holding the state of your app.
@@ -28,8 +35,10 @@ let store = createStore(
     )
 );
 
-store.subscribe(() => {
-    localStorage.setItem('favoriteStopsIds', JSON.stringify(store.getState().stopsData.favoriteStopsIds || []))
-})
+// store.subscribe(() => {
+//     localStorage.setItem('favoriteStopsIds', JSON.stringify(store.getState().stopsData.favoriteStopsIds || []));
+//
+//     localStorage.setItem('favoriteBusesIds', JSON.stringify(store.getState().busesData.favoriteBusesIds || []))
+// })
 
 export default store

@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router';
 import {connect} from 'react-redux'
 import LineStops from '../line-stops/LineStops';
-import {Button, PageHeader, Row, Col} from 'react-bootstrap'
+import {Button, Glyphicon, PageHeader, Row, Col} from 'react-bootstrap'
 import './BusDetails.css';
 import Map from '../map/Map'
+import {addFavoriteBus, deleteFavoriteBus} from '../favorites/actionCreators'
+
 import SliderComponent from '../map/slider/SliderComponent'
 
 
@@ -12,6 +14,14 @@ const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
     stops: state.stopsData.stops,
     hourValue: state.sliderData.hourValue
+    stops: state.stopsData.stops,
+    favoriteBuses: state.favorites.favoriteBuses
+});
+
+
+const mapDispatchToProps = (dispatch) => ({
+    addFavoriteBus: (lineNumber) => dispatch(addFavoriteBus(lineNumber)),
+    deleteFavoriteBus: (busId) => dispatch(deleteFavoriteBus(busId))
 });
 
 class BusDetails extends React.Component {
@@ -23,6 +33,10 @@ class BusDetails extends React.Component {
             buses,
             hourValue,
             stops
+            stops,
+            addFavoriteBus,
+            deleteFavoriteBus,
+            favoriteBuses
         } = this.props;
 
         var currentBus = buses.find(function (bus) {
@@ -33,12 +47,16 @@ class BusDetails extends React.Component {
             return <div>Trwa ładowanie danych...</div>
         }
 
+        if (favoriteBuses === undefined) {
+            return <div>Trwa ładowanie danych... xxx</div>
+        }
+
+        var currentFavorite = favoriteBuses.find(bus => bus.lineNumber.toString() === currentBus.lineNumber.toString());
+
         var busStops = currentBus.stops.map(lineStop =>
             stops.find(s => s.id === lineStop ));
 
-        // var busStops = stops.filter(function (stop) {
-        //     return currentBus.stops.indexOf(stop.id) !== -1
-        // });
+        var favoriteLineNumbers = favoriteBuses.map(bus => bus.lineNumber);
 
         var stopsList = busStops.filter(function (stop) {
             return currentBus.stops.indexOf(stop.id) !== -1
@@ -60,11 +78,24 @@ class BusDetails extends React.Component {
             <div>
                 <Row>
                     <Col md={12}>
-                        <PageHeader>Linia <Link to={`/bus-lines`}><Button bsStyle="danger">{this.props.params.busId}</Button></Link>
+                        <PageHeader>Linia {' '}
+                            <Link to={`/bus-lines`}>
+                                <Button bsStyle="danger">{this.props.params.busId}</Button>
+                            </Link>
                             <content>{" : " }
                             <Link to={`/bus-stops/${lastFirstStop[0]}`}>{stopsList[0]}</Link>
                                 {" – "}
-                            <Link to={`/bus-stops/${lastFirstStop[lastFirstStop.length - 1]}`}>{stopsList[stopsList.length - 1]}</Link>
+                            <Link to={`/bus-stops/${lastFirstStop[lastFirstStop.length - 1]}`}>{stopsList[stopsList.length - 1]}</Link>{' '}
+
+                            <Button onClick={() => {
+                                favoriteLineNumbers.indexOf(currentBus.lineNumber.toString()) === -1 ?
+                                    addFavoriteBus(currentBus.lineNumber) :
+                                    deleteFavoriteBus(currentFavorite.id)
+                            }} bsSize="xsmall">
+                                <Glyphicon glyph="star"/>
+                                {favoriteLineNumbers.indexOf(currentBus.lineNumber.toString()) === -1 ? "Dodaj do ulubionych" : "Usuń z ulubionych"}
+                            </Button>
+
                             </content>
                         </PageHeader>
                     </Col>
@@ -96,4 +127,4 @@ class BusDetails extends React.Component {
     }
 }
 
-export default connect(mapStateToProps)(BusDetails)
+export default connect(mapStateToProps, mapDispatchToProps)(BusDetails)

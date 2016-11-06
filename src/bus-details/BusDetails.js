@@ -6,8 +6,6 @@ import {Button, Glyphicon, PageHeader, Row, Col} from 'react-bootstrap'
 import './BusDetails.css';
 import Map from '../map/Map'
 import {addFavoriteBus, deleteFavoriteBus} from '../favorites/actionCreators'
-import FavoriteButton from '../favorites/FavoriteButton'
-
 
 const mapStateToProps = (state) => ({
     buses: state.busesData.buses,

@@ -2,13 +2,16 @@ import React, {Component} from 'react';
 import {Link} from 'react-router'
 import logo from './logo.png';
 import './Menu.css';
+import LoginForm from '../../log-in/LoginForm'
 import {IndexLinkContainer, LinkContainer} from 'react-router-bootstrap'
-import {Navbar, Nav, NavItem, Glyphicon} from 'react-bootstrap'
+import {Navbar, Nav, NavItem, Glyphicon, NavDropdown} from 'react-bootstrap'
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
-    favoriteStops: state.stopsData.favoriteStopsIds
-})
+    favoriteStops: state.favorites.favoriteStops,
+    favoriteBuses: state.favorites.favoriteBuses,
+    userName: state.login.username
+});
 
 
 class Menu extends Component {
@@ -30,16 +33,17 @@ class Menu extends Component {
                             <NavItem eventKey={2} href="#">Lista przystanków</NavItem>
                         </LinkContainer>
                         <LinkContainer to={`/bus-lines`}>
-                            <NavItem eventKey={3} href="#">Lista autobusów
-                            </NavItem>
+                            <NavItem eventKey={3} href="#">Lista autobusów</NavItem>
                         </LinkContainer>
                     </Nav>
                     <Nav pullRight>
-                        <NavItem><Glyphicon glyph="star" /> Ulubione ({this.props.favoriteStops.length})</NavItem>
-                        <LinkContainer to={'*'}>
-                            <NavItem eventKey={4} href="#">Zaloguj się</NavItem>
+                        <LinkContainer to={`/favorites`}>
+                            <NavItem eventKey={6} href="#">Ulubione ({this.props.favoriteStops.length},{this.props.favoriteBuses.length})</NavItem>
                         </LinkContainer>
-                    </Nav>
+                        <NavDropdown eventKey={5} title={this.props.userName} id="basic-nav-dropdown">
+                            <LoginForm />
+                        </NavDropdown>
+                      </Nav>
                 </Navbar.Collapse>
             </Navbar>
         )

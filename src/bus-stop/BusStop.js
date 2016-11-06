@@ -36,7 +36,7 @@ class BusStop extends React.Component {
         var currentStop = stops.filter(stop => stop.id === stopId);
 
         if (currentStop.length === 0) {
-            return <div>Trwa ładowanie danych... xxx</div>
+            return <div>Trwa ładowanie danych...</div>
         }
 
 
@@ -99,7 +99,7 @@ class BusStop extends React.Component {
                 </Col>
                 <Col sm={6} className="Map-col">
                     <div style={{width: '100%', height: '450px'}}>
-                        <Map zoom={16} points={currentStop}/>
+                        <Map zoom={16} center={currentStop} points={currentStop}/>
                     </div>
 
 

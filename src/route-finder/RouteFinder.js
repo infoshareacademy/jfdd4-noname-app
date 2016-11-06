@@ -46,7 +46,7 @@ class RouteFinder extends React.Component {
                 </Col>
                 <Col sm={6} className="Map-col">
                     <div style={{width: '100%', height: '450px'}}>
-                        <Map zoom={30} center={[54.352325, 18.671786]} points={stops}/>
+                        <Map zoom={13} points={stops}/>
                     </div>
 
 

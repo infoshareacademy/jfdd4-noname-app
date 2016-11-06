@@ -44,7 +44,7 @@ class BusDetails extends React.Component {
 
 
         if (favoriteBuses === undefined) {
-            return <div>Trwa ładowanie danych... xxx</div>
+            return <div>Trwa ładowanie danych...</div>
         }
         var currentFavorite = favoriteBuses.find(bus => bus.lineNumber.toString() === currentBus.lineNumber.toString());
 
@@ -98,7 +98,7 @@ class BusDetails extends React.Component {
                     </Col>
                     <Col md={6}>
                         <div style={{width: '100%', height: '500px'}}>
-                            <Map zoom={13} points={busStops} />
+                            <Map zoom={13} center={busStops} points={busStops} />
                         </div>
                     </Col>
                 </Row>

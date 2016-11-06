@@ -34,7 +34,7 @@ export default  class Map extends React.Component {
                 bootstrapURLKeys={{
                     key: 'AIzaSyCkDbleAYeCPGyTEDJ8Jk94gwXDxombvRE'
                 }}
-                center={centerMap(this.props.points)}
+                center={centerMap(this.props.center)}
                 zoom={this.props.zoom}>
                 {this.props.points.map(function (point) {
                     return <Stop key={point.id} to={`/bus-stops/${point.id}`} lat={point.cox} lng={point.coy}>

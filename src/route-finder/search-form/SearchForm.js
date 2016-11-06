@@ -14,7 +14,6 @@ export default class SearchForm extends React.Component {
 
 
     render() {
-        console.log(this.state.departValue, this.state.arriveValue)
         return (
             <form onSubmit={(event) => {
                 event.preventDefault();
@@ -33,7 +32,7 @@ export default class SearchForm extends React.Component {
                     onChange={selected => this.setState({arriveValue: selected})}
                     options={this.props.options}
                 />
-                <Button>Wyszukaj trasę</Button>
+                <Button type="submit">Wyszukaj trasę</Button>
             </form>
         )
     }

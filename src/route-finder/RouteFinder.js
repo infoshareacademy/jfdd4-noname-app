@@ -17,7 +17,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    saveDestinations: (departValue, arriveValue) => dispatch(saveDestinations(departValue, arriveValue))
+    saveDestinations: (departValue, arriveValue) => {
+        dispatch(saveDestinations(departValue, arriveValue));
+        console.log(departValue,arriveValue)
+    }
 });
 
 class RouteFinder extends React.Component {
@@ -50,6 +53,9 @@ class RouteFinder extends React.Component {
                     />
                     <div>
                         <h4>Szczegóły trasy:</h4>
+                        <h5>{departValue.length == [] && arriveValue.length == 0 ?
+                                departValue + ' => ' + arriveValue : null
+                        }</h5>
                     </div>
                 </Col>
                 <Col sm={6} className="Map-col">

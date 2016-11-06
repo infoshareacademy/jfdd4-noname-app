@@ -13,7 +13,7 @@ import SliderComponent from '../map/slider/SliderComponent'
 const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
     stops: state.stopsData.stops,
-    hourValue: state.sliderData.hourValue
+    hourValue: state.sliderData.hourValue,
     stops: state.stopsData.stops,
     favoriteBuses: state.favorites.favoriteBuses
 });
@@ -32,7 +32,6 @@ class BusDetails extends React.Component {
         var {
             buses,
             hourValue,
-            stops
             stops,
             addFavoriteBus,
             deleteFavoriteBus,

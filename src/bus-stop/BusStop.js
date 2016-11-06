@@ -79,7 +79,35 @@ class BusStop extends React.Component {
                 <Col sm={6} className="BusStops-col">
                     {buses.filter(function (bus) {
                 })}
+                    <Col sm={6} className="BusStops-col">
+                        {buses.filter(function (bus) {
+                            return bus.stops.indexOf(stopId) !== -1
+                        }).map(function (bus) {
+                                let busStopIndex = bus.stops.indexOf(stopId);
+                                return (
+                                    <Col sm={6} className="BusStop-col">
 
+                                        <div>
+                                            <Panel header={<div><Link to={`/bus-details/${bus.lineNumber}`}>
+                                                <img src={busstopicon} alt="busstopicon"/>
+                                                <Label style={{'margin': '2px'}}>{bus.lineNumber}</Label>
+                                            </Link>
+                                                <p>Przystanek: {currentStop.map(function (stop) {
+                                                    return <span> {stop.name} </span>
+                                                })}</p>
+                                            </div>
+                                            }>
+                                                <p>{bus.routes.map(function (route) {
+                                                    return <b>{route[busStopIndex] + ' '}</b>
+                                                })}</p>
+                                            </Panel>
+                                        </div>
+                                    </Col>
+                                )
+                            }
+                        )}
+
+                    </Col>
 
                 <ul>
                     {[].concat.apply([], buses.filter(function (bus) {

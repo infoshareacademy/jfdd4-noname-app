@@ -6,6 +6,8 @@ import LoginForm from '../../log-in/LoginForm'
 import {IndexLinkContainer, LinkContainer} from 'react-router-bootstrap'
 import {Navbar, Nav, NavItem, Glyphicon, NavDropdown} from 'react-bootstrap'
 import {connect} from 'react-redux'
+import busIcon from '../../intro-page/functionbusicon.svg'
+import stopIcon from '../../intro-page/busstop.svg'
 
 const mapStateToProps = (state) => ({
     favoriteStops: state.favorites.favoriteStops,
@@ -41,7 +43,11 @@ class Menu extends Component {
                     </Nav>
                     <Nav pullRight>
                         <LinkContainer to={`/favorites`}>
-                            <NavItem eventKey={5} href="#">Ulubione ({this.props.favoriteStops.length},{this.props.favoriteBuses.length})</NavItem>
+                            <NavItem eventKey={5} href="#">Ulubione: {' '}
+                                <img className="menu-icon" src={stopIcon} alt="stopIcon"/> {this.props.favoriteStops.length},{' '}
+                                <img className="menu-icon" src={busIcon} alt="busIcon"/> {this.props.favoriteBuses.length}
+
+                            </NavItem>
                         </LinkContainer>
                         <NavDropdown eventKey={6} title={this.props.userName} id="basic-nav-dropdown">
                             <LoginForm />

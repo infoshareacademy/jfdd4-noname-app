@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router';
 import {Label} from 'react-bootstrap'
 import Map from '../map/Map'
+import {markStopAsFavorite} from '../bus-stops/actionCreators'
 import {Glyphicon, Button, Col, Panel} from 'react-bootstrap'
 import './Bus.css'
 import {addFavoriteStop, deleteFavoriteStop} from '../favorites/actionCreators'
@@ -31,8 +32,9 @@ class BusStop extends React.Component {
         } = this.props;
 
         var stopId = parseInt(this.props.params.busStopId);
-
         var currentStop = stops.filter(stop => stop.id === stopId);
+
+        var isFavorite = favoriteStops.map(a=>a.id).indexOf(stopId) === -1;
 
         if (currentStop.length === 0) {
             return <div>Trwa ładowanie danych...</div>
@@ -45,14 +47,11 @@ class BusStop extends React.Component {
 
 
                     {currentStop.map(function (stop) {
-                        return <p>Przystanek: {stop.name} {""}
-                            <Button onClick={() => {
-                            favoriteStops.map(a=>a.id).indexOf(stopId) === -1 ?
-                            addFavoriteStop(stopId) :
-                            deleteFavoriteStop(stopId)
-                            }} bsSize="xsmall">
-                                <Glyphicon glyph="star"/>
-                                {favoriteStops.map(a=>a.id).indexOf(stopId) === -1 ? "Dodaj do ulubionych" : "Usuń z ulubionych"}
+                        return <p>Przystanek: {stop.name} {" "}
+                            <Button onClick={() => {isFavorite ? addFavoriteStop(stopId) : deleteFavoriteStop(stopId)}}
+                                    bsSize="xsmall">
+                                <Glyphicon glyph={isFavorite ? "star-empty" : "star"}/>
+                                {isFavorite ? "Dodaj do ulubionych" : "Usuń z ulubionych"}
                             </Button>
                         </p>
                     })}

@@ -1,0 +1,1 @@
+export const SAVE_DESTINATIONS = 'route-finder/SAVE_DESTINATIONS';

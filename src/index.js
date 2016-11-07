@@ -10,6 +10,7 @@ import StopsMap from './stops-map/StopsMap'
 import IntroPage from './intro-page/IntroPage'
 import Favorites from './favorites/Favorites'
 import LoginForm from './log-in/LoginForm'
+import RouteFinder from './route-finder/RouteFinder'
 
 import store from './store';
 import {Provider} from 'react-redux';
@@ -40,6 +41,7 @@ ReactDOM.render(
                 <Route path="/map" component={StopsMap}/>
                 <Route path="/log-in" component={LoginForm}/>
                 <Route path="/favorites" component={Favorites}/>
+                <Route path="/route-finder" component={RouteFinder}/>
             </Route>
         </Router>
     </Provider>,

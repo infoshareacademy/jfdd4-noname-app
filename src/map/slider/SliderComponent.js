@@ -57,7 +57,7 @@ class SliderComponent extends React.Component {
                         min={0}
                         max={1440}
                         step={1}
-                        defaultValue={629}
+                        defaultValue={0}
                         handle={<CustomHandle />}
                         onChange={(value) => onChangeValue(value)}
                     />

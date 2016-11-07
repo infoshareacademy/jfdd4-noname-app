@@ -8,9 +8,7 @@ import BusLines from './bus-lines/BusLines'
 import BusDetails from './bus-details/BusDetails'
 import StopsMap from './stops-map/StopsMap'
 import IntroPage from './intro-page/IntroPage'
-import Slider from './map/slider/SliderComponent'
 import Favorites from './favorites/Favorites'
-import IncomingBuses from './incoming-buses/IncomingBuses'
 import LoginForm from './log-in/LoginForm'
 
 import store from './store';

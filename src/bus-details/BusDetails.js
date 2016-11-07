@@ -70,12 +70,6 @@ class BusDetails extends React.Component {
 
         var isFavorite = favoriteLineNumbers.indexOf(currentBus.lineNumber.toString()) === -1;
 
-        var ileMinutWGodzinie =  new Date(hourValue).getMinutes();
-        var ileGodzinWDobie = new Date(hourValue).getHours();
-        var obecnaGodzina = new Date();
-        obecnaGodzina.setHours(ileGodzinWDobie);
-        obecnaGodzina.setMinutes(ileMinutWGodzinie);
-
         return (
             <div>
                 <Row>

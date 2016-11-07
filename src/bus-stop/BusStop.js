@@ -45,8 +45,6 @@ class BusStop extends React.Component {
         return (
             <div>
                 <Col sm={12} className="Intro-col ">
-
-
                     {currentStop.map(function (stop) {
                         return <p>Przystanek: {stop.name} {" "}
                             <Button onClick={() => {isFavorite ? addFavoriteStop(stopId) : deleteFavoriteStop(stopId)}}

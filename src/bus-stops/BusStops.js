@@ -49,7 +49,7 @@ class BusStops extends React.Component {
                             else return 0;
                         })
                         .map(function (stop) {
-                            return <ListGroupItem key={stop.id}>
+                            return <ListGroupItem index={stop.id}>
                                 <Link className="BusStops-list" to={`/bus-stops/${stop.id}`}>{stop.name}</Link> {''}
 
                             </ListGroupItem>

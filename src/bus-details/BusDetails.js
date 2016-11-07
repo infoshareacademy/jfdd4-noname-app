@@ -7,10 +7,13 @@ import './BusDetails.css';
 import Map from '../map/Map'
 import {addFavoriteBus, deleteFavoriteBus} from '../favorites/actionCreators'
 
+import SliderComponent from '../map/slider/SliderComponent'
+
 
 const mapStateToProps = (state) => ({
     buses: state.busesData.buses,
     stops: state.stopsData.stops,
+    hourValue: state.sliderData.hourValue,
     favoriteBuses: state.favorites.favoriteBuses
 });
 
@@ -27,10 +30,26 @@ class BusDetails extends React.Component {
 
         var {
             buses,
+            hourValue,
             stops,
             addFavoriteBus,
             deleteFavoriteBus,
-            favoriteBuses
+            favoriteBuses,
+            hourSet = function(){
+                if((hourValue/60) <= 9){
+                    return "0"+(hourValue / 60).toFixed(0)
+                }else{
+                    return (hourValue / 60).toFixed(0)
+                }
+            },
+            minutesSet = function () {
+                if((hourValue%60) <10){
+                    return "0" + hourValue%60
+                }else{
+                return hourValue%60
+                }
+            }
+
         } = this.props;
 
         var currentBus = buses.find(function (bus) {
@@ -105,9 +124,19 @@ class BusDetails extends React.Component {
                         </div>
                     </Col>
                 </Row>
+                <Row>
+                    <Col md={6}>
+                    <p>Mamy godzinę: {hourSet() + ":" + minutesSet()} </p>
+
+                        </Col>
+                    </Row>
+                <Row>
+                    <Col md={6}>
+                        <SliderComponent />
+                    </Col>
+                </Row>
             </div>
         )
-
     }
 }
 

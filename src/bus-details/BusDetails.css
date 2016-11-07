@@ -1,9 +1,11 @@
 .BusDetails-ListChild{
     font-weight: bold;
     display: block;
-
 }
 
+.btn {
+    margin-bottom: 9px !important;
+}
 
 .label-default {
     background-color: #8b0000 !important;
@@ -32,7 +34,13 @@ button.btn.btn-danger a{
     color: whitesmoke !important;
 }
 
+.btn-danger {
+    background-image: linear-gradient(to bottom, #d9534f 0%, #8b0000 100%) !important;
+}
 
+.btn-danger:hover, .btn-danger:focus{
+    background-color: #8b0010 !important;
+}
 
 .BusDetails-Lists {
     font-size: 15px;

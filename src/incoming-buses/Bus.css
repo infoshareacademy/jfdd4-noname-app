@@ -1,0 +1,29 @@
+ul {
+    margin-bottom: 0;
+}
+
+.list-group {
+    margin-bottom: 0 !important;
+}
+
+span.list-group-item {
+    font-size: 10px;
+}
+
+.list-group-item {
+    padding: 2px !important;
+    font-size: 14px;
+}
+
+.bus-icon {
+    border: solid 2px red;
+    display: inline-block;
+}
+
+.BusStop-col {
+    font-size: 13px;
+}
+
+.BusStop-col p {
+    margin: 0.5px auto;
+}

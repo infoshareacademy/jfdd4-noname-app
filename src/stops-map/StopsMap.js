@@ -1,9 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Map from '../map/Map'
+import IncomingBuses from '../incoming-buses/IncomingBuses'
 
 const mapStateToProps = state => ({
-    stops: state.stopsData.stops
+    stops: state.stopsData.stops,
+    buses: state.busesData.buses,
+    hourValue: state.sliderData.hourValue
 });
 
 class StopsMap extends React.Component {
